@@ -1,0 +1,86 @@
+<div class="widgets">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div ba-panel ba-panel-title="List Questionnaire">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Year</label>
+                                    <input type="number" min="0" class="form-control" placeholder="Total Target " ng-model="vm.searchParam.year">
+                                    <span class="help-block error-block basic-block"></span>
+                                </div>
+                                <div class="form-group has-feedback">
+                                    <label>Quest. Type</label>
+                                    <select class="form-control selectpicker with-search" title="Please choose" selectpicker ng-change="vm.changeTypeQuestionnaire()"
+                                        data-live-search="true" ng-model="vm.filterquestType" ng-options="o as o.label for o in vm.questTypeItems">
+                                    </select>
+                                    <span class="help-block error-block basic-block">Required</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Quartal_">Quartal</label>
+                                    <select class="form-control selectpicker with-search" title="Please choose" selectpicker ng-disabled="vm.filterquestType.label != 'DCSL'"
+                                        data-live-search="true" ng-model="vm.filterquartal" ng-change="vm.searchParam.quartal = vm.filterquartal.value"
+                                        ng-options="o as o.label for o in vm.quartals">
+                                    </select>
+                                    <span class="help-block error-block basic-block"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group has-feedback">
+                                    <div class="col-md-12">
+                                        <label for="startDistributionDate_">Periode Start</label>
+                                        <datepicker datepicker-mobile="true" date-format="yyyy-MM-dd" date-max-limit="{{vm.searchParam.end | date}}" selector="form-control">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" id="startDistributionDate_" name="startDistributionDate_" placeholder="Choose a date"
+                                                    ng-model="vm.searchParam.start">
+                                                <span class="input-group-addon" style="cursor: pointer">
+                                                    <i class="glyphicon glyphicon-calendar"></i>
+                                                </span>
+                                            </div>
+                                        </datepicker>
+                                        <span class="help-block error-block basic-block">Required</span>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label for="endDistributionDate_">Periode End</label>
+                                        <datepicker datepicker-mobile="true" date-format="yyyy-MM-dd" date-min-limit="{{vm.searchParam.start | date}}" selector="form-control">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" id="endDistributionDate_" name="endDistributionDate_" placeholder="Choose a date"
+                                                    ng-model="vm.searchParam.end">
+                                                <span class="input-group-addon" style="cursor: pointer">
+                                                    <i class="glyphicon glyphicon-calendar"></i>
+                                                </span>
+                                            </div>
+                                        </datepicker>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group has-feedback">
+                                    <label for="region">Region</label>
+                                    <div class="form-group">
+                                        <select class="form-control selectpicker with-search" data-live-search="true" title="Please choose" selectpicker ng-change="vm.searchParam.region = vm.filterRegion.Code"
+                                            ng-model="vm.filterRegion" ng-options="o as o.Name for o in vm.regionItems">
+                                        </select>
+                                    </div>
+                                    <span class="help-block error-block basic-block">Required</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group btn-group" role="group" aria-label="Basic example">
+                            <button type="button" ng-click="vm.refreshGridList()" class="btn btn-info btn-md">Search</button>
+                            <button type="button" ng-click="vm.clearGridList()" class="btn btn-warning btn-md">Clear</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div ui-grid="vm.gridQuestionaireList" ui-grid-resize-columns ui-grid-pagination class="grid"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

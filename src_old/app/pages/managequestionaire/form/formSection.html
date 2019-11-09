@@ -1,0 +1,19 @@
+<div class="modal-content">
+        <div class="modal-header bg-info">
+          <i class="ion-information-circled modal-icon"></i><span> Add Group Name</span>
+        </div>
+        <div class="modal-body ">
+                <form name="formValidate" ng-submit="login()" novalidate>
+                        <!-- USERNAME -->
+                        <div class="form-group" ng-class="{ 'has-error' : formValidate.groupname.$invalid && !formValidate.groupname.$pristine }">
+                            <label style="color:black!important;">Group Name</label>
+                            <input type="text" name="groupname" class="form-control" ng-model="formData.groupname" ng-minlength="1" ng-maxlength="500">
+                            <p ng-show="formValidate.groupname.$error.minlength" class="help-block">groupname is too short.</p>
+                            <p ng-show="formValidate.groupname.$error.maxlength" class="help-block">groupname is too long.</p>
+                        </div>
+                        <div class="form-group">
+                              <button type="submit" ng-click="ok()" class="btn btn-info" ng-disabled="formValidate.$invalid">Save</button>
+                        </div>
+                </form>
+        </div>
+</div>

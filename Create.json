@@ -1,0 +1,888 @@
+{
+  "id": 0,
+  "status": "1",
+  "general": {
+    "teleSurvey": true,
+    "fieldSurvey": true,
+    "selfSurvey": true,
+    "questType": {
+      "label": "OLRIGHT",
+      "value": "OLRIGHT"
+    },
+    "year": 2018,
+    "region": [
+      {
+        "ID": 0,
+        "Code": "",
+        "Name": "Please choose"
+      },
+      {
+        "ID": 20,
+        "Code": "K0Z",
+        "Name": "ASTRA MOTOR SEMARANG"
+      },
+      {
+        "ID": 22,
+        "Code": "L01",
+        "Name": "ASTRA MOTOR YOGYAKARTA"
+      },
+      {
+        "ID": 27,
+        "Code": "N01",
+        "Name": "ASTRA MOTOR DENPASAR"
+      },
+      {
+        "ID": 37,
+        "Code": "W01",
+        "Name": "ASTRA MOTOR MAKASSAR"
+      }
+    ],
+    "createdBy": "WIDHA ENNY WIDYAWATI",
+    "createdDate": "2018-01-21",
+    "status": "Draft",
+    "template": [],
+    "questName": "Ichwan 7",
+    "description": "Description",
+    "totalTarget": 16,
+    "startDistributionDate": "2018-01-21",
+    "endDistributionDate": "2018-05-31"
+  },
+  "target": {
+    "ageRange": [
+      {
+        "label": "Kurang dari 20 thn",
+        "value": "1"
+      },
+      {
+        "label": "30-34 thn",
+        "value": "4"
+      },
+      {
+        "label": "20-24 thn",
+        "value": "2"
+      }
+    ],
+    "education": [
+      {
+        "label": "SLTP/SMP",
+        "value": "3"
+      },
+      {
+        "label": "SLTA/SMU",
+        "value": "4"
+      }
+    ],
+    "ro": [],
+    "gender": [
+      {
+        "label": "Perempuan",
+        "value": "2"
+      },
+      {
+        "label": "Laki-laki",
+        "value": "1"
+      }
+    ],
+    "occupation": [
+      {
+        "label": "Lain-lain",
+        "value": "11"
+      },
+      {
+        "label": "Pengacara",
+        "value": "13"
+      },
+      {
+        "label": "Dokter",
+        "value": "12"
+      },
+      {
+        "label": "Wiraswasta/Pedagang",
+        "value": "4"
+      }
+    ],
+    "religion": [
+      {
+        "label": "Budha",
+        "value": "5"
+      },
+      {
+        "label": "Lain-lain",
+        "value": "6"
+      },
+      {
+        "label": "Katolik",
+        "value": "3"
+      }
+    ],
+    "ses": [
+      {
+        "label": "Rp 1.250.001,-s/d Rp 1.750.000,-",
+        "value": "4"
+      },
+      {
+        "label": "> Rp 3.500.000,-",
+        "value": "7"
+      },
+      {
+        "label": "Rp 1.750.001,-s/d Rp 2.500.000,-",
+        "value": "5"
+      },
+      {
+        "label": "Rp 2.500.001,-s/d Rp 3.500.000,-",
+        "value": "6"
+      }
+    ],
+    "unitType": [],
+    "propinsi": {
+      "ID": 11,
+      "Code": "3100",
+      "Name": "DKI JAKARTA"
+    },
+    "kabupaten": [
+      {
+        "ID": 155,
+        "Code": "3172",
+        "Name": "JAKARTA TIMUR"
+      },
+      {
+        "ID": 157,
+        "Code": "3174",
+        "Name": "JAKARTA BARAT"
+      }
+    ]
+  },
+  "questionList": [
+    {
+      "scriptCode": "H1.S",
+      "headerSectionName": "Screening Test",
+      "type": "Screening",
+      "sort": 1,
+      "questions": [
+        {
+          "uuid": "6b13f394-812c-c2cd-8627-a8ee05328c05",
+          "question": "Your Question ?",
+          "type": "checkbox",
+          "scriptCode": "H1.S.Q1",
+          "sort": 1,
+          "isEditable": true,
+          "answerCB": [
+            {
+              "uuid": "699cb13f-ea3c-7bcd-3b51-2720fb23fb47",
+              "sort": 1,
+              "answerValue": "Ya",
+              "jumpTo": {
+                "label": "Next Question",
+                "value": "Next"
+              }
+            },
+            {
+              "uuid": "7ec528e4-eae8-8ec2-6a10-0adb6623ea59",
+              "sort": 2,
+              "answerValue": "Tidak",
+              "jumpTo": {
+                "label": "Your Question 3 ?",
+                "value": "23997aa6-e582-6e5e-2922-9fbb54949fee"
+              }
+            },
+            {
+              "uuid": "4b197da2-a93a-c6f4-fbc2-b7daa373dcc9",
+              "sort": 3,
+              "answerValue": "sadasd",
+              "jumpTo": {
+                "label": "Next Question",
+                "value": "Next"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "b1812455-7a96-f455-cf94-3c78d38345a6",
+          "question": "Your Question 2 ?",
+          "type": "checkbox",
+          "scriptCode": "H1.S.Q2",
+          "sort": 2,
+          "isEditable": true,
+          "answerCB": [
+            {
+              "uuid": "9bc5baa6-b1a9-74c4-374b-62f72fa67fcb",
+              "sort": 1,
+              "answerValue": "Ya",
+              "jumpTo": {
+                "label": "Next Question",
+                "value": "Next"
+              }
+            },
+            {
+              "uuid": "e004149f-286b-236b-c89d-d32cbc7307e0",
+              "sort": 2,
+              "answerValue": "Tidak",
+              "jumpTo": {
+                "label": "End/Finish Questionair",
+                "value": "End"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "23997aa6-e582-6e5e-2922-9fbb54949fee",
+          "question": "Your Question 3 ?",
+          "type": "dropdown",
+          "scriptCode": "H1.S.Q3",
+          "sort": 3,
+          "isEditable": true,
+          "answerDD": [
+            {
+              "uuid": "d3541e0f-3992-b43a-fa36-89d48fa76c75",
+              "sort": 1,
+              "answerValue": "Ya",
+              "jumpTo": {
+                "label": "Next Question",
+                "value": "Next"
+              }
+            },
+            {
+              "uuid": "1cba1253-4564-6b1b-1fb7-cd57ca2fe9d1",
+              "sort": 2,
+              "answerValue": "Tidak",
+              "jumpTo": {
+                "label": "End/Finish Questionair",
+                "value": "End"
+              }
+            },
+            {
+              "uuid": "14577b7a-080b-23b7-2ea4-52b0a897e595",
+              "sort": 3,
+              "answerValue": "sdasd",
+              "jumpTo": {
+                "label": "End/Finish Questionair",
+                "value": "End"
+              }
+            },
+            {
+              "uuid": "5921318f-e38c-b888-8ff7-966e3b534040",
+              "sort": 4,
+              "answerValue": "asdasd",
+              "jumpTo": {
+                "label": "End/Finish Questionair",
+                "value": "End"
+              }
+            }
+          ]
+        }
+      ],
+      "questionGroup": null
+    },
+    {
+      "scriptCode": "H1.M",
+      "headerSectionName": "Main Question",
+      "type": "Question",
+      "sort": 2,
+      "questions": null,
+      "questionGroup": [
+        {
+          "scriptCode": "H1.M.1",
+          "groupname": "AUTHORIZED DEALERSHIP",
+          "sort": 1,
+          "isEditable": false,
+          "questions": [
+            {
+              "uuid": "5a59a680-53b3-d7c2-bba9-eb04621f55ac",
+              "question": "Your Question ?",
+              "type": "shortanswer",
+              "formtype": "text",
+              "isDecimal": false,
+              "numOfDecimal": 2,
+              "minLenght": 0,
+              "maxLenght": 100,
+              "isEditable": true,
+              "answerValue": null,
+              "scriptCode": "H1.M.1.Q1",
+              "sort": 1
+            },
+            {
+              "uuid": "753ab0ba-7841-f7e7-def9-0513c5b88beb",
+              "question": "Your Question ?",
+              "type": "date",
+              "isEditable": true,
+              "answerValue": null,
+              "scriptCode": "H1.M.1.Q2",
+              "sort": 2,
+              "valueAnswer": "2019-01-02"
+            },
+            {
+              "uuid": "71564f80-cc39-0a59-748d-9c89347d4ce2",
+              "question": "Your Question ?",
+              "type": "paragraph",
+              "minLength": 0,
+              "maxLength": 1000,
+              "isEditable": true,
+              "answerValue": null,
+              "scriptCode": "H1.M.1.Q3",
+              "sort": 3
+            },
+            {
+              "uuid": "8592deb7-9e30-f7f8-f0d1-cdf7b359e278",
+              "question": "Your Question ?",
+              "type": "time",
+              "isEditable": true,
+              "answerValue": "1970-01-01T09:04:00.000Z",
+              "scriptCode": "H1.M.1.Q4",
+              "sort": 4
+            },
+            {
+              "uuid": "72a45fe8-5cb3-9819-d39b-afffb8139396",
+              "question": "Your Question ?",
+              "type": "checkbox",
+              "isEditable": true,
+              "maxSelect": 3,
+              "answerCB": [
+                {
+                  "uuid": "2737e351-3466-8738-7435-aee23cb95853",
+                  "sort": 1,
+                  "answerValue": "Option 1",
+                  "jumpTo": "Next",
+                  "value": true
+                },
+                {
+                  "uuid": "38bc0795-b3da-d617-f2fd-d11b212c6c37",
+                  "sort": 2,
+                  "answerValue": "Option 2",
+                  "jumpTo": "End",
+                  "value": true
+                },
+                {
+                  "uuid": "792b64e4-8045-4617-1bff-be3d19b5d2fe",
+                  "sort": 3,
+                  "answerValue": "Option 3",
+                  "jumpTo": "Next",
+                  "value": true
+                }
+              ],
+              "answerValue": null,
+              "scriptCode": "H1.M.1.Q5",
+              "sort": 5
+            },
+            {
+              "uuid": "68ee76a8-3697-5b28-ee66-4098e964f172",
+              "question": "Your Question ?",
+              "type": "radiobutton",
+              "isEditable": true,
+              "answerRB": [
+                {
+                  "uuid": "1a43b87e-fd8a-c604-738c-8b0ad4a58e03",
+                  "sort": 1,
+                  "answerValue": "Ya",
+                  "jumpTo": "Next"
+                },
+                {
+                  "uuid": "a30c4daa-bc63-ef4e-9fb6-637a1414b889",
+                  "sort": 2,
+                  "answerValue": "Tidak",
+                  "jumpTo": "End"
+                },
+                {
+                  "uuid": "0071c4e1-4b98-8f74-796b-b65eacebdc4b",
+                  "sort": 3,
+                  "answerValue": "Yes",
+                  "jumpTo": "Next"
+                },
+                {
+                  "uuid": "8f1ad5a8-fbec-82a7-fc3d-894245c0b8ea",
+                  "sort": 4,
+                  "answerValue": "No",
+                  "jumpTo": "Next"
+                },
+                {
+                  "uuid": "bd131f16-b1b3-4412-db1a-fc340577dcbd",
+                  "sort": 5,
+                  "answerValue": "Nangam",
+                  "jumpTo": "Next"
+                }
+              ],
+              "answerValue": {
+                "uuid": "8f1ad5a8-fbec-82a7-fc3d-894245c0b8ea",
+                "sort": 4,
+                "answerValue": "No",
+                "jumpTo": "Next"
+              },
+              "scriptCode": "H1.M.1.Q6",
+              "sort": 6,
+              "skiplogic": [
+                {
+                  "formtype": "Show",
+                  "questions": [
+                    {
+                      "value": "a41baa6b-f4eb-4b8b-9779-2e854d64ab24",
+                      "label": "Your Question ?",
+                      "answers": []
+                    },
+                    {
+                      "value": "b8bebb28-0099-4777-46fb-2653ebf4ce51",
+                      "label": "Your Question ?",
+                      "answers": []
+                    },
+                    {
+                      "value": "58810ef4-1882-901c-c16e-b547c9b7eba0",
+                      "label": "Pendapat anda dengan Pelajaran SMP",
+                      "answers": []
+                    },
+                    {
+                      "value": "9b1154b4-70e2-ceaa-9ff5-8d6059ac4cfa",
+                      "label": "Your Question ?",
+                      "answers": []
+                    },
+                    {
+                      "value": "8824bdde-36b8-a128-0a59-652dbb96cc20",
+                      "label": "Your Question ?",
+                      "answers": [
+                        {
+                          "value": "3d79cf9d-0a47-54ab-16d3-f40bc0bf60b5",
+                          "label": "Ya"
+                        },
+                        {
+                          "value": "da62f050-11d5-8e92-e534-980c00498deb",
+                          "label": "Tidak"
+                        }
+                      ]
+                    }
+                  ],
+                  "answerSelected": {
+                    "value": "1a43b87e-fd8a-c604-738c-8b0ad4a58e03",
+                    "label": "Ya"
+                  }
+                },
+                {
+                  "formtype": "Show",
+                  "questions": [
+                    {
+                      "value": "b8bebb28-0099-4777-46fb-2653ebf4ce51",
+                      "label": "Your Question ?",
+                      "answers": []
+                    },
+                    {
+                      "value": "58810ef4-1882-901c-c16e-b547c9b7eba0",
+                      "label": "Pendapat anda dengan Pelajaran SMP",
+                      "answers": []
+                    },
+                    {
+                      "value": "8824bdde-36b8-a128-0a59-652dbb96cc20",
+                      "label": "Your Question ?",
+                      "answers": [
+                        {
+                          "value": "3d79cf9d-0a47-54ab-16d3-f40bc0bf60b5",
+                          "label": "Ya"
+                        },
+                        {
+                          "value": "da62f050-11d5-8e92-e534-980c00498deb",
+                          "label": "Tidak"
+                        }
+                      ]
+                    }
+                  ],
+                  "answerSelected": {
+                    "value": "a30c4daa-bc63-ef4e-9fb6-637a1414b889",
+                    "label": "Tidak"
+                  }
+                },
+                {
+                  "formtype": "Show",
+                  "questions": [
+                    {
+                      "value": "a41baa6b-f4eb-4b8b-9779-2e854d64ab24",
+                      "label": "Your Question ?",
+                      "answers": []
+                    },
+                    {
+                      "value": "b8bebb28-0099-4777-46fb-2653ebf4ce51",
+                      "label": "Your Question ?",
+                      "answers": []
+                    },
+                    {
+                      "value": "58810ef4-1882-901c-c16e-b547c9b7eba0",
+                      "label": "Pendapat anda dengan Pelajaran SMP",
+                      "answers": []
+                    }
+                  ],
+                  "answerSelected": {
+                    "value": "0071c4e1-4b98-8f74-796b-b65eacebdc4b",
+                    "label": "Yes"
+                  }
+                },
+                {
+                  "formtype": "Show",
+                  "questions": [
+                    {
+                      "value": "58810ef4-1882-901c-c16e-b547c9b7eba0",
+                      "label": "Pendapat anda dengan Pelajaran SMP",
+                      "answers": []
+                    },
+                    {
+                      "value": "9b1154b4-70e2-ceaa-9ff5-8d6059ac4cfa",
+                      "label": "Your Question ?",
+                      "answers": []
+                    },
+                    {
+                      "value": "8824bdde-36b8-a128-0a59-652dbb96cc20",
+                      "label": "Your Question ?",
+                      "answers": [
+                        {
+                          "value": "3d79cf9d-0a47-54ab-16d3-f40bc0bf60b5",
+                          "label": "Ya"
+                        },
+                        {
+                          "value": "da62f050-11d5-8e92-e534-980c00498deb",
+                          "label": "Tidak"
+                        }
+                      ]
+                    }
+                  ],
+                  "answerSelected": {
+                    "value": "8f1ad5a8-fbec-82a7-fc3d-894245c0b8ea",
+                    "label": "No"
+                  }
+                },
+                {
+                  "formtype": "Show",
+                  "questions": [
+                    {
+                      "value": "8824bdde-36b8-a128-0a59-652dbb96cc20",
+                      "label": "Your Question ?",
+                      "answers": [
+                        {
+                          "value": "3d79cf9d-0a47-54ab-16d3-f40bc0bf60b5",
+                          "label": "Ya"
+                        },
+                        {
+                          "value": "da62f050-11d5-8e92-e534-980c00498deb",
+                          "label": "Tidak"
+                        }
+                      ]
+                    }
+                  ],
+                  "answerSelected": {
+                    "value": "bd131f16-b1b3-4412-db1a-fc340577dcbd",
+                    "label": "Nangam"
+                  }
+                }
+              ]
+            },
+            {
+              "uuid": "a41baa6b-f4eb-4b8b-9779-2e854d64ab24",
+              "question": "Your Question ?",
+              "type": "linierscale",
+              "required": true,
+              "isEditable": true,
+              "answerValue": 4,
+              "counterFilling": 0,
+              "note": null,
+              "answerLS": {
+                "stdVal": 3,
+                "stdReg": 4,
+                "minVal": 0,
+                "maxVal": 5,
+                "minNote": "Sangat Tidak Puas",
+                "maxNote": "Sangat Puas",
+                "belowStdJumpTo": "Next",
+                "aboveStdJumpTo": "Next"
+              },
+              "scriptCode": "H1.M.1.Q7",
+              "sort": 7
+            },
+            {
+              "uuid": "b8bebb28-0099-4777-46fb-2653ebf4ce51",
+              "question": "Your Question ?",
+              "type": "gridcheckbox",
+              "isEditable": true,
+              "answerCBG": [
+                {
+                  "uuid": "b4e748d3-cc7f-f990-e814-82470bedaa13",
+                  "sort": 1,
+                  "answerValue": "Your Question 1 ?",
+                  "jumpTo": "Next"
+                },
+                {
+                  "uuid": "ac139470-8c90-729d-64c5-0302adb0b244",
+                  "sort": 2,
+                  "answerValue": "Your Question 2 ?",
+                  "jumpTo": "End"
+                },
+                {
+                  "uuid": "aeeaeaa0-6afd-f372-3e17-50038a287103",
+                  "sort": 3,
+                  "answerValue": "Your Question 3 ?",
+                  "jumpTo": "Next"
+                },
+                {
+                  "uuid": "7d79b556-10b3-1d35-7b54-54e0ca066d86",
+                  "sort": 4,
+                  "answerValue": "Your Question 4 ?",
+                  "jumpTo": "Next"
+                }
+              ],
+              "columnCBG": [
+                {
+                  "uuid": "2b4b92e3-0262-f03c-99b3-040567ee0d86",
+                  "sort": 1,
+                  "columnText": "Ya"
+                },
+                {
+                  "uuid": "8ec1a4f2-9a0e-fc7e-ca71-a906b0ffd45d",
+                  "sort": 2,
+                  "columnText": "Tidak"
+                },
+                {
+                  "uuid": "3c20b8cc-9ba9-913a-08fd-e2d59c5962d3",
+                  "sort": 3,
+                  "columnText": "Yes"
+                },
+                {
+                  "uuid": "9b62ca78-2f87-2603-ceed-bac1ed557bb5",
+                  "sort": 4,
+                  "columnText": "No"
+                }
+              ],
+              "answerValue": {
+                "b4e748d3-cc7f-f990-e814-82470bedaa13": {
+                  "3c20b8cc-9ba9-913a-08fd-e2d59c5962d3": false
+                },
+                "ac139470-8c90-729d-64c5-0302adb0b244": {
+                  "3c20b8cc-9ba9-913a-08fd-e2d59c5962d3": false
+                },
+                "aeeaeaa0-6afd-f372-3e17-50038a287103": {
+                  "3c20b8cc-9ba9-913a-08fd-e2d59c5962d3": true,
+                  "8ec1a4f2-9a0e-fc7e-ca71-a906b0ffd45d": true
+                },
+                "7d79b556-10b3-1d35-7b54-54e0ca066d86": {
+                  "3c20b8cc-9ba9-913a-08fd-e2d59c5962d3": true,
+                  "2b4b92e3-0262-f03c-99b3-040567ee0d86": true
+                }
+              },
+              "scriptCode": "H1.M.1.Q8",
+              "sort": 8
+            },
+            {
+              "uuid": "58810ef4-1882-901c-c16e-b547c9b7eba0",
+              "question": "Pendapat anda dengan Pelajaran SMP",
+              "type": "gridcheckbox",
+              "isEditable": true,
+              "answerCBG": [
+                {
+                  "uuid": "4d0f68c9-7949-e4a3-d492-fae77e5f3c7e",
+                  "sort": 1,
+                  "answerValue": "Pelajaran yang anda tidak sukai ?",
+                  "jumpTo": "Next"
+                },
+                {
+                  "uuid": "3ab4bf3f-a550-a02e-3e3e-baa720cef106",
+                  "sort": 2,
+                  "answerValue": "Pelajaran apa yang gurunya cantik ?",
+                  "jumpTo": "End"
+                },
+                {
+                  "uuid": "d75eb470-c522-d25d-5b98-88fcecafa67f",
+                  "sort": 3,
+                  "answerValue": "Pelajaran apa yang anda sukai dari kecil ?",
+                  "jumpTo": "Next"
+                }
+              ],
+              "columnCBG": [
+                {
+                  "uuid": "fea58f71-c029-4639-3304-1fb4f612b84c",
+                  "sort": 1,
+                  "columnText": "Matematika"
+                },
+                {
+                  "uuid": "1c4d765f-3d50-aaa8-1382-a67b6508695c",
+                  "sort": 2,
+                  "columnText": "Sejarah"
+                },
+                {
+                  "uuid": "c3ddf95f-099b-a3c6-bff1-6697732f510e",
+                  "sort": 3,
+                  "columnText": "Bahasa"
+                },
+                {
+                  "uuid": "04de0a25-3c18-27ed-bdfc-2ffea3e9570b",
+                  "sort": 4,
+                  "columnText": "Biologi"
+                },
+                {
+                  "uuid": "f820ed30-7f36-0de4-c89c-d635e405ce0e",
+                  "sort": 5,
+                  "columnText": "Kimia"
+                },
+                {
+                  "uuid": "5ebc6cf3-2f74-8be6-cf65-fc42e98a33ac",
+                  "sort": 6,
+                  "columnText": "Fisika"
+                },
+                {
+                  "uuid": "3207246a-c541-646a-cc54-3b2a814a1b17",
+                  "sort": 7,
+                  "columnText": "Mungkin Tidak ada"
+                }
+              ],
+              "answerValue": {
+                "4d0f68c9-7949-e4a3-d492-fae77e5f3c7e": {
+                  "fea58f71-c029-4639-3304-1fb4f612b84c": true,
+                  "1c4d765f-3d50-aaa8-1382-a67b6508695c": true,
+                  "c3ddf95f-099b-a3c6-bff1-6697732f510e": true,
+                  "04de0a25-3c18-27ed-bdfc-2ffea3e9570b": true
+                },
+                "3ab4bf3f-a550-a02e-3e3e-baa720cef106": {
+                  "fea58f71-c029-4639-3304-1fb4f612b84c": true,
+                  "1c4d765f-3d50-aaa8-1382-a67b6508695c": true,
+                  "04de0a25-3c18-27ed-bdfc-2ffea3e9570b": true,
+                  "c3ddf95f-099b-a3c6-bff1-6697732f510e": true
+                },
+                "d75eb470-c522-d25d-5b98-88fcecafa67f": {
+                  "c3ddf95f-099b-a3c6-bff1-6697732f510e": true,
+                  "04de0a25-3c18-27ed-bdfc-2ffea3e9570b": true
+                }
+              },
+              "scriptCode": "H1.M.1.Q9",
+              "sort": 9
+            },
+            {
+              "uuid": "9b1154b4-70e2-ceaa-9ff5-8d6059ac4cfa",
+              "question": "Your Question ?",
+              "type": "gridradiobutton",
+              "isEditable": true,
+              "answerRBG": [
+                {
+                  "uuid": "5fde85c7-b046-c1d2-b74c-bf5961064acd",
+                  "sort": 1,
+                  "answerValue": "Question 1 ?",
+                  "jumpTo": "Next"
+                },
+                {
+                  "uuid": "6f1e24f3-dc2e-5539-8446-6e20b20b41a6",
+                  "sort": 2,
+                  "answerValue": "Question 2 ?",
+                  "jumpTo": "End"
+                },
+                {
+                  "uuid": "85aec6b3-98b8-e708-ee15-966c694ac834",
+                  "sort": 3,
+                  "answerValue": "Question 3 ?",
+                  "jumpTo": "Next"
+                },
+                {
+                  "uuid": "df3f5a84-0eed-85ff-8bfa-55cf801bf070",
+                  "sort": 4,
+                  "answerValue": "Question 4 ?",
+                  "jumpTo": "Next"
+                },
+                {
+                  "uuid": "192c5cbf-5886-3c59-235e-31ce9053dfa2",
+                  "sort": 5,
+                  "answerValue": "Question 5 ?",
+                  "jumpTo": "Next"
+                }
+              ],
+              "columnRBG": [
+                {
+                  "uuid": "333c2421-2998-b879-3603-4e2726ea2faf",
+                  "sort": 1,
+                  "columnText": "Ya"
+                },
+                {
+                  "uuid": "5d0a88c9-2a9d-75ee-4670-2fd2d5de45bc",
+                  "sort": 2,
+                  "columnText": "Tidak"
+                }
+              ],
+              "answerValue": {
+                "5fde85c7-b046-c1d2-b74c-bf5961064acd": "333c2421-2998-b879-3603-4e2726ea2faf",
+                "6f1e24f3-dc2e-5539-8446-6e20b20b41a6": "5d0a88c9-2a9d-75ee-4670-2fd2d5de45bc",
+                "df3f5a84-0eed-85ff-8bfa-55cf801bf070": "5d0a88c9-2a9d-75ee-4670-2fd2d5de45bc",
+                "192c5cbf-5886-3c59-235e-31ce9053dfa2": "333c2421-2998-b879-3603-4e2726ea2faf"
+              },
+              "scriptCode": "H1.M.1.Q10",
+              "sort": 10
+            },
+            {
+              "uuid": "8824bdde-36b8-a128-0a59-652dbb96cc20",
+              "question": "Your Question ?",
+              "type": "dropdown",
+              "isEditable": true,
+              "answerDD": [
+                {
+                  "uuid": "3d79cf9d-0a47-54ab-16d3-f40bc0bf60b5",
+                  "sort": 1,
+                  "answerValue": "Ya",
+                  "jumpTo": "Next"
+                },
+                {
+                  "uuid": "da62f050-11d5-8e92-e534-980c00498deb",
+                  "sort": 2,
+                  "answerValue": "Tidak",
+                  "jumpTo": "End"
+                }
+              ],
+              "answerValue": null,
+              "scriptCode": "H1.M.1.Q11",
+              "sort": 11,
+              "valueAnswer": {
+                "uuid": "da62f050-11d5-8e92-e534-980c00498deb",
+                "sort": 2,
+                "answerValue": "Tidak",
+                "jumpTo": "End"
+              }
+            }
+          ]
+        },
+        {
+          "scriptCode": "H1.M.2",
+          "groupname": "SALES INITIATION",
+          "sort": 2,
+          "isEditable": false,
+          "questions": []
+        },
+        {
+          "scriptCode": "H1.M.3",
+          "groupname": "DEAL",
+          "sort": 3,
+          "isEditable": false,
+          "questions": []
+        },
+        {
+          "scriptCode": "H1.M.4",
+          "groupname": "PAPERWORK & FINANCE IN CASH",
+          "sort": 4,
+          "isEditable": false,
+          "questions": []
+        },
+        {
+          "scriptCode": "H1.M.5",
+          "groupname": "CASHIER OFFICER",
+          "sort": 5,
+          "isEditable": false,
+          "questions": []
+        },
+        {
+          "scriptCode": "H1.M.6",
+          "groupname": "DELIVERY PROCESS",
+          "sort": 6,
+          "isEditable": false,
+          "questions": []
+        },
+        {
+          "scriptCode": "H1.M.7",
+          "groupname": "DOCUMENT PROCESS",
+          "sort": 7,
+          "isEditable": false,
+          "questions": []
+        },
+        {
+          "scriptCode": "H1.M.8",
+          "groupname": "PEOPLE",
+          "sort": 8,
+          "isEditable": false,
+          "questions": []
+        }
+      ]
+    }
+  ]
+}

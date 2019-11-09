@@ -1,0 +1,26 @@
+<div class="modal-content">
+    <div class="modal-header bg-info">
+        <i class="ion-information-circled modal-icon"></i>
+        <span> {{title}}</span>
+    </div>
+    <div class="modal-body " style="color:black">
+        <form name="questionForm" novalidate>
+            <div ng-if="isNote" class="form-group" ng-class="{ 'has-error' : questionForm.note.$invalid && !questionForm.note.$pristine }">
+                <textarea type="text" name="question" class="form-control" ng-model="formData.note" ng-minlength="0"
+                    ng-maxlength="500"></textarea>
+                <p ng-show="questionForm.note.$error.minlength" class="help-block">Note is too short.</p>
+                <p ng-show="questionForm.note.$error.maxlength" class="help-block">Note is too long.</p>
+            </div>
+            <div ng-if="!isNote" class="form-group" ng-class="{ 'has-error' : questionForm.reasons.$invalid && !questionForm.reasons.$pristine }">
+                <textarea type="text" name="question" class="form-control" ng-model="formData.reasons" ng-minlength="3"
+                    ng-maxlength="500" required></textarea>
+                <p ng-show="questionForm.reasons.$error.minlength" class="help-block">Reasons is too short.</p>
+                <p ng-show="questionForm.reasons.$error.required" class="help-block">Reasons is required.</p>
+                <p ng-show="questionForm.reasons.$error.maxlength" class="help-block">Reasons is too long.</p>
+            </div>
+            <div class="form-group">
+                <button type="submit" ng-click="ok()" class="btn btn-info" ng-disabled="questionForm.$invalid">Save</button>
+            </div>
+        </form>
+    </div>
+</div>

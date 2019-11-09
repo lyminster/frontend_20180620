@@ -1,0 +1,55 @@
+<div class="row">
+    <div class="col-md-6">
+        <span>Question : </span>
+        <!-- <label class="checkbox-inline custom-checkbox nowrap">
+            <input ng-disabled="!question.isEditable" type="checkbox" ng-model="question.required" id="teleSurvey" value="option3">
+            <span style="color: #ffffff!important;background-color: #ff0000!important;border: 1px solid #58bdda!important;">Mandatory</span>
+        </label> -->
+        <br/>
+        <br/>
+        <h4 style="color:blue">{{question.scriptCode}} - {{question.question}}</h4>
+        <hr/> 
+        <div ng-if="vm.typeolright" class="checkbox-demo-row">
+            <div class="input-demo checkbox-demo row">
+                <div class="col-md-4">
+                    <label class="checkbox-inline custom-checkbox nowrap">
+                        <input type="checkbox" ng-model="question.required">
+                        <span>Required</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        Type :
+        <b>{{question.type}}</b>
+        <br/> Answer :
+        <br/>
+        <b>{{question.answerLS.minVal}}</b> s/d
+        <b>{{question.answerLS.maxVal}}</b>
+        <br/> note :
+        <br/> {{question.answerLS.minVal}} for
+        <b>{{question.answerLS.minNote}}</b>
+        <br/> {{question.answerLS.maxVal}} for
+        <b>{{question.answerLS.maxNote}}</b>
+        <br/>
+        <!-- <jk-rating-stars rating="firstRate" ></jk-rating-stars>
+        <div style="width: 100px">{{firstRate}} Stars</div> -->
+        Standard Value :
+        <b>{{question.answerLS.stdVal}}</b>
+        <br/>
+        Standard Region :
+        <b>{{question.answerLS.stdReg}}</b>
+        <hr/>
+        <!-- <ul>
+            <li>
+                    <a href="" class="btn btn-info" ng-hide="!question.isEditable" ng-click="vm.openbelowStdJumpTo(head.headerSections, question)">change</a> Step if answer below Standard <b> ({{question.answerLS.belowStdJumpTo}})</b>
+            </li>
+            <li>
+                    <a href="" class="btn btn-info" ng-hide="!question.isEditable" ng-click="vm.openaboveStdJumpTo(head.headerSections, question)">change</a> Step if answer above Standard <b> ({{question.answerLS.aboveStdJumpTo}})</b>
+            </li>
+        </ul> -->
+    </div>
+    <div class="col-md-6">
+        <label>Preview</label>
+        <inlinierscale dataprovider="question"></inlinierscale>
+    </div>
+</div>

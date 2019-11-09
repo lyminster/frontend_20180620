@@ -1,0 +1,50 @@
+<div class="modal-content">
+        <div class="modal-header bg-info">
+                <i class="ion-information-circled modal-icon"></i>
+                <span> Add Question Checkboxs</span>
+        </div>
+        <div class="modal-body " style="color:black">
+                <form name="questionForm" novalidate>
+                        <!-- USERNAME -->
+                        <div class="form-group" ng-class="{ 'has-error' : questionForm.question.$invalid && !questionForm.question.$pristine }">
+                                <label style="color:black!important;">Question</label>
+                                <input type="text" name="question" class="form-control" ng-readonly="!formData.isEditable" ng-model="formData.question" ng-minlength="1"
+                                        ng-maxlength="500">
+                                <p ng-show="questionForm.question.$error.minlength" class="help-block">question is too short.</p>
+                                <p ng-show="questionForm.question.$error.maxlength" class="help-block">question is too long.</p>
+                        </div>
+                        <a href="" ng-hide="!formData.isEditable" ng-click="addAnswer()" class="btn btn-info">
+                                <i class="ion-plus"></i>
+                        </a>
+                        <label style="color:black!important;"> - Answer</label>
+                        <div class="input-group" ng-repeat="ans in formData.answerCB | filter:{ sort: '!99'} | orderBy:'sort'">
+                                <input type="text" ng-readonly="!formData.isEditable" class="form-control with-danger-addon" ng-model="ans.answerValue" placeholder="Answer">
+                                <span class="input-group-btn">
+                                        <button class="btn btn-danger" ng-hide="!formData.isEditable" ng-click="deleteAnswer(ans)" type="button">
+                                                <span class="glyphicon glyphicon-trash"></span>
+                                        </button>
+                                </span>
+                        </div>
+                        <div class="form-group" ng-class="{ 'has-error' : questionForm.maxSelect.$invalid && !questionForm.maxSelect.$pristine }">
+                                <label style="color:black!important;">Maximum Select</label>
+                                <input type="number" name="maxSelect" class="form-control" ng-model="formData.maxSelect" min="0" max="{{formData.answerCB.length}}">
+                                <p ng-show="questionForm.maxSelect.$error.min" class="help-block">Maximum select must be more than 0.</p>
+                                <p ng-show="questionForm.maxSelect.$error.max" class="help-block">Maximum select can't more than number of answers above.</p>
+                        </div>
+                        
+                        <div class="checkbox-demo-row">
+                                <div class="input-demo checkbox-demo row">
+                                        <div class="col-md-4">
+                                                <label class="checkbox-inline custom-checkbox nowrap">
+                                                        <input type="checkbox" ng-model="formData.useOther">
+                                                        <span>Use Other</span>
+                                                </label>
+                                        </div>
+                                </div>
+                        </div>
+                        <div class="form-group">
+                                <button type="submit" ng-click="ok()" ng-hide="!formData.isEditable" class="btn btn-info" ng-disabled="questionForm.$invalid">Save</button>
+                        </div>
+                </form>
+        </div>
+</div>

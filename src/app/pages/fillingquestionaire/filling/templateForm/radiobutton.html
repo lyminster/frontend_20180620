@@ -1,0 +1,38 @@
+<div class="col-md-12">
+    <div class="panel">
+        <div class="panel-body">
+            <div class="row">
+                <!-- <code>{{vm.paramsend}}</code> -->
+                <div class="col-md-12">
+                    <!-- <code>{{vm.paramsend}}</code> -->
+                    <h4 style="color: rgb(25, 125, 115)">{{vm.questionScreen.question}}</h4>
+                    <hr /> Answer :
+                    <br />
+                    <div class="input-demo radio-demo row">
+                        <div class="col-md-12" ng-repeat="answer in vm.questionScreen.answerRB">
+                            <label class="radio-inline custom-radio nowrap">
+                                <input type="radio" ng-value="answer" ng-model="vm.questionScreen.answerValue">
+                                <span>{{answer.answerValue}}</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="btn-group pull-left" role="group" aria-label="Basic example">
+                                <button type="button" ng-click="vm.submitScreening(vm.questionScreen)"
+                                    class="btn btn-primary">Next</button>
+                            </div>
+                        </div>
+                        <!-- <div class="col-md-6">
+                            <input type="checkbox" ng-model="vm.questionScreen.isSkip" value="skip" />
+                            <span>SKIP</span>
+                        </div> -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

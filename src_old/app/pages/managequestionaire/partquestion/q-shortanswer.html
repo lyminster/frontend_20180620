@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-md-6">
+        <span>Question : </span>
+        <!-- <label class="checkbox-inline custom-checkbox nowrap">
+            <input ng-disabled="!question.isEditable" type="checkbox" ng-model="question.required" id="teleSurvey" value="option3">
+            <span style="color: #ffffff!important;background-color: #ff0000!important;border: 1px solid #58bdda!important;">Mandatory</span>
+        </label> -->
+        <br/>
+        <br/>
+        <h4 style="color:blue">{{question.scriptCode}} - {{question.question}}</h4>
+        <hr/> Type :
+        <b>{{question.type}}</b>
+        <br/> 
+        <div class="checkbox-demo-row">
+            <div class="input-demo checkbox-demo row">
+                <div class="col-md-4">
+                    <label class="checkbox-inline custom-checkbox nowrap">
+                        <input type="checkbox" ng-model="question.required">
+                        <span>Required</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        Type Form :
+        <b>{{question.formtype}}</b>
+        <div ng-if="question.formtype == 'number'">
+            <br/> Is Decimal :
+            <b>{{question.isDecimal}}</b>
+            <br/>
+            <div ng-if="question.isDecimal">
+                Number Of Decimal :
+                <b>{{question.numOfDecimal}}</b>
+            </div>
+        </div>
+        <br/> Minimum :
+        <b>{{question.minLength}}</b>
+        <br/> Maximum :
+        <b>{{question.maxLength}}</b>
+        <hr/>
+    </div>
+    <div class="col-md-6">
+        <label>Preview</label>
+        <inshortanswer dataprovider="question"></inshortanswer>
+    </div>
+</div>

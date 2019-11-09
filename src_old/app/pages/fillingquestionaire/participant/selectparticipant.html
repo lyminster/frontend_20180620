@@ -1,0 +1,79 @@
+<div class="widgets">
+    <div class="row" ng-if="vm.questionaire">
+        <div class="col-md-12">
+            <ul class="btn-list clearfix ng-scope">
+                    <li>
+                        <button type="button" ng-click="vm.back()" class="btn btn-success btn-with-icon">
+                            Back</button>
+                    </li>
+                <li>
+                    <button type="button" ng-click="vm.createNewParticipant()" class="btn btn-success btn-with-icon">
+                        <i class="ion-document"></i>New Participant</button>
+                </li>
+                <li ng-if="!vm.isdcsl">
+                    <button type="button" ng-click="vm.viewDetail()" class="btn pull-right btn-info">Detail Grid Progress</button>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-12" ba-panel ba-panel-title="{{vm.title}}">
+            <div class="row">
+                <div class="col-md-6">
+                    <form class="form-horizontal ng-scope">
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Questionnaire Code </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.questionaire.questionnaireCode}}
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Questionnaire Name </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.questionaire.questionnaireName}}
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Descripton </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;white-space: pre-wrap;">: {{vm.questionaire.description}}</label>
+                        </div>
+                        <h4>Distribute Date :</h4>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Start </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.questionaire.startDistributionDate | date:'yyyy-MM-dd'}}
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">End </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.questionaire.endDistributionDate | date:'yyyy-MM-dd'}}
+                            </label>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <form class="form-horizontal ng-scope">
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Region </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.questionaire.regionName}}
+                            </label>
+                        </div>
+                        <div class="form-group" ng-if="vm.isdcsl">
+                            <label class="col-sm-4 control-label">Dealer </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.questionaire.branchName}}
+                            </label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12" ba-panel ba-panel-title="Available Participant">
+            <div class="row">
+                <div class="col-md-12">
+                    <div ui-grid="vm.gridAvailableParticipant" ui-grid-resize-columns ui-grid-pagination class="grid"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

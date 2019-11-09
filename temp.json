@@ -1,0 +1,569 @@
+[
+  {
+    "scriptCode": "H1.M.1",
+    "groupname": "AUTHORIZED DEALERSHIP",
+    "sort": 1,
+    "isEditable": false,
+    "questions": [
+      {
+        "scriptCode": "H1.M.1.Q1",
+        "question": "Kemudahan dalam menemukan dan menghubungi showroom/dealer resmi Honda (lokasi, telepon, jam kerja)",
+        "type": "radiobutton",
+        "sort": 1,
+        "isEditable": false,
+        "answerRB": [
+          {
+            "scriptCode": "H1.S.Q1.1",
+            "sort": 1,
+            "answerValue": "Ya",
+            "jumpTo": "Next"
+          },
+          {
+            "scriptCode": "H1.S.Q1.2",
+            "sort": 2,
+            "answerValue": "Tidak",
+            "jumpTo": "End"
+          }
+        ],
+        "answerValue": null
+      },
+      {
+        "scriptCode": "H1.M.1.Q2",
+        "question": "Bantuan showroom/ dealer untuk  mengarahkan ke lokasi parkir yang tersedia (ada petugas atau tanda-tanda arah parkir)",
+        "type": "linierscale",
+        "sort": 2,
+        "required": true,
+        "isEditable": true,
+        "answerValue": null,
+        "counterFilling": 0,
+        "note": null,
+        "answerLS": {
+          "scriptCode": "H1.M.1.Q2.1",
+          "stdVal": 3,
+          "stdReg": 4,
+          "minVal": 0,
+          "maxVal": 5,
+          "minNote": "Sangat Tidak Puas",
+          "maxNote": "Sangat Puas",
+          "belowStdJumpTo": "Next",
+          "aboveStdJumpTo": "Next"
+        }
+      },
+      {
+        "scriptCode": "H1.M.1.Q3",
+        "question": "Kebersihan dan kerapian di dalam showroom/dealer resmi Honda",
+        "type": "gridradiobutton",
+        "sort": 1,
+        "isEditable": false,
+        "answerRBG": [
+          {
+            "scriptCode": "H1.S.Q3.A1",
+            "sort": 1,
+            "answerValue": "Ya",
+            "jumpTo": "Next"
+          },
+          {
+            "scriptCode": "H1.S.Q3.A2",
+            "sort": 2,
+            "answerValue": "Tidak",
+            "jumpTo": "End"
+          }
+        ],
+        "columnRBG": [
+          {
+            "scriptCode": "H1.S.Q3.C1",
+            "sort": 1,
+            "columnText": "Ya"
+          },
+          {
+            "scriptCode": "H1.S.Q3.C2",
+            "sort": 2,
+            "answerValue": "Tidak"
+          }
+        ],
+        "answerValue": null
+      },
+      {
+        "scriptCode": "H1.M.1.Q4",
+        "question": "Ketersediaan informasi produk (brosur, daftar harga, leaflet, spanduk)",
+        "type": "gridcheckbox",
+        "sort": 1,
+        "isEditable": false,
+        "answerCBG": [
+          {
+            "scriptCode": "H1.S.Q3.A1",
+            "sort": 1,
+            "answerValue": "Ya",
+            "jumpTo": "Next"
+          },
+          {
+            "scriptCode": "H1.S.Q3.A2",
+            "sort": 2,
+            "answerValue": "Tidak",
+            "jumpTo": "End"
+          }
+        ],
+        "columnCBG": [
+          {
+            "scriptCode": "H1.S.Q3.C1",
+            "sort": 1,
+            "columnText": "Ya"
+          },
+          {
+            "scriptCode": "H1.S.Q3.C2",
+            "sort": 2,
+            "answerValue": "Tidak"
+          }
+        ],
+        "answerValue": null
+      }
+    ]
+  },
+  {
+    "scriptCode": "H1.M.2",
+    "groupname": "SALES INITIATION",
+    "sort": 2,
+    "isEditable": false,
+    "questions": [
+      {
+        "scriptCode": "H1.M.2.Q1",
+        "question": "Kemampuan petugas penjualan  (sales counter) dalam menjelaskan spesifikasi produk dan menyarankan produk yang sesuai dengan kebutuhan konsumen",
+        "type": "sortanswer",
+        "isnumeric": true,
+        "maxlenght": 100,
+        "minlenght": 10,
+        "sort": 1,
+        "isEditable": false,
+        "answerValue": null
+      },
+      {
+        "scriptCode": "H1.M.2.Q2",
+        "question": "Penjelasan petugas penjualan  (sales counter) mengenai bentuk serta paket pembayaran sepeda motor (tunai/kredit, tempat pembayaran)   ",
+        "type": "paragraph",
+        "maxlenght": 100,
+        "minlenght": 10,
+        "sort": 2,
+        "isEditable": false,
+        "answerValue": null
+      },
+      {
+        "scriptCode": "H1.M.2.Q3",
+        "question": "Penjelasan petugas penjualan mengenai aksesoris dan apparel (baju/jaket) sepeda",
+        "type": "checkbox",
+        "sort": 3,
+        "isEditable": false,
+        "maxselected": 0,
+        "answerCB": [
+          {
+            "scriptCode": "H1.S.Q1.1",
+            "sort": 1,
+            "answerValue": "Ya",
+            "jumpTo": "Next"
+          },
+          {
+            "scriptCode": "H1.S.Q1.2",
+            "sort": 2,
+            "answerValue": "Tidak",
+            "jumpTo": "End"
+          }
+        ],
+        "answerValue": null
+      },
+      {
+        "scriptCode": "H1.M.2.Q4",
+        "question": "Penjelasan petugas  mengenai kegiatan komunitas Honda",
+        "type": "time",
+        "sort": 4,
+        "isEditable": false,
+        "answerValue": null
+      }
+    ]
+  },
+  {
+    "scriptCode": "H1.M.3",
+    "groupname": "DEAL",
+    "sort": 3,
+    "isEditable": false,
+    "questions": [
+      {
+        "scriptCode": "H1.M.3.Q1",
+        "question": "Penjelasan petugas pada saat penyerahan motor mengenai bengkel resmi Honda (AHASS) terdekat, jadwal servis sepeda motor, serta garansi pembelian",
+        "type": "date",
+        "sort": 1,
+        "isEditable": false,
+        "answerValue": null
+      },
+      {
+        "scriptCode": "H1.M.3.Q2",
+        "question": "Penjelasan petugas penjualan mengenai bengkel resmi Honda tempat penjualan motor tersebut atau (AHASS) terdekat, jadwal servis sepeda motor, garansi pembelian dan mengenalkan kepada petugas bengkel (khusus dealer Wing)",
+        "type": "Dropdown",
+        "sort": 2,
+        "isEditable": false,
+        "answerDD": [
+          {
+            "scriptCode": "H1.S.Q1.1",
+            "sort": 1,
+            "answerValue": "Ya",
+            "jumpTo": "Next"
+          },
+          {
+            "scriptCode": "H1.S.Q1.2",
+            "sort": 2,
+            "answerValue": "Tidak",
+            "jumpTo": "End"
+          }
+        ],
+        "answerValue": null
+      }
+    ]
+  },
+  {
+    "scriptCode": "H1.M.4",
+    "groupname": "PAPERWORK & FINANCE IN CASH",
+    "sort": 4,
+    "isEditable": false,
+    "questions": [
+      {
+        "scriptCode": "H1.M.4.Q1",
+        "question": "Kemudahan pengurusan administrasi dan proses pembayaran secara tunai",
+        "type": "linierscale",
+        "sort": 1,
+        "required": true,
+        "isEditable": true,
+        "answerValue": null,
+        "counterFilling": 0,
+        "note": null,
+        "answerLS": {
+          "scriptCode": "H1.M.4.Q1.1",
+          "stdVal": 3,
+          "stdReg": 4,
+          "minVal": 0,
+          "maxVal": 5,
+          "minNote": "Sangat Tidak Puas",
+          "maxNote": "Sangat Puas",
+          "belowStdJumpTo": "Next",
+          "aboveStdJumpTo": "Next"
+        }
+      },
+      {
+        "scriptCode": "H1.M.4.Q2",
+        "question": "Kesamaan harga yang ditawarkan petugas dealer  (sales counter)  dengan daftar harga yang ada di showroom/dealer",
+        "type": "linierscale",
+        "sort": 2,
+        "required": true,
+        "isEditable": true,
+        "answerValue": null,
+        "counterFilling": 0,
+        "note": null,
+        "answerLS": {
+          "scriptCode": "H1.M.4.Q2.1",
+          "stdVal": 3,
+          "stdReg": 4,
+          "minVal": 0,
+          "maxVal": 5,
+          "minNote": "Sangat Tidak Puas",
+          "maxNote": "Sangat Puas",
+          "belowStdJumpTo": "Next",
+          "aboveStdJumpTo": "Next"
+        }
+      }
+    ]
+  },
+  {
+    "scriptCode": "H1.M.5",
+    "groupname": "CASHIER OFFICER",
+    "sort": 5,
+    "isEditable": false,
+    "questions": [
+      {
+        "scriptCode": "H1.M.5.Q1",
+        "question": "Kecekatan petugas kasir dalam melayani pembayaran tunai, kredit, atau uang muka.",
+        "type": "linierscale",
+        "sort": 1,
+        "required": true,
+        "isEditable": true,
+        "answerValue": null,
+        "counterFilling": 0,
+        "note": null,
+        "answerLS": {
+          "scriptCode": "H1.M.5.Q1.1",
+          "stdVal": 3,
+          "stdReg": 4,
+          "minVal": 0,
+          "maxVal": 5,
+          "minNote": "Sangat Tidak Puas",
+          "maxNote": "Sangat Puas",
+          "belowStdJumpTo": "Next",
+          "aboveStdJumpTo": "Next"
+        }
+      }
+    ]
+  },
+  {
+    "scriptCode": "H1.M.6",
+    "groupname": "DELIVERY PROCESS",
+    "sort": 6,
+    "isEditable": false,
+    "questions": [
+      {
+        "scriptCode": "H1.M.6.Q1",
+        "question": "Ketepatan waktu pengiriman/penyerahan sepeda motor sesuai yang dijanjikan",
+        "type": "linierscale",
+        "sort": 1,
+        "required": true,
+        "isEditable": true,
+        "answerValue": null,
+        "counterFilling": 0,
+        "note": null,
+        "answerLS": {
+          "scriptCode": "H1.M.6.Q1.1",
+          "stdVal": 3,
+          "stdReg": 4,
+          "minVal": 0,
+          "maxVal": 5,
+          "minNote": "Sangat Tidak Puas",
+          "maxNote": "Sangat Puas",
+          "belowStdJumpTo": "Next",
+          "aboveStdJumpTo": "Next"
+        }
+      },
+      {
+        "scriptCode": "H1.M.6.Q2",
+        "question": "Kesesuaian antara pesanan dengan sepeda motor yang dikirim baik dari tipe dan warnanya",
+        "type": "linierscale",
+        "sort": 2,
+        "required": true,
+        "isEditable": true,
+        "answerValue": null,
+        "counterFilling": 0,
+        "note": null,
+        "answerLS": {
+          "scriptCode": "H1.M.6.Q2.1",
+          "stdVal": 3,
+          "stdReg": 4,
+          "minVal": 0,
+          "maxVal": 5,
+          "minNote": "Sangat Tidak Puas",
+          "maxNote": "Sangat Puas",
+          "belowStdJumpTo": "Next",
+          "aboveStdJumpTo": "Next"
+        }
+      },
+      {
+        "scriptCode": "H1.M.6.Q3",
+        "question": "Kelengkapan dan kebersihan sepeda motor yang dikirim ",
+        "type": "LinierScale",
+        "sort": 3,
+        "required": true,
+        "isEditable": true,
+        "answerValue": null,
+        "counterFilling": 0,
+        "note": null,
+        "answerLS": {
+          "scriptCode": "H1.M.6.Q3.1",
+          "stdVal": 3,
+          "stdReg": 4,
+          "minVal": 0,
+          "maxVal": 5,
+          "minNote": "Sangat Tidak Puas",
+          "maxNote": "Sangat Puas",
+          "belowStdJumpTo": "Next",
+          "aboveStdJumpTo": "Next"
+        }
+      },
+      {
+        "scriptCode": "H1.M.6.Q4",
+        "question": "Kualitas sepeda motor pada saat diterima oleh konsumen (tidak lecet, tidak berkarat, dll)",
+        "type": "LinierScale",
+        "sort": 4,
+        "required": true,
+        "isEditable": true,
+        "answerValue": null,
+        "counterFilling": 0,
+        "note": null,
+        "answerLS": {
+          "scriptCode": "H1.M.6.Q4.1",
+          "stdVal": 3,
+          "stdReg": 4,
+          "minVal": 0,
+          "maxVal": 5,
+          "minNote": "Sangat Tidak Puas",
+          "maxNote": "Sangat Puas",
+          "belowStdJumpTo": "Next",
+          "aboveStdJumpTo": "Next"
+        }
+      },
+      {
+        "scriptCode": "H1.M.6.Q5",
+        "question": "Kemampuan petugas pengiriman dalam menjelaskan fungsi buku penting, buku terkait garansi servis, buku pedoman perawatan motor, dan lainnya.",
+        "type": "LinierScale",
+        "sort": 5,
+        "required": true,
+        "isEditable": true,
+        "answerValue": null,
+        "counterFilling": 0,
+        "note": null,
+        "answerLS": {
+          "scriptCode": "H1.M.6.Q5.1",
+          "stdVal": 3,
+          "stdReg": 4,
+          "minVal": 0,
+          "maxVal": 5,
+          "minNote": "Sangat Tidak Puas",
+          "maxNote": "Sangat Puas",
+          "belowStdJumpTo": "Next",
+          "aboveStdJumpTo": "Next"
+        }
+      },
+      {
+        "scriptCode": "H1.M.6.Q6",
+        "question": "Apresiasi yang dealer berikan pada saat pengiriman/penyerahan motor (Berfoto dengan konsumen)",
+        "type": "LinierScale",
+        "sort": 6,
+        "required": true,
+        "isEditable": true,
+        "answerValue": null,
+        "counterFilling": 0,
+        "note": null,
+        "answerLS": {
+          "scriptCode": "H1.M.6.Q6.1",
+          "stdVal": 3,
+          "stdReg": 4,
+          "minVal": 0,
+          "maxVal": 5,
+          "minNote": "Sangat Tidak Puas",
+          "maxNote": "Sangat Puas",
+          "belowStdJumpTo": "Next",
+          "aboveStdJumpTo": "Next"
+        }
+      }
+    ]
+  },
+  {
+    "scriptCode": "H1.M.7",
+    "groupname": "DOCUMENT PROCESS",
+    "sort": 7,
+    "isEditable": false,
+    "questions": [
+      {
+        "scriptCode": "H1.M.7.Q1",
+        "question": "Ketepatan waktu penyerahan STNK sesuai yang dijanjikan",
+        "type": "LinierScale",
+        "sort": 1,
+        "required": true,
+        "isEditable": true,
+        "answerValue": null,
+        "counterFilling": 0,
+        "note": null,
+        "answerLS": {
+          "scriptCode": "H1.M.7.Q1.1",
+          "stdVal": 3,
+          "stdReg": 4,
+          "minVal": 0,
+          "maxVal": 5,
+          "minNote": "Sangat Tidak Puas",
+          "maxNote": "Sangat Puas",
+          "belowStdJumpTo": "Next",
+          "aboveStdJumpTo": "Next"
+        }
+      },
+      {
+        "scriptCode": "H1.M.7.Q2",
+        "question": "Kemudahan dalam proses pengambilan STNK",
+        "type": "LinierScale",
+        "sort": 2,
+        "required": true,
+        "isEditable": true,
+        "answerValue": null,
+        "counterFilling": 0,
+        "note": null,
+        "answerLS": {
+          "scriptCode": "H1.M.7.Q2.1",
+          "stdVal": 3,
+          "stdReg": 4,
+          "minVal": 0,
+          "maxVal": 5,
+          "minNote": "Sangat Tidak Puas",
+          "maxNote": "Sangat Puas",
+          "belowStdJumpTo": "Next",
+          "aboveStdJumpTo": "Next"
+        }
+      }
+    ]
+  },
+  {
+    "scriptCode": "H1.M.8",
+    "groupname": "PEOPLE",
+    "sort": 8,
+    "isEditable": false,
+    "questions": [
+      {
+        "scriptCode": "H1.M.8.Q1",
+        "question": "Keramahan dan kesopanan (senyum, salam, sapa, sopan, santun) petugas dealer baik salesman/SPG, kasir, dan petugas pengiriman.",
+        "type": "LinierScale",
+        "sort": 1,
+        "required": true,
+        "isEditable": true,
+        "answerValue": null,
+        "counterFilling": 0,
+        "note": null,
+        "answerLS": {
+          "scriptCode": "H1.M.8.Q1.1",
+          "stdVal": 3,
+          "stdReg": 4,
+          "minVal": 0,
+          "maxVal": 5,
+          "minNote": "Sangat Tidak Puas",
+          "maxNote": "Sangat Puas",
+          "belowStdJumpTo": "Next",
+          "aboveStdJumpTo": "Next"
+        }
+      },
+      {
+        "scriptCode": "H1.M.8.Q2",
+        "question": "Penampilan (kerapian, kebersihan seragam) petugas dealer baik salesman/SPG, kasir, dan petugas pengiriman.",
+        "type": "LinierScale",
+        "sort": 2,
+        "required": true,
+        "isEditable": true,
+        "answerValue": null,
+        "counterFilling": 0,
+        "note": null,
+        "answerLS": {
+          "scriptCode": "H1.M.8.Q2.1",
+          "stdVal": 3,
+          "stdReg": 4,
+          "minVal": 0,
+          "maxVal": 5,
+          "minNote": "Sangat Tidak Puas",
+          "maxNote": "Sangat Puas",
+          "belowStdJumpTo": "Next",
+          "aboveStdJumpTo": "Next"
+        }
+      }
+    ]
+  }
+]
+{
+    "uuid": "aksldjalskjdjdaskljdlaksjdlk",
+    "question": "selamat valentine Jomblo ?",
+    "type": "radiobutton",
+    "graphValue" : [
+            {
+                "label": "Terimakasih",
+                "value": 2.5
+            },
+            {
+                "label": "Fuck you",
+                "value": 37.5
+            },
+            {
+                "label": "Shut your hell mouth up.",
+                "value": 50
+            },
+            {
+                "label": "I will kill you",
+                "value": 999
+            }
+        ]
+}

@@ -1,0 +1,18 @@
+<!-- <code>{{question.skiplogic}}</code> -->
+<div class="alert bg-warning" ng-repeat="itemsl in question.skiplogic">
+    [<a href="" ng-click="vm.delete(question.skiplogic,itemsl, '', '')">Hapus</a>] <p>If Answer
+        <b>{{itemsl.answerSelected.label}}</b> then
+        <b>{{itemsl.formtype}}</b> Question :
+        <ul class="tree" id="tree">
+            <li ng-repeat="subitemsl in itemsl.questions">
+                <b>{{subitemsl.label}}</b>
+                <ul ng-if="subitemsl.answers">
+                    <li ng-repeat="subsubitemsl in subitemsl.answers">
+                        <b>{{(subsubitemsl.label == '' ? 'Other' : subsubitemsl.label)}}
+                        </b>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </p>
+</div>

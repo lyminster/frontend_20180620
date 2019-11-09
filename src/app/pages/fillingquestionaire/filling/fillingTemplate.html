@@ -1,0 +1,87 @@
+<div class="widgets">
+    <div class="row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-6" ba-panel ba-panel-title="Detail Participant">
+            <div class="input-demo radio-demo row">
+                <div class="col-md-12">
+                    <label class="col-sm-4 control-label">Gender</label>
+                    <label class="col-sm-8 control-label"
+                        style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                        : {{vm.gender}}
+                    </label>
+
+                    <label class="col-sm-4 control-label">Name</label>
+                    <label class="col-sm-8 control-label"
+                        style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                        : {{vm.nama}}
+                    </label>
+
+                    <label class="col-sm-4 control-label">Telephone</label>
+                    <label class="col-sm-8 control-label"
+                        style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                        : {{vm.telepon}}
+                    </label>
+
+                    <label class="col-sm-4 control-label">Email</label>
+                    <label class="col-sm-8 control-label"
+                        style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                        : {{vm.email}}
+                    </label>
+
+                    <label class="col-sm-4 control-label">City</label>
+                    <label class="col-sm-8 control-label"
+                        style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                        : {{vm.city}}
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+        </div>
+    </div>
+    <div ng-if="vm.questionaire">
+        <div class="row" ng-if="vm.dataMentah">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-6" ba-panel ba-panel-title="{{vm.title}}">
+                <div class="form-group" ng-repeat="item in vm.dataMentah">
+                    <label class="checkbox-inline custom-checkbox nowrap">
+                        <input type="checkbox" ng-model="item.fill">
+                        <span>{{item.headerName}}</span>
+                    </label>
+                </div>
+                <div class="input-demo radio-demo row">
+                    <div class="col-md-12">
+                        <label class="radio-inline custom-radio nowrap">
+                            <input type="radio" ng-model="vm.modelSurvey" name="inlineRadioOptions" id="fieldSurvey"
+                                value="fieldSurvey">
+                            <span>Field Survey</span>
+                        </label>
+                    </div>
+                    <div class="col-md-12">
+                        <label class="radio-inline custom-radio nowrap">
+                            <input type="radio" ng-model="vm.modelSurvey" name="inlineRadioOptions" id="teleSurvey"
+                                value="teleSurvey">
+                            <span>Tele Survey</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="btn-group pull-left" role="group" aria-label="Basic example">
+                    <button type="button" ng-disabled="" ng-click="vm.submitPreFilling()"
+                        class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+            <div class="col-md-3">
+            </div>
+        </div>
+        <div class="row" ng-if="!vm.dataMentah">
+            <div class="col-md-12" ba-panel ba-panel-title="{{vm.title}}">
+                <div ng-if="vm.questionsScreening"
+                    ng-include="'app/pages/fillingquestionaire/filling/templateForm/radiobutton.html'"></div>
+                <div ng-if="!vm.questionsScreening"
+                    ng-include="'app/pages/fillingquestionaire/filling/templateForm/linierscale.html'"></div>
+            </div>
+        </div>
+    </div>
+</div>

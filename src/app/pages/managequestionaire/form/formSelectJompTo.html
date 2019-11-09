@@ -1,0 +1,19 @@
+<div class="modal-content">
+    <div class="modal-header bg-info">
+        <i class="ion-information-circled modal-icon"></i>
+        <span>Select Question Skip Logic</span>
+    </div>
+    <div class="modal-body ">
+        <div class="form-group has-feedback">
+            <label>Next Question for this answer.</label>
+            <div class="form-group">
+                <select class="form-control selectpicker with-search" data-live-search="true" title="Please choose" selectpicker ng-model="selected"
+                    ng-options="o as o.label for o in listSelect">
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" ng-click="ok()" class="btn btn-info" ng-disabled="!selected">Save</button>
+        </div>
+    </div>
+</div>

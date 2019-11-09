@@ -1,0 +1,47 @@
+<div class="col-md-12">
+  <div class="panel filling-panel">
+    <div class="panel-body filling-body">
+      <div class="row">
+        <!-- <code>{{vm.paramsend}}</code> -->
+        <div class="col-md-12">
+          <!-- <code>{{vm.paramsend}}</code> -->
+          <span class="filling-title" style="color: rgb(25, 125, 115)">{{dataprovider.question}}</span>
+          <hr /> Answer :
+          <br />
+          <br />
+
+          <ng-form name="userFieldForm" class="form-group">
+            <jk-rating-stars class="col-md-12" rating="dataprovider.answerValue"
+              max-rating="{{dataprovider.answerLS.maxVal}}"></jk-rating-stars>
+            <div style="width: 100px">{{dataprovider.answerValue}} Stars</div>
+            <br />
+            <input ng-model="dataprovider.answerValue" name="field" type="number" ng-show="false"
+              ng-required="validatecheck(dataprovider.required)">
+            <label>{{dataprovider.answerLS.minVal}} :
+              <small>untuk</small> {{dataprovider.answerLS.minNote}}</label>
+            <br />
+            <label>{{dataprovider.answerLS.maxVal}} :
+              <small>untuk</small> {{dataprovider.answerLS.maxNote}}</label>
+            <hr />
+            <div
+              ng-if="dataprovider.answerValue <= dataprovider.answerLS.stdVal && dataprovider.answerValue != 0 && dataprovider.answerValue !== null"
+              class="form-group">
+              <textarea type="text" class="form-control" ng-model="dataprovider.note" name="fieldreasons"
+                required></textarea>
+              <p class="help-block" style="color:red" ng-show="userFieldForm.fieldreasons.$invalid">*This Field is
+                Required</p>
+            </div>
+            <p class="help-block" style="color:red" ng-show="userFieldForm.field.$invalid">*This Field is Required</p>
+          </ng-form>
+          <div class="col-md-12">
+            <!-- <p class="help-block" style="color:red" >*This Field is Skipable</p> -->
+            <label ng-show="dataprovider.isSkip" class="checkbox-inline custom-checkbox nowrap">
+              <input type="checkbox" ng-model="dataprovider.isSkip" value="skip" />
+              <span>Skip</span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

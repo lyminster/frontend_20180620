@@ -1,0 +1,52 @@
+<div class="modal-content">
+        <div class="modal-header bg-info">
+                <i class="ion-information-circled modal-icon"></i>
+                <span> Add Question Date</span>
+        </div>
+        <div class="modal-body " style="color:black">
+                <form name="questionForm" novalidate>
+                        <div class="form-group" ng-class="{ 'has-error' : questionForm.question.$invalid && !questionForm.question.$pristine }">
+                                <label style="color:black!important;">Question</label>
+                                <input type="text" name="question" class="form-control" ng-readonly="!formData.isEditable" ng-model="formData.question" ng-minlength="1"
+                                        ng-maxlength="500">
+                                <p ng-show="questionForm.question.$error.minlength" class="help-block">question is too short.</p>
+                                <p ng-show="questionForm.question.$error.maxlength" class="help-block">question is too long.</p>
+                        </div>
+                        <!-- <div class="form-group " ng-class="{'has-error': (questionForm.minDate.$invalid && (questionForm.minDate.$dirty || questionForm.$submitted)) || (questionForm.maxDate.$invalid && (questionForm.maxDate.$dirty || questionForm.$submitted))}">
+                                <div class="col-md-6">
+                                        <label for="minDate">Minimum Date</label>
+                                        <datepicker datepicker-mobile="true" date-format="yyyy-MM-dd" date-max-limit="{{formData.maxDate | date}}" date-min-limit="{{vm.sdate | date}}"
+                                                selector="form-control">
+                                                <div class="input-group">
+                                                        <input type="text" class="form-control" id="minDate" name="minDate" placeholder="Choose a date"
+                                                                ng-model="formData.minDate" required>
+                                                        <span class="input-group-addon" style="cursor: pointer">
+                                                                <i class="glyphicon glyphicon-calendar"></i>
+                                                        </span>
+                                                </div>
+                                        </datepicker>
+                                        <span class="help-block error-block basic-block" ng-show="questionForm.minDate.$error.required">
+                                                Required!</span>
+                                </div>
+                                <div class="col-md-6">
+                                        <label for="maxDate">Maximum Date</label>
+                                        <datepicker datepicker-mobile="true" date-format="yyyy-MM-dd" date-min-limit="{{formData.minDate | date}}" selector="form-control">
+                                                <div class="input-group">
+                                                        <input type="text" class="form-control" id="maxDate" name="maxDate" placeholder="Choose a date" ng-model="formData.maxDate"
+                                                                required>
+                                                        <span class="input-group-addon" style="cursor: pointer">
+                                                                <i class="glyphicon glyphicon-calendar"></i>
+                                                        </span>
+                                                </div>
+                                        </datepicker>
+                                        <span class="help-block error-block basic-block" ng-show="questionForm.maxDate.$error.required">
+                                                Required!</span>
+                                </div>
+                        </div> -->
+                        <div class="form-group">
+                                <button type="submit" ng-click="ok()" ng-hide="!formData.isEditable" class="btn btn-info" ng-disabled="questionForm.$invalid">Save</button>
+                        </div>
+                </form>
+
+        </div>
+</div>

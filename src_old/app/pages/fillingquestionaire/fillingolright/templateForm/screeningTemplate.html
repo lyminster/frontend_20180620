@@ -1,0 +1,11 @@
+<div class="col-md-12">
+    <div class="">
+        <div class="">
+            <div class="row">
+                <indropdown ng-if="vm.questionScreen.type == 'dropdown'" dataprovider="vm.questionScreen"></indropdown>
+                <incheckbox ng-if="vm.questionScreen.type == 'checkbox'" dataprovider="vm.questionScreen"></incheckbox>
+                <inradiobutton ng-if="vm.questionScreen.type == 'radiobutton'" dataprovider="vm.questionScreen"></inradiobutton>
+            </div>
+        </div>
+    </div>
+</div>

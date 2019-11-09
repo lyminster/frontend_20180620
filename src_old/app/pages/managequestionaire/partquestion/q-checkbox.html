@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-md-6">
+        Question :
+        <br/>
+        <h4 style="color:blue">{{question.scriptCode}} - {{question.question}}</h4>
+        <hr/>
+        <div class="checkbox-demo-row">
+            <div class="input-demo checkbox-demo row">
+                <div class="col-md-4">
+                    <label class="checkbox-inline custom-checkbox nowrap">
+                        <input type="checkbox" ng-model="question.required">
+                        <span>Required</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        Type :
+        <b>{{question.type}}</b>
+        <br/>Maximum Select :
+        <b>{{question.maxSelect}}</b>
+        <br/> Answer :
+        <br/>
+        <ul>
+            <li ng-repeat="answ in question.answerCB | filter:{ sort: '!99'} | orderBy:'sort'">{{answ.answerValue}}
+            </li>
+        </ul>
+        <button type="button"  ng-disabled="question.skiplogic.length == question.answerCB.length" ng-click="vm.openaskiplogic(subhead.questionGroup, groupQuestion, groupQuestion.questions, question)" class="btn btn-primary">Add Skiplogic</button>
+        <div ng-if="question.skiplogic" ng-include="'app/pages/managequestionaire/partquestion/q-skiplogic.html'">
+        </div>
+        <hr/>
+    </div>
+    <div class="col-md-6">
+        <label>Preview</label>
+        <incheckbox dataprovider="question"></incheckbox>
+    </div>
+</div>

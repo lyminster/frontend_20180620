@@ -1,0 +1,81 @@
+<div class="widgets">
+    <div class="row">
+        <div class="col-md-12" ba-panel ba-panel-title="List Questionnaire">
+            <div class="row">
+                <!-- <code>{{vm.searchParam}}</code> -->
+                <div class="col-md-12">
+                    <form name="formserachParam" novalidate>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Year</label>
+                                    <input type="number" min="0" class="form-control" placeholder="Total Target " ng-model="vm.searchParam.year">
+                                    <span class="help-block error-block basic-block"></span>
+                                </div>
+                                <!-- <div class="form-group has-feedback">
+                                    <label>Quest. Type</label>
+                                    <select class="form-control selectpicker" title="Please choose" selectpicker ng-change="vm.changeTypeQuestionnaire()"
+                                        ng-model="vm.filterquestType" ng-options="o as o.label for o in vm.questTypeItems track by o.value">
+                                    </select>
+                                    <span class="help-block error-block basic-block">Required</span>
+                                </div> -->
+                                
+                                <div class="form-group has-feedback">
+                                    <label>Quest. Name</label>
+                                    <div class="form-group ">
+                                        <ui-select ng-model="vm.filterTemplate" ng-change="vm.searchParam.questName = vm.filterTemplate.value" class="btn-group bootstrap-select form-control" append-to-body="true" search-enabled="false">
+                                            <ui-select-match placeholder="Please choose">
+                                                {{$select.selected.label}}
+                                            </ui-select-match>
+                                            <ui-select-choices repeat="o in vm.templateItems | filter: $select.search">
+                                                <span ng-bind-html="o.label"></span>
+                                            </ui-select-choices>
+                                        </ui-select>
+                                    </div>
+                                </div>
+                                <!-- <div class="form-group">
+                                    <label for="Quartal_">Quartal</label>
+                                    <select class="form-control selectpicker" title="Please choose" selectpicker ng-disabled="vm.filterquestType.label != 'DCSL'"
+                                        ng-model="vm.filterquartal" ng-change="vm.searchParam.quartal = vm.filterquartal.value"
+                                        ng-options="o as o.label for o in vm.quartals  track by o.value">
+                                    </select>
+                                    <span class="help-block error-block basic-block"></span>
+                                </div> -->
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Region</label>
+                                    <select class="form-control selectpicker with-search" data-live-search="true" title="Please choose" selectpicker ng-change="vm.changeRegion()"
+                                        ng-model="vm.filterRegion" ng-options="o as o.Name for o in vm.regionItems track by o.ID">
+                                    </select>
+                                </div>
+                                <div class="form-group has-feedback">
+                                    <label>Dealer</label>
+                                    <select class="form-control selectpicker with-search" data-live-search="true" title="Please choose" selectpicker ng-change="vm.searchParam.branchID = vm.filterbranchItem.Code"
+                                        ng-model="vm.filterbranchItem" ng-options="o as o.Name for o in vm.branchItems track by o.ID">
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Status</label>
+                                    <select class="form-control selectpicker" title="Please choose" selectpicker ng-change="vm.searchParam.status = vm.filterStatus.value"
+                                        ng-model="vm.filterStatus" ng-options="o as o.label for o in vm.statusItems track by o.value">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="form-group btn-group" role="group">
+                        <button type="button" ng-click="vm.refreshGrid()" class="btn btn-info btn-md">Search</button>
+                        <button type="button" ng-click="vm.resetGrid()" class="btn btn-warning btn-md">Clear</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div ui-grid="vm.gridQuestionaire" ui-grid-resize-columns ui-grid-pagination class="grid"></div>
+                </div>
+            </div>
+        </div>
+        <!-- <code>{{vm.gridQuestionaire}}</code> -->
+    </div>
+</div>

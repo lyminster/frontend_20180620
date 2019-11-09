@@ -1,0 +1,50 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="btn-group pull-right" role="group" aria-label="Basic example">
+            <button type="button" ng-click="vm.openFormGroup(subhead.scriptCode, subhead.questionGroup)" class="btn btn-primary">Add Section</button>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <!-- <code>{{subhead.questionGroup}}</code> -->
+        <uib-accordion>
+            <uib-accordion-group ng-repeat="groupQuestion in subhead.questionGroup | orderBy:'sort'" panel-class="bootstrap-panel accordion-panel panel-info">
+                <uib-accordion-heading>
+                    {{groupQuestion.scriptCode}} - {{groupQuestion.groupname}}
+                </uib-accordion-heading>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="btn-group pull-right" role="group" aria-label="Basic example">
+                            <button type="button" ng-click="vm.openFormQuestionLinierScale(groupQuestion.scriptCode, groupQuestion.questions)" class="btn btn-primary">Add Question</button>
+                            <button type="button" ng-disabled="!groupQuestion.isEditable" ng-click="vm.openEditFormGroup(subhead.questionGroup, groupQuestion)"
+                                class="btn btn-primary">Edit Section</button>
+                            <button type="button" ng-disabled="!groupQuestion.isEditable" ng-click="vm.delete(subhead.questionGroup, groupQuestion, subhead.scriptCode, 'group')"
+                                class="btn btn-primary">Delete Section</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-warning bootstrap-panel" ng-repeat="question in groupQuestion.questions | orderBy:'sort'">
+                            <!-- <div class="panel-heading" style="margin: auto;padding: 12px;" >
+                                {{question.question}}
+                            </div> -->
+                            <div class="panel-body">
+                                <div ng-include="'app/pages/managequestionaire/partquestion/q-linierscale.html'"></div>
+                                <div class="col-md-12">
+                                    <hr/>
+                                    <div class="btn-group pull-left" role="group" aria-label="Basic example">
+                                        <button type="button" ng-click="vm.openEditFormQuestionLinierScale(groupQuestion.questions, question)" class="btn btn-primary">Edit Question</button>
+                                        <button type="button" ng-disabled="!question.isEditable" ng-click="vm.delete(groupQuestion.questions, question, groupQuestion.scriptCode, 'question')"
+                                            class="btn btn-primary">Delete Question</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </uib-accordion-group>
+        </uib-accordion>
+    </div> 
+</div>

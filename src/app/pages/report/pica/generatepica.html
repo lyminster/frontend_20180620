@@ -1,0 +1,92 @@
+<div class="widgets">
+    <div class="row" ng-if="vm.questionaire">
+
+        <div class="col-md-12" ba-panel ba-panel-title="{{vm.title}}">
+            <div class="row">
+                <div class="col-md-6">
+                    <form class="form-horizontal ng-scope">
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Questionnaire Code </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.questionaire.questionnaireCode}}
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Questionnaire Name </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.questionaire.questionnaireName}}
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Description </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.questionaire.description}}
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Region </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.questionaire.regionName}}
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Dealer </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.questionaire.branchName}}
+                            </label>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <form class="form-horizontal ng-scope">
+                        <h4>Distribute Date :</h4>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Start </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.questionaire.startDistributionDate | date:'yyyy-MM-dd'}}
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">End </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.questionaire.endDistributionDate | date:'yyyy-MM-dd'}}
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Total Target </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.questionaire.totalTarget}}
+                            </label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row btns-row btns-same-width-lg">
+                <div class="col-md-12">
+                    <button type="button" ng-disabled="vm.questionaire.picaStatus !== null && vm.questionaire.picaStatus !== ''" ng-click="vm.generatePica()" class="btn btn-primary">Generate Pica</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12" ba-panel ba-panel-title="Data Pica">
+
+            <div class="row btns-row btns-same-width-lg">
+                <div class="col-md-12">
+                    <button type="button" ng-disabled="vm.gridPica.data.length === 0 || vm.questionaire.picaStatus === 'Submitted'" ng-click="vm.savePica()" class="btn btn-primary">Save</button>
+                    <button type="button" ng-disabled="vm.gridPica.data.length === 0 || vm.questionaire.picaStatus === 'Submitted'" ng-click="vm.submitPica()" class="btn btn-info">Submit</button>
+                    <button type="button" ng-disabled="vm.gridPica.data.length === 0 || vm.questionaire.picaStatus !== 'Submitted'" ng-click="vm.printPica()" class="btn btn-warning">Download</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <style>
+                        .grid {
+                            height: 430px;
+                        }
+                    </style>
+                    <div ui-grid="vm.gridPica" ui-grid-edit ui-grid-resize-columns ui-grid-row-edit ui-grid-pagination class="grid"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

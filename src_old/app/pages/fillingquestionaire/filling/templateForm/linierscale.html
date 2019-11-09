@@ -1,0 +1,36 @@
+<div class="row">
+    <!-- <code>{{vm.tempFillingScreening}}</code> -->
+    <div class="panel">
+        <div class="panel-body">
+            <div class="row">
+                <form name="formmodel">
+                    <div class="col-md-12" ng-repeat="question in vm.questionsGMain.questions | orderBy:'sort'">
+                        <!-- <code>{{vm.questionsMain}}</code> -->
+                        <!-- <code>{{vm.paramsend}}</code> -->
+                        <h4 style="color: rgb(25, 125, 115)">{{question.question}}</h4>
+                        <hr/> Answer :
+                        <br/>
+                        <jk-rating-stars class="col-md-6" rating="question.answerValue" max-rating="{{question.answerLS.maxVal}}"></jk-rating-stars>
+                        <div style="width: 100px">{{question.answerValue}} Stars</div>
+                        <br/>
+                        <label>{{question.answerLS.minVal}} :
+                            <small>untuk</small> {{question.answerLS.minNote}}</label>
+                        <br/>
+                        <label>{{question.answerLS.maxVal}} :
+                            <small>untuk</small> {{question.answerLS.maxNote}}</label>
+                        <hr/>
+                        <div ng-form="userFieldForm" ng-if="question.answerValue <= question.answerLS.stdVal && question.answerValue != 0 && question.answerValue !== null" class="form-group">
+                            <textarea type="text" class="form-control" ng-model="question.note" name="field"  required></textarea>
+                            <p class="help-block" style="color:red" ng-show="userFieldForm.field.$invalid">*This Field is Required</p>
+                        </div>
+                    </div>
+                </form>
+                <div class="col-md-12">
+                    <div class="btn-group pull-left" role="group" aria-label="Basic example">
+                        <button type="button" ng-disabled="formmodel.$invalid" ng-click="vm.submitMain(vm.questionsMain)" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

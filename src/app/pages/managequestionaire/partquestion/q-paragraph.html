@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-md-6">
+        <span>Question : </span>
+        <!-- <label class="checkbox-inline custom-checkbox nowrap">
+            <input ng-disabled="!question.isEditable" type="checkbox" ng-model="question.required" id="teleSurvey" value="option3">
+            <span style="color: #ffffff!important;background-color: #ff0000!important;border: 1px solid #58bdda!important;">Mandatory</span>
+        </label> -->
+        <br/>
+        <br/>
+        <h4 style="color:blue">{{question.scriptCode}} - {{question.question}}</h4>
+        <hr/> 
+        <div class="checkbox-demo-row">
+            <div class="input-demo checkbox-demo row">
+                <div class="col-md-4">
+                    <label class="checkbox-inline custom-checkbox nowrap">
+                        <input type="checkbox" ng-model="question.required">
+                        <span>Required</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        Type :
+        <b>{{question.type}}</b><hr/>
+    </div>
+    <div class="col-md-6">
+        <label>Preview</label>
+        <inparagraph dataprovider="question"></inparagraph>
+    </div>
+</div>

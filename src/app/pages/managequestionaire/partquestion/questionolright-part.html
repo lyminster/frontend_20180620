@@ -1,0 +1,94 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="btn-group pull-right" role="group" aria-label="Basic example">
+            <button type="button" ng-click="vm.openFormGroup(subhead.scriptCode, subhead.questionGroup)" class="btn btn-primary">Add Section</button>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <uib-accordion>
+            <uib-accordion-group ng-repeat="groupQuestion in subhead.questionGroup | orderBy:'sort'" panel-class="bootstrap-panel accordion-panel panel-info">
+                <uib-accordion-heading>
+                    <!-- <button type="button" ng-click="vm.groupmove('up', groupQuestion, subhead.questionGroup, subhead.scriptCode, $event)" title="Move Up" aria-label="Up">
+                        <i class="icon ion-arrow-up-b"></i>
+                    </button>
+                    <button type="button" ng-click="vm.groupmove('down', groupQuestion, subhead.questionGroup, subhead.scriptCode, $event)" title="Move Down" aria-label="Down">
+                        <i class="icon ion-arrow-down-b"></i>
+                    </button> -->
+                    {{groupQuestion.scriptCode}} - {{groupQuestion.groupname}}
+                </uib-accordion-heading>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="btn-group pull-right" role="group" aria-label="Basic example">
+                            <div class="btn-group" uib-dropdown dropdown-append-to-body>
+                                <button type="button" class="btn btn-primary " uib-dropdown-toggle>
+                                    Add
+                                    <span class="caret"></span>
+                                </button>
+                                <ul uib-dropdown-menu>
+                                    <li>
+                                        <a ng-click="vm.addQuestionnaire('shortanswer', groupQuestion.scriptCode, groupQuestion.questions)" href>Sort Answer</a>
+                                    </li>
+                                    <li>
+                                        <a ng-click="vm.addQuestionnaire('paragraph', groupQuestion.scriptCode, groupQuestion.questions)" href>Paragraph</a>
+                                    </li>
+                                    <li>
+                                        <a ng-click="vm.addQuestionnaire('date', groupQuestion.scriptCode, groupQuestion.questions)" href>Date</a>
+                                    </li>
+                                    <li>
+                                        <a ng-click="vm.addQuestionnaire('time', groupQuestion.scriptCode, groupQuestion.questions)" href>Time</a>
+                                    </li>
+                                    <li>
+                                        <a ng-click="vm.addQuestionnaire('checkbox', groupQuestion.scriptCode, groupQuestion.questions)" href>Checkbox</a>
+                                    </li>
+                                    <li>
+                                        <a ng-click="vm.addQuestionnaire('radiobutton', groupQuestion.scriptCode, groupQuestion.questions)" href>Radio Button</a>
+                                    </li>
+                                    <li>
+                                        <a ng-click="vm.addQuestionnaire('dropdown', groupQuestion.scriptCode, groupQuestion.questions)" href>Dropdown</a>
+                                    </li>
+                                    <li>
+                                        <a ng-click="vm.addQuestionnaire('linierscale', groupQuestion.scriptCode, groupQuestion.questions)" href>Linier Scale</a>
+                                    </li>
+                                    <li role="separator" class="divider"></li>
+                                    <li>
+                                        <a ng-click="vm.addQuestionnaire('gridcheckbox', groupQuestion.scriptCode, groupQuestion.questions)" href>Grid Checkbox</a>
+                                    </li>
+                                    <li>
+                                        <a ng-click="vm.addQuestionnaire('gridradiobutton', groupQuestion.scriptCode, groupQuestion.questions)" href>Grid Radio Button</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- <button type="button" ng-click="vm.openFormQuestionlinierscale(groupQuestion.scriptCode, groupQuestion.questions)" class="btn btn-primary">Add Question</button> -->
+                            <button type="button" ng-disabled="!groupQuestion.isEditable" ng-click="vm.openEditFormGroup(subhead.questionGroup, groupQuestion)"
+                                class="btn btn-primary">Edit Section</button>
+                            <button type="button" ng-disabled="!groupQuestion.isEditable" ng-click="vm.delete(subhead.questionGroup, groupQuestion, subhead.scriptCode, 'group')"
+                                class="btn btn-primary">Delete Section</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-warning bootstrap-panel" ng-repeat="question in groupQuestion.questions | orderBy:'sort'">
+                            <div class="panel-body">
+                                <div ng-include="'app/pages/managequestionaire/partquestion/q-'+question.type.toLowerCase()+'.html'"></div>
+                                <div class="col-md-12">
+                                    <hr/>
+                                    <div class="btn-group pull-left" role="group" aria-label="Basic example">
+                                        <button type="button" ng-click="vm.editQuestionnaire(question, question.type, groupQuestion.scriptCode, groupQuestion.questions)"
+                                            class="btn btn-primary">Edit Question</button>
+                                        <button type="button" ng-disabled="!question.isEditable" ng-click="vm.duplicate(groupQuestion.questions, question, groupQuestion.scriptCode, 'question')"
+                                            class="btn btn-primary">Duplicate Question</button>
+                                        <button type="button" ng-disabled="!question.isEditable" ng-click="vm.delete(groupQuestion.questions, question, groupQuestion.scriptCode, 'question')"
+                                            class="btn btn-primary">Delete Question</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </uib-accordion-group>
+        </uib-accordion>
+    </div>
+</div>

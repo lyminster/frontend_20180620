@@ -1,0 +1,45 @@
+<div class="col-md-12">
+  <div class="panel filling-panel">
+    <div class="panel-body filling-body">
+      <div class="row">
+        <!-- <code>{{dataprovider}}</code> -->
+        <div class="col-md-12">
+          <span class="filling-title" style="color: rgb(25, 125, 115)">{{dataprovider.question}}</span>
+          <hr /> Answer :
+          <br />
+          <br />
+          <ng-form name="userFieldForm" class="form-group">
+            <div class="input-demo checkbox-demo row">
+              <div class="col-md-12" ng-repeat="answer in dataprovider.answerCB | orderBy:'sort'"
+                ng-hide="(answer.sort == 99 && !dataprovider.useOther) || answer.hide">
+                <label class="checkbox-inline custom-checkbox nowrap">
+                  <input type="checkbox" ng-model="answer.value" name="field" ng-change="changeAnswer(answer.value)"
+                    ng-disabled="((!answer.value) && selected == dataprovider.maxSelect) && dataprovider.maxSelect != 0"
+                    ng-required="validatecheck(dataprovider.required)">
+                  <span>{{(answer.sort == 99 ? 'Other' : answer.answerValue)}}</span>
+                </label>
+                <div ng-if="answer.sort == 99 && answer.value">
+                  <input name="fieldOTHER" type="text" class="form-control" ng-model="answer.answerValue" required>
+                  <p class="help-block" style="color:red" ng-show="userFieldForm.fieldOTHER.$invalid">*This Field is
+                    Required</p>
+                </div>
+
+              </div>
+              <div class="col-md-12">
+                <p class="help-block" style="color:red" ng-show="userFieldForm.field.$invalid">*This Field is Required
+                </p>
+              </div>
+              <div class="col-md-12">
+                <!-- <p class="help-block" style="color:red" >*This Field is Skipable</p> -->
+                <label ng-show="dataprovider.isSkip" class="checkbox-inline custom-checkbox nowrap">
+                  <input type="checkbox" ng-model="dataprovider.isSkip" value="skip" />
+                  <span>Skip</span>
+                </label>
+              </div>
+            </div>
+          </ng-form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

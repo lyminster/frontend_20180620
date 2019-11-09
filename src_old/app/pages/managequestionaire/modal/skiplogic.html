@@ -1,0 +1,77 @@
+<div class="modal-content">
+    <div class="modal-header bg-info">
+        <i class="ion-information-circled modal-icon"></i>
+        <span> Add Skip Logic</span>
+    </div>
+    <!-- answerItems
+    <code>{{answerItems}}</code>
+    questionsItems
+    <code>{{questionsItems}}</code>
+    listquestion
+    <code>{{listquestion}}</code>
+    question
+    <code>{{question}}</code> -->
+    <div class="modal-body " style="color:black">
+        <form name="formmodel" novalidate>
+            <div class="form-group" ng-class="{ 'has-error' : formmodel.question.$invalid && !formmodel.question.$pristine }">
+                <label style="color:black!important;">If Answer select</label>
+                <ui-select ng-model="skiplogic.answerSelected" class="btn-group bootstrap-select form-control" ng-disabled="false" append-to-body="true"
+                    search-enabled="true">
+                    <ui-select-match placeholder="Please choose">
+                        {{$select.selected.label}}
+                    </ui-select-match>
+                    <ui-select-choices repeat="o in answerItems | filter: $select.search">
+                        <span ng-bind-html="o.label"></span>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+            <p>Then <b>Show</b></p>
+            <!-- <div class="form-group" ng-class="{ 'has-error' : formmodel.minLength.$invalid && !formmodel.minLength.$pristine }">
+                <label style="color:black!important;">Then</label>
+                <select class="form-control" ng-model="skiplogic.formtype" title="Type Select" data-container="body" selectpicker>
+                    <option value="hide" ng-selected="true">Hide</option>
+                    <option value="show">Show</option>
+                </select>
+            </div> -->
+            <div class="form-group">
+                <label style="color:black!important;">Question</label>
+                <ul class="tree" id="tree">
+                    <li ng-repeat="item in listquestion">
+                        <label class="checkbox-inline custom-checkbox nowrap">
+                            <input ng-model="item.checked" type="checkbox">
+                            <span>{{item.scriptCode}} - {{item.question}}</span>
+                        </label>
+                        <!-- AND SHOULD CHECK HERE -->
+                        <ul ng-if="item.answerCB && item.checked">
+                            <li ng-repeat="subitem in item.answerCB" ng-hide="(subitem.sort == 99 && !item.useOther)">
+                                <label class="checkbox-inline custom-checkbox nowrap">
+                                    <input ng-model="subitem.checked" type="checkbox">
+                                    <span>{{subitem.sort == 99 ? 'Other' : subitem.answerValue }}</span>
+                                </label>
+                            </li>
+                        </ul>
+                        <ul ng-if="item.answerDD && item.checked">
+                            <li ng-repeat="subitem in item.answerDD" ng-hide="(subitem.sort == 99 && !item.useOther)">
+                                <label class="checkbox-inline custom-checkbox nowrap">
+                                    <input ng-model="subitem.checked" type="checkbox">
+                                    <span>{{subitem.sort == 99 ? 'Other' : subitem.answerValue }}</span>
+                                </label>
+                            </li>
+                        </ul>
+                        <ul ng-if="item.answerRB && item.checked">
+                            <li ng-repeat="subitem in item.answerRB" ng-hide="(subitem.sort == 99 && !item.useOther)">
+                                <label class="checkbox-inline custom-checkbox nowrap">
+                                    <input ng-model="subitem.checked" type="checkbox">
+                                    <span>{{subitem.sort == 99 ? 'Other' : subitem.answerValue }}</span>
+                                </label>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="form-group">
+                <button type="submit" ng-click="ok()" class="btn btn-info" ng-disabled="formmodel.$invalid">Save</button>
+            </div>
+        </form>
+    </div>
+</div>

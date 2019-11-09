@@ -1,0 +1,25 @@
+<div class="widgets">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="button" ng-disabled="vm.prosessave" ng-click="vm.savedraftquestionnaire()" class="btn btn-warning pull-right">Save As Draft</button>
+                </div>
+            </div>
+            <div ba-panel ba-panel-title="{{vm.title}}" ba-panel-class="with-scroll">
+                <h3 ng-if="vm.note">Note : {{vm.note}}</h3>
+                <ba-wizard>
+                    <ba-wizard-step title="General" form="vm.formgeneral">
+                        <div ng-include="'app/pages/managequestionaire/create-olright/form-general.html'"></div>
+                    </ba-wizard-step>
+                    <ba-wizard-step title="Target" form="vm.formtarget">
+                        <div ng-include="'app/pages/managequestionaire/create-olright/form-target.html'"></div>
+                    </ba-wizard-step>
+                    <ba-wizard-step title="Question" form="vm.formsampleQuestion">
+                        <div ng-include="'app/pages/managequestionaire/create-olright/form-question.html'"></div>
+                    </ba-wizard-step>
+                </ba-wizard>
+            </div>
+        </div>
+    </div>
+</div>

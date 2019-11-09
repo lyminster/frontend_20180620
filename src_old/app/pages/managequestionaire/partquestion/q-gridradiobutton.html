@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="col-md-6">
+        <!-- <code>{{question}}</code> -->
+        Question :
+        <br/>
+        <h4 style="color:blue">{{question.scriptCode}} - {{question.question}}</h4>
+        <hr/> 
+        <div class="checkbox-demo-row">
+            <div class="input-demo checkbox-demo row">
+                <div class="col-md-4">
+                    <label class="checkbox-inline custom-checkbox nowrap">
+                        <input type="checkbox" ng-model="question.required">
+                        <span>Required</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        Type :
+        <b>{{question.type}}</b>
+        <br/> Answer :
+        <br/>
+        <ul>
+            <li ng-repeat="answ in question.answerRBG | orderBy:'sort'">{{answ.answerValue}}
+            </li>
+        </ul>
+        <br/> Column :
+        <br/>
+        <ul>
+            <li ng-repeat="colm in question.columnRBG | orderBy:'sort'">{{colm.columnText}}
+            </li>
+        </ul>
+        <hr/>
+    </div>
+    <div class="col-md-6">
+        <label>Preview</label>
+        <ingridradiobutton dataprovider="question"></ingridradiobutton>
+    </div>
+</div>

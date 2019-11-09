@@ -1,0 +1,31 @@
+<div class="widgets">
+    <div class="row">
+      <div class="col-md-12"
+           ba-panel
+           ba-panel-title="History Participant"
+           ba-panel-class="with-scroll">
+           <div class="row">
+                  <section class="col-md-9 col-lg-6">
+                    <div class="input-group">
+                                    <select class="form-control selectpicker" title="Filter Status"
+                                    selectpicker
+                                    ng-model="selectedFilter"
+                                    ng-options="o as o.label for o in filterItems">
+                                    </select>
+                        <span class="input-group-btn">
+                            <button class="btn btn-danger" ng-click="filterGrid(selectedFilter.value)" type="button">Go!</button>
+                        </span>
+                      </div>
+                  </section>
+           </div>
+           <div class="row">
+                <div class="col-md-12">
+                    <div ui-grid="gridOptionsHystori" ui-grid-resize-columns ui-grid-pagination class="grid"></div>
+                </div>
+           </div>
+
+      </div>
+    </div>
+  </div>
+
+

@@ -1,0 +1,256 @@
+<div class="widgets">
+    <div class="row" ng-if="vm.questionaire">
+        <!-- <code>{{vm.newParticipant}}</code>         -->
+        <div class="col-md-12" ba-panel ba-panel-title="{{vm.gender}}">
+            <form name="vm.formmodel" ng-submit="vm.saveParticipant()" novalidate>
+                <div ng-if="vm.isdcsl" class="row">
+                    <div></div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="gender">Gender</label>
+                            <!-- <input type="Text" class="form-control" id="gender" name="gender" placeholder="Gender " ng-model="vm.newParticipant.gender"> -->
+                            <span class="help-block error-block basic-block"></span>
+                            <ui-select
+                                ng-model="vm.newParticipant.gender"
+                                class="btn-group bootstrap-select form-control"
+                                append-to-body="true"
+                                search-enabled="true"
+                            >
+                                <ui-select-match placeholder="Please choose">
+                                {{ $select.selected.label }}
+                                </ui-select-match>
+                                <ui-select-choices
+                                repeat="o in vm.genderList | filter: $select.search"
+                                >
+                                <span ng-bind-html="o.label"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="Text" class="form-control" id="name" name="name" placeholder="Name " ng-model="vm.newParticipant.name">
+                            <span class="help-block error-block basic-block"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="handphone">Handphone</label>
+                            <input type="Text" class="form-control" id="handphone" name="handphone" placeholder="Handphone " ng-model="vm.newParticipant.handphone">
+                            <span class="help-block error-block basic-block"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <!-- <code>{{vm.kabupatenItems}}</code> -->
+                            <label for="Kota_">City</label>
+                            <select class="form-control selectpicker with-search" data-live-search="true" title="Please choose" selectpicker ng-model="vm.newParticipant.kabupaten"
+                                ng-options="o as o.Name for o in vm.kabupatenItems track by o.ID">
+                            </select>
+                            <span class="help-block error-block basic-block">Required</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="Occupation_">Occupation</label>
+                            <select class="form-control selectpicker with-search" data-live-search="true" title="Please choose" selectpicker ng-model="vm.newParticipant.occupation"
+                                ng-options="o as o.label for o in vm.mastertarget.occupation track by o.value">
+                            </select>
+                            <span class="help-block error-block basic-block">Required</span>
+                        </div>
+                        <div class="form-group" ng-class="{'has-error': (vm.formmodel.birtday.$invalid && (vm.formmodel.birtday.$dirty || vm.formmodel.$submitted)) || (vm.formmodel.endDistributionDate.$invalid && (vm.formmodel.endDistributionDate.$dirty || vm.formmodel.$submitted))}">
+                            <label for="birtday">Birthday Date</label>
+                            <datepicker datepicker-mobile="true" date-format="yyyy-MM-dd" selector="form-control">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="birtday" name="birtday" placeholder="Choose a date" ng-model="vm.newParticipant.birtday" required>
+                                    <span class="input-group-addon" style="cursor: pointer">
+                                        <i class="glyphicon glyphicon-calendar"></i>
+                                    </span>
+                                </div>
+                            </datepicker>
+                            <span class="help-block error-block basic-block" ng-show="vm.formmodel.birtday.$error.required">
+                                Required!</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="SES">SES</label>
+                            <select class="form-control selectpicker with-search" data-live-search="true" title="Please choose" selectpicker ng-model="vm.newParticipant.ses"
+                                ng-options="o as o.label for o in vm.mastertarget.ses track by o.value">
+                            </select>
+                            <span class="help-block error-block basic-block">Required</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="Education">Education</label>
+                            <select class="form-control selectpicker with-search" data-live-search="true" title="Please choose" selectpicker ng-model="vm.newParticipant.education"
+                                ng-options="o as o.label for o in vm.mastertarget.education track by o.value">
+                            </select>
+                            <span class="help-block error-block basic-block">Required</span>
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="!vm.isdcsl" class="row">
+                    <div class="col-md-4">
+                        <div class="form-group has-feedback" ng-class="{'has-error': vm.formmodel.title.$invalid && (vm.formmodel.title.$dirty || vm.formmodel.$submitted)}">
+                            <label for="title">Title</label>
+                            <input type="Text" class="form-control" id="title" name="title" placeholder="Title " ng-model="vm.newParticipant.title" required>
+                            <span class="help-block error-block basic-block">This field is required.</span>
+                        </div>
+                        <div class="form-group has-feedback" ng-class="{'has-error': vm.formmodel.name.$invalid && (vm.formmodel.name.$dirty || vm.formmodel.$submitted)}">
+                            <label for="name">Name</label>
+                            <input type="Text" class="form-control" id="name" name="name" placeholder="Name " ng-model="vm.newParticipant.name"  required>
+                            <span class="help-block error-block basic-block">This field is required.</span>
+                        </div>
+                        <div class="form-group has-feedback" ng-class="{'has-error': vm.formmodel.handphone.$invalid && (vm.formmodel.handphone.$dirty || vm.formmodel.$submitted)}">
+                            <label for="handphone">Handphone</label>
+                            <input type="Text" class="form-control" id="handphone" name="handphone" placeholder="Handphone " ng-model="vm.newParticipant.handphone" required>
+                            <span class="help-block error-block basic-block">This field is required.</span>
+                        </div>
+                        <div class="form-group has-feedback" ng-class="{'has-error': vm.formmodel.birtday.$invalid && (vm.formmodel.birtday.$dirty || vm.formmodel.$submitted)}">
+                            <label for="birtday">Birthday Date</label>
+                            <datepicker datepicker-mobile="true" date-format="yyyy-MM-dd" selector="form-control">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="birtday" name="birtday" placeholder="Choose a date" ng-model="vm.newParticipant.birtday" required>
+                                    <span class="input-group-addon" style="cursor: pointer">
+                                        <i class="glyphicon glyphicon-calendar"></i>
+                                    </span>
+                                </div>
+                            </datepicker>
+                            <span class="help-block error-block basic-block">This field is required.</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group has-feedback" ng-class="{'has-error': vm.formmodel.ageRange.$invalid && (vm.formmodel.ageRange.$dirty || vm.formmodel.$submitted)}">
+                            <label for="Usia_">Usia</label>
+                            <div class="form-group">
+                                <ui-select id="ageRange" name="ageRange" ng-model="vm.newParticipant.ageRange" class="btn-group bootstrap-select form-control" ng-disabled="false" append-to-body="true"
+                                    search-enabled="true" required>
+                                    <ui-select-match placeholder="Please choose">
+                                        {{$select.selected.label}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="o in vm.mastertarget.ageRange | filter: $select.search">
+                                        <span ng-bind-html="o.label"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                            <span class="help-block error-block basic-block">This field is required.</span>
+                        </div>
+                        <div class="form-group has-feedback" ng-class="{'has-error': vm.formmodel.education.$invalid && (vm.formmodel.education.$dirty || vm.formmodel.$submitted)}">
+                            <label for="pendidikan_">Pendidikan</label>
+                            <div class="form-group ">
+                                <ui-select  id="education" name="education" ng-model="vm.newParticipant.education" class="btn-group bootstrap-select form-control" ng-disabled="false" append-to-body="true"
+                                    search-enabled="true" required>
+                                    <ui-select-match placeholder="Please choose">
+                                        {{$select.selected.label}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="o in vm.mastertarget.education | filter: $select.search">
+                                        <span ng-bind-html="o.label"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                            <span class="help-block error-block basic-block">This field is required.</span>
+                        </div>
+                        <div class="form-group has-feedback" ng-class="{'has-error': vm.formmodel.gender.$invalid && (vm.formmodel.gender.$dirty || vm.formmodel.$submitted)}">
+                            <label for="Gender_">Gender</label>
+                            <div class="form-group ">
+                                <ui-select  id="gender" name="gender" ng-model="vm.newParticipant.gender" class="btn-group bootstrap-select form-control" ng-disabled="false" append-to-body="true"
+                                    search-enabled="true"  required>
+                                    <ui-select-match placeholder="Please choose">
+                                        {{$select.selected.label}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="o in vm.mastertarget.gender | filter: $select.search">
+                                        <span ng-bind-html="o.label"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                            <span class="help-block error-block basic-block">This field is required.</span>
+                        </div>
+                        <div class="form-group has-feedback" ng-class="{'has-error': vm.formmodel.occupation.$invalid && (vm.formmodel.occupation.$dirty || vm.formmodel.$submitted)}">
+                            <label for="Occupation_">Occupation</label>
+                            <div class="form-group ">
+                                <ui-select  id="occupation" name="occupation" ng-model="vm.newParticipant.occupation" class="btn-group bootstrap-select form-control" ng-disabled="false" append-to-body="true"
+                                    search-enabled="true" required>
+                                    <ui-select-match placeholder="Please choose">
+                                        {{$select.selected.label}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="o in vm.mastertarget.occupation | filter: $select.search">
+                                        <span ng-bind-html="o.label"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                            <span class="help-block error-block basic-block">This field is required.</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group has-feedback" ng-class="{'has-error': vm.formmodel.ses.$invalid && (vm.formmodel.ses.$dirty || vm.formmodel.$submitted)}">
+                            <label for="SES_">SES</label>
+                            <div class="form-group ">
+                                <ui-select  id="ses" name="ses" ng-model="vm.newParticipant.ses" class="btn-group bootstrap-select form-control" ng-disabled="false" append-to-body="true"
+                                    search-enabled="true" required>
+                                    <ui-select-match placeholder="Please choose">
+                                        {{$select.selected.label}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="o in vm.mastertarget.ses | filter: $select.search">
+                                        <span ng-bind="o.label"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                            <span class="help-block error-block basic-block">This field is required.</span>
+                        </div>
+                        <div class="form-group has-feedback" ng-class="{'has-error': vm.formmodel.religion.$invalid && (vm.formmodel.religion.$dirty || vm.formmodel.$submitted)}">
+                            <label for="Religion_">Religion</label>
+                            <div class="form-group " >
+                                <ui-select  id="religion" name="religion" ng-model="vm.newParticipant.religion" class="btn-group bootstrap-select form-control" ng-disabled="false" append-to-body="true"
+                                    search-enabled="true"  required>
+                                    <ui-select-match placeholder="Please choose">
+                                        {{$select.selected.label}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="o in vm.mastertarget.religion | filter: $select.search">
+                                        <span ng-bind-html="o.label"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                            <span class="help-block error-block basic-block">This field is required.</span>
+                        </div>
+                        <label>Area</label>
+                        <div class="form-group">
+                            <label for="Provinsi_">Provinsi</label>
+                            <div class="form-group ">
+                                <ui-select ng-model="vm.newParticipant.propinsi" class="btn-group bootstrap-select form-control" ng-disabled="false" append-to-body="true"
+                                    search-enabled="true" ng-change="vm.getAreakabupaten(vm.newParticipant.propinsi.ID)">
+                                    <ui-select-match placeholder="Please choose">
+                                        {{$select.selected.Name}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="o in vm.mastertarget.propinsi | filter: $select.search">
+                                        <span ng-bind-html="o.Name"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Kota_">Kota/Kabupaten</label>
+                            <div class="form-group ">
+                                <ui-select ng-model="vm.newParticipant.kabupaten" class="btn-group bootstrap-select form-control" ng-disabled="false" append-to-body="true"
+                                    search-enabled="true">
+                                    <ui-select-match placeholder="Please choose">
+                                        {{$select.selected.Name}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="o in vm.kabupatenItems | filter: $select.search">
+                                        <span ng-bind-html="o.Name"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="btn-list clearfix ng-scope">
+                            <li>
+                                <button type="submit" class="btn btn-success btn-with-icon">
+                                    Save Participant and Start Questionnaire
+                                    <i class="ion-arrow-right-a"></i>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

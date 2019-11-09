@@ -1,0 +1,120 @@
+<div class="widgets">
+    <div class="row" ng-if="vm.questionaire">
+
+        <div class="col-md-12" ba-panel ba-panel-title="{{vm.title}}">
+            <div class="row">
+                <div class="col-md-6">
+                    <form class="form-horizontal ng-scope">
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Questionnaire Code </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.questionaire.questionnaireCode}}
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Questionnaire Name </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.questionaire.questionnaireName}}
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Description </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.questionaire.description}}
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Region </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.questionaire.regionName}}
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Dealer </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.questionaire.branchName}}
+                            </label>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <form class="form-horizontal ng-scope">
+                        <h4>Distribute Date :</h4>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Start </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.questionaire.startDistributionDate | date:'yyyy-MM-dd'}}
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">End </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.questionaire.endDistributionDate | date:'yyyy-MM-dd'}}
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Total Target </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.questionaire.totalTarget}}
+                            </label>
+                        </div>
+                        <h4>Progress Detail :</h4>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">H1 </label>
+                            <a href="" ng-click="vm.openModalDetail('H1')">
+                                <div class="progress" title="{{vm.questionaire.percentH1}}% Complete">
+                                    <div class="{{vm.getColorprogress(vm.questionaire.percentH1)}}" role="progressbar" aria-valuenow="{{vm.questionaire.percentH1}}"
+                                        aria-valuemin="0" aria-valuemax="100" style="width: {{vm.questionaire.percentH1}}%">
+                                        <span>{{vm.questionaire.percentH1}}% Complete </span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">H2 </label>
+                            <a href="" ng-click="vm.openModalDetail('H2')">
+                                <div class="progress" title="{{vm.questionaire.percentH2}}% Complete">
+                                    <div class="{{vm.getColorprogress(vm.questionaire.percentH2)}}" role="progressbar" aria-valuenow="{{vm.questionaire.percentH2}}"
+                                        aria-valuemin="0" aria-valuemax="100" style="width: {{vm.questionaire.percentH2}}%">
+                                        <span>{{vm.questionaire.percentH2}}% Complete </span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">H3 </label>
+                            <a href="" ng-click="vm.openModalDetail('H3')">
+                                <div class="progress" title="{{vm.questionaire.percentH3}}% Complete">
+                                    <div class="{{vm.getColorprogress(vm.questionaire.percentH3)}}" role="progressbar" aria-valuenow="{{vm.questionaire.percentH3}}"
+                                        aria-valuemin="0" aria-valuemax="100" style="width: {{vm.questionaire.percentH3}}%">
+                                        <span>{{vm.questionaire.percentH3}}% Complete </span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row btns-row btns-same-width-lg">
+                <div class="col-md-12">
+                    <button type="button" ng-disabled="vm.questionaire.status == 'Completed' || !vm.itsAllowFunction('monitoring.extendperiode')" ng-click="vm.extendPeriode()" class="btn btn-primary pull-right">Extend Periode</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12" ba-panel ba-panel-title="Available Participant">
+            <ul class="btn-list clearfix">
+                <li>
+                    <button type="button" ng-disabled="vm.questionaire.status == 'Completed' || !vm.itsAllowFunction('monitoring.generatenew')" ng-click="vm.generateNew()" class="btn btn-primary btn-with-icon">Generate New</button>
+                </li>
+                <li>
+                    <button type="button" ng-disabled="vm.questionaire.status == 'Completed' || !vm.itsAllowFunction('monitoring.completesurvey')" ng-click="vm.completesurvey()" class="btn btn-info btn-with-icon">Complete Survey</button>
+                </li>
+            </ul>
+            <div class="row">
+                <div class="col-md-12">
+                    <div ui-grid="vm.gridAvailableParticipant" ui-grid-resize-columns ui-grid-pagination class="grid"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

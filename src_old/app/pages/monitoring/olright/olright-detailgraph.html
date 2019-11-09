@@ -1,0 +1,37 @@
+<div class="widgets">
+    <button class="btn btn-primary" ng-click="vm.printDiv('printableDivtopToBox')">print</button>
+    <div id="printableDivtopToBox">
+        <div class="row" ng-repeat="qiestionnaire in vm.questionnaire">
+            <div class="col-md-12" ba-panel ba-panel-title="QUESTION : {{qiestionnaire.question}}">
+                <div class="form-group" id='IdCustomSelect'>
+                    <label for="pendidikan_">Type Graphic</label>
+                    <div class="form-group ">
+                        <ui-select ng-model="qiestionnaire.graphtype" class="btn-group bootstrap-select form-control" ng-disabled="false" ng-change="qiestionnaire.control.refresh(qiestionnaire.graphtype.value, null)"
+                            append-to-body="true" search-enabled="true">
+                            <ui-select-match placeholder="Please choose">
+                                {{$select.selected.label}}
+                            </ui-select-match>
+                            <ui-select-choices repeat="o in vm.grapicItems | filter: $select.search">
+                                <span ng-bind-html="o.label"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                    <div class="form-group " ng-if="qiestionnaire.type == 'date'">
+                        <label for="pendidikan_">Date Filter</label>
+                        <ui-select ng-model="qiestionnaire.datefilter" class="btn-group bootstrap-select form-control" ng-disabled="false" ng-change="vm.filterDate(qiestionnaire)"
+                            append-to-body="true" search-enabled="true">
+                            <ui-select-match placeholder="Please choose">
+                                {{$select.selected.label}}
+                            </ui-select-match>
+                            <ui-select-choices repeat="o in vm.selectdateItems | filter: $select.search">
+                                <span ng-bind-html="o.label"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                </div>
+                <chart-one id="{{qiestionnaire.uuid}}" refresh-func="qiestionnaire.control" typechart="{{qiestionnaire.graphtype.value}}"
+                    dataprovider="qiestionnaire.graphValue"></chart-one>
+            </div>
+        </div>
+    </div>
+</div>

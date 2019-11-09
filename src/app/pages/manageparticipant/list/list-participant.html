@@ -1,0 +1,134 @@
+<div class="widgets">
+    <div class="row">
+        <div class="col-md-12" ba-panel ba-panel-title="Filter Participant">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <form name="formserachParam" novalidate>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group has-feedback">
+                                    <label>Quest. Type</label>
+                                    <select class="form-control selectpicker" title="Please choose" selectpicker ng-change="vm.searchParamList.questType = vm.filterquestType.value;" ng-model="vm.filterquestType"
+                                        ng-options="o as o.label for o in vm.questTypeItems track by o.value">
+                                    </select>
+                                    <span class="help-block error-block basic-block">Required</span>
+                                </div>
+                                <label>Date Receive</label>
+                                <div class="form-group has-feedback">
+                                    <label for="dateReceiveStart1">Start</label>
+                                    <datepicker datepicker-mobile="true" date-format="yyyy-MM-dd" selector="form-control">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="dateReceiveStart1" name="dateReceiveStart1" placeholder="Choose a date" ng-model="vm.searchParamList.dateReceiveStart"
+                                                required>
+                                            <span class="input-group-addon" style="cursor: pointer">
+                                                <i class="glyphicon glyphicon-calendar"></i>
+                                            </span>
+                                        </div>
+                                    </datepicker>
+                                    <span class="help-block error-block basic-block">Required</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="dateReceiveEnd1">End</label>
+                                    <datepicker datepicker-mobile="true" date-format="yyyy-MM-dd" selector="form-control">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="dateReceiveEnd1" name="dateReceiveEnd1" placeholder="Choose a date" ng-model="vm.searchParamList.dateReceiveEnd"
+                                                required>
+                                            <span class="input-group-addon" style="cursor: pointer">
+                                                <i class="glyphicon glyphicon-calendar"></i>
+                                            </span>
+                                        </div>
+                                    </datepicker>
+                                    <span class="help-block error-block basic-block">Proper email required</span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label>Last Puchase</label>
+                                <div class="form-group">
+                                    <label for="lastPurchaseType_">Type</label>
+                                    <select class="form-control selectpicker" title="Please choose" selectpicker ng-model="vm.filtertypePurchase" ng-change="vm.searchParamList.typePurchase = vm.filtertypePurchase.value"
+                                        ng-options="o as o.label for o in vm.typePurchaseItems track by o.value">
+                                    </select>
+                                    <!-- <input type="text" class="form-control" id="lastPurchaseType_" name="lastPurchaseType_" placeholder=". . ." ng-model="vm.searchParamList.lastPurchaseType" required> -->
+                                    <span class="help-block error-block basic-block">Required</span>
+                                </div>
+                                <div class="form-group has-feedback">
+                                    <label>Dealer</label>
+                                    <select class="form-control selectpicker with-search" data-live-search="true" title="Please choose" selectpicker ng-change="vm.searchParamList.lastPurchaseBranch = vm.filterlastPurchasebranchItem.Code"
+                                        ng-model="vm.filterlastPurchasebranchItem" ng-options="o as o.Name for o in vm.branchItems track by o.Code">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label>Last Service</label>
+                                <div class="form-group">
+                                    <label for="lastServiceStart_">Start</label>
+                                    <datepicker datepicker-mobile="true" date-format="yyyy-MM-dd" selector="form-control">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="lastServiceStart_" name="lastServiceStart_" placeholder="Choose a date" ng-model="vm.searchParamList.lastServiceStart"
+                                                required>
+                                            <span class="input-group-addon" style="cursor: pointer">
+                                                <i class="glyphicon glyphicon-calendar"></i>
+                                            </span>
+                                        </div>
+                                    </datepicker>
+                                    <span class="help-block error-block basic-block">Required</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastServiceEnd_">End</label>
+                                    <datepicker datepicker-mobile="true" date-format="yyyy-MM-dd" selector="form-control">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="lastServiceEnd_" name="lastServiceEnd_" placeholder="Choose a date" ng-model="vm.searchParamList.lastServiceEnd"
+                                                required>
+                                            <span class="input-group-addon" style="cursor: pointer">
+                                                <i class="glyphicon glyphicon-calendar"></i>
+                                            </span>
+                                        </div>
+                                    </datepicker>
+
+                                    <span class="help-block error-block basic-block">Required</span>
+                                </div>
+                                <div class="form-group has-feedback">
+                                    <label>Dealer</label>
+                                    <select class="form-control selectpicker with-search" data-live-search="true" title="Please choose" selectpicker ng-change="vm.searchParamList.lastServiceBranch = vm.filterlastServicebranchItem.Code"
+                                        ng-model="vm.filterlastServicebranchItem" ng-options="o as o.Name for o in vm.branchItems track by o.Code">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label>Other</label>
+                                <div class="form-group">
+                                    <!-- <code>{{vm.kabupatenItems}}</code> -->
+                                    <label for="Kota_">City</label>
+                                    <select class="form-control selectpicker with-search" data-live-search="true" title="Please choose" selectpicker ng-change="vm.searchParamList.otherCity = vm.filterkabupaten.Code"
+                                        ng-model="vm.filterkabupaten" ng-options="o as o.Name for o in vm.kabupatenItems track by o.Code">
+                                    </select>
+                                    <span class="help-block error-block basic-block">Required</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="resource_">Resource</label>
+                                    <!-- <input type="text" class="form-control" id="resource_" name="resource_" placeholder=". . ." ng-model="vm.searchParamList.resource" required> -->
+                                    <select class="form-control selectpicker" title="Please choose" selectpicker ng-model="vm.filterresource" ng-change="vm.searchParamList.resource = vm.filterresource.value"
+                                        ng-options="o as o.label for o in vm.resourceItems track by o.value">
+                                    </select>
+                                    <span class="help-block error-block basic-block">Required</span>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="btn-group form-group" role="group" aria-label="Basic example">
+                        <button type="button" ng-click="refreshGrid()" class="btn btn-info btn-md">Search</button>
+                        <button type="button" ng-click="resetGrid()" class="btn btn-warning btn-md">Clear</button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <!-- <code>{{gridOptionsList.data}}</code> -->
+                <div class="col-md-12">
+                    <div ui-grid="gridOptionsList" ui-grid-resize-columns ui-grid-pagination class="grid"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

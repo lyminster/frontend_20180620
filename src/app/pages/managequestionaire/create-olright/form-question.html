@@ -1,0 +1,47 @@
+<form name="vm.formsampleQuestion" novalidate>
+    <!-- <div class="row">
+        <div class="input-demo checkbox-demo col-md-12">
+            <div class="col-md-3" ng-repeat="item in vm.questionList">
+                <label class="checkbox-inline custom-checkbox nowrap">
+                    <input type="checkbox" ng-disabled="!item.isEditable" ng-model="item.show" value="option1">
+                    <span>{{item.headerName}}</span>    
+                </label>
+                <input type="number" ng-disabled="!item.show" ng-model="item.picaStandart" 
+                min="0"
+                max="100"> %
+            </div>
+        </div>
+    </div> -->
+    <hr/>
+    <!-- <code>{{vm.questionList}}</code> -->
+    <!-- <div class="row outer_wrapper">
+        <div class="col-md-12 inner_wrapper">
+            <uib-tabset class="tabs-left">
+                <uib-tab heading="{{head.headerName}} " ng-repeat="head in vm.questionList | orderBy:'sort'" ng-if="head.show"> -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <uib-accordion>
+                                <uib-accordion-group ng-repeat="subhead in vm.questionList | orderBy:'sort'" panel-class="panel-success bootstrap-panel accordion-panel">
+                                    <uib-accordion-heading>
+                                        {{ subhead.headerSectionName }}
+                                    </uib-accordion-heading>
+                                   <div ng-if="subhead.type == 'Screening'">
+                                        <div ng-include="'app/pages/managequestionaire/partquestion/screaningolright-part.html'"></div>
+                                    </div>
+                                    <div ng-if="subhead.type == 'Question'">
+                                        <div ng-include="'app/pages/managequestionaire/partquestion/questionolright-part.html'"></div>
+                                    </div>
+                                </uib-accordion-group>
+                            </uib-accordion>
+                        </div>
+                    </div>
+                <!-- </uib-tab>
+            </uib-tabset>
+        </div>
+    </div> -->
+    <div class="row">
+        <div class="col-md-12">
+            <button type="button" ng-disabled="vm.prosessave" ng-click="vm.savefinishquestionnaire()" class="btn btn-warning pull-right">Save As Finish</button>
+        </div>
+    </div>
+</form>

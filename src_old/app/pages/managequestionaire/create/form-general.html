@@ -1,0 +1,193 @@
+<form name="vm.formgeneral" novalidate>
+    <div class="row">
+        <div class="col-md-6">
+            <label>Questionnaire Information</label>
+            <!-- <div class="form-group has-feedback">
+                <label for="exampleUsername1">Quest. Type</label>
+                <div class="form-group ">
+                    <ui-select ng-model="vm.general.questType" class="btn-group bootstrap-select form-control" ng-disabled="false" append-to-body="true"
+                        search-enabled="true">
+                        <ui-select-match placeholder="Please choose">
+                            {{$select.selected.label}}
+                        </ui-select-match>
+                        <ui-select-choices repeat="o in vm.questTypeItems | filter: $select.search">
+                            <span ng-bind-html="o.label"></span>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+                <span class="help-block error-block basic-block">Required</span>
+            </div> -->
+
+            <div class="form-group has-feedback" ng-class="{'has-error': vm.formgeneral.questName.$invalid && (vm.formgeneral.questName.$dirty || vm.formgeneral.$submitted)}">
+                <label for="questName">Quest. Name</label>
+                <input type="text" class="form-control" id="questName" name="questName" placeholder="Quest. Name" ng-model="vm.general.questName"
+                    required>
+                <span class="help-block error-block basic-block">Required</span>
+            </div>
+
+            <div class="form-group has-feedback">
+                <label for="description">Description</label>
+                <textarea type="text" class="form-control" id="description" name="description" placeholder="Description" ng-model="vm.general.description"></textarea>
+            </div>
+			<div class="form-group">
+				<label>Year</label>
+				<input type="number" min="0" class="form-control"  placeholder="Year" ng-model="vm.general.year">
+				<span class="help-block error-block basic-block"></span>
+			</div>
+            <div class="form-group">
+                <label for="Quartal_">Quartal</label>
+                <div class="form-group ">
+                        <!-- ng-disabled="vm.general.questType.label != 'DCSL'" -->
+                    <ui-select ng-model="vm.general.quartal" class="btn-group bootstrap-select form-control" 
+                        append-to-body="true" search-enabled="true">
+                        <ui-select-match placeholder="Please choose">
+                            {{$select.selected.label}}
+                        </ui-select-match>
+                        <ui-select-choices repeat="o in vm.quartals | filter: $select.search">
+                            <span ng-bind-html="o.label"></span>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+            </div>
+            <div class="form-group has-feedback" ng-class="{'has-error': vm.formgeneral.totalTarget.$invalid && (vm.formgeneral.totalTarget.$dirty || vm.formgeneral.$submitted)}">
+                <label for="totalTarget">Total Target</label>
+                <div class="input-group">
+                    <input type="number" min="0" type="text" class="form-control" id="totalTarget" name="totalTarget" placeholder="Total Target "
+                        ng-model="vm.general.totalTarget" required>
+                </div>
+                <span class="help-block error-block basic-block" ng-show="vm.formgeneral.totalTarget.$error.required">
+                    Required!</span>
+                <span class="help-block error-block basic-block" ng-show="vm.formgeneral.totalTarget.$error.number">
+                    Not valid number!</span>
+                <span class="help-block error-block basic-block" ng-show="vm.formgeneral.totalTarget.$error.min">
+                    Minimum Value 0!</span>
+            </div>
+            
+            <div class="form-group has-feedback" ng-class="{'has-error': vm.formgeneral.totalOdata.$invalid && (vm.formgeneral.totalOdata.$dirty || vm.formgeneral.$submitted)}">
+                <label for="totalOdata">Total Odata</label>
+                <div class="input-group">
+                    <input type="number" min="0" type="text" class="form-control" id="totalOdata" name="totalOdata" placeholder="Total Odata "
+                        ng-model="vm.general.totalOdata" required>
+                </div>
+                <span class="help-block error-block basic-block" ng-show="vm.formgeneral.totalOdata.$error.required">
+                    Required!</span>
+                <span class="help-block error-block basic-block" ng-show="vm.formgeneral.totalOdata.$error.number">
+                    Not valid number!</span>
+                <span class="help-block error-block basic-block" ng-show="vm.formgeneral.totalOdata.$error.min">
+                    Minimum Value 0!</span>
+
+            </div>
+            <div class="form-group">
+                <label for="defaultTemplate_">Default Template</label>
+                <div class="form-group ">
+                    <ui-select ng-model="vm.general.template" class="btn-group bootstrap-select form-control" ng-change="vm.getTemplateContent(vm.general.template.value)" append-to-body="true" search-enabled="true">
+                        <ui-select-match placeholder="Please choose">
+                            {{$select.selected.label}}
+                        </ui-select-match>
+                        <ui-select-choices repeat="o in vm.templateItems | filter: $select.search">
+                            <span ng-bind-html="o.label"></span>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+                <span class="help-block error-block basic-block"></span>
+            </div>
+            <div class="input-demo checkbox-demo row">
+                <label class="col-md-12">Type Followup</label>
+                <div class="col-md-4">
+                    <label class="checkbox-inline custom-checkbox nowrap">
+                        <input type="checkbox" ng-model="vm.general.selfSurvey" id="selfSurvey" value="option1">
+                        <span>Self Survey</span>
+                    </label>
+                </div>
+                <div class="col-md-4">
+                    <label class="checkbox-inline custom-checkbox nowrap">
+                        <input type="checkbox" ng-model="vm.general.fieldSurvey" id="fieldSurvey" value="option2">
+                        <span>Field Survey</span>
+                    </label>
+                </div>
+                <div class="col-md-4">
+                    <label class="checkbox-inline custom-checkbox nowrap">
+                        <input type="checkbox" ng-model="vm.general.teleSurvey" id="teleSurvey" value="option3">
+                        <span>Tele Survey</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label>General Information</label>
+            <div class="form-group">
+                <label for="createdDate_">Created Date</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="createdDate_" name="createdDate_" placeholder="Choose a date" ng-model="vm.general.createdDate"
+                        ng-readonly="true">
+                    <span class="input-group-addon" style="cursor: pointer">
+                        <i class="glyphicon glyphicon-calendar"></i>
+                    </span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="createdBy_">Created By</label>
+                <input type="Text" class="form-control" id="createdBy_" name="createdBy_" placeholder="Created By " ng-model="vm.general.createdBy"
+                    ng-readonly="true">
+                <span class="help-block error-block basic-block"></span>
+            </div>
+            <div class="form-group">
+                <label for="status_">Status</label>
+                <input type="Text" class="form-control" id="status_" name="status_" placeholder="Status " ng-model="vm.general.status" ng-readonly="true">
+                <span class="help-block error-block basic-block"></span>
+            </div>
+            <hr>
+            <label>Distribution Date</label>
+            <div class="form-group " ng-class="{'has-error': (vm.formgeneral.startDistributionDate.$invalid && (vm.formgeneral.startDistributionDate.$dirty || vm.formgeneral.$submitted)) || (vm.formgeneral.endDistributionDate.$invalid && (vm.formgeneral.endDistributionDate.$dirty || vm.formgeneral.$submitted))}">
+                <div class="col-md-6">
+                    <label for="startDistributionDate">Start</label>
+                    <datepicker datepicker-mobile="true" date-format="yyyy-MM-dd" date-max-limit="{{vm.general.endDistributionDate | date}}" date-min-limit="{{vm.sdate | date}}" selector="form-control">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="startDistributionDate" name="startDistributionDate"
+                                placeholder="Choose a date" ng-model="vm.general.startDistributionDate" required>
+                            <span class="input-group-addon" style="cursor: pointer">
+                                <i class="glyphicon glyphicon-calendar"></i>
+                            </span>
+                        </div>
+                    </datepicker>
+                    <span class="help-block error-block basic-block" ng-show="vm.formgeneral.startDistributionDate.$error.required">
+                        Required!</span>
+                </div>
+                <div class="col-md-6">
+                    <label for="endDistributionDate">End</label>
+                    <datepicker datepicker-mobile="true" date-format="yyyy-MM-dd" date-min-limit="{{vm.general.startDistributionDate | date}}" selector="form-control">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="endDistributionDate" name="endDistributionDate"
+                                placeholder="Choose a date" ng-model="vm.general.endDistributionDate" required>
+                            <span class="input-group-addon" style="cursor: pointer">
+                                <i class="glyphicon glyphicon-calendar"></i>
+                            </span>
+                        </div>
+                    </datepicker>
+                    <span class="help-block error-block basic-block" ng-show="vm.formgeneral.endDistributionDate.$error.required">
+                        Required!</span>
+                </div>
+            </div>
+            <hr>
+            <div class="form-group">
+                <label for="region_">Region</label>
+                <input type="Text" class="form-control" id="region_" name="region_" placeholder="Region" ng-model="vm.general.region" ng-readonly="true">
+                <span class="help-block error-block basic-block"></span>
+            </div>
+            <div class="form-group">
+                <label for="dealer_">Dealer</label>
+                <ui-select multiple ng-disabled="vm.relatedDealerItems.length == 1" ng-model="vm.general.dealer" ng-disabled="false" search-enabled="true" append-to-body="true" class="form-control ">
+                    <ui-select-match placeholder="Related Dealer">
+                        {{$item.label}}
+                    </ui-select-match>
+                    <ui-select-choices repeat="o in vm.relatedDealerItems | filter: $select.search">
+                        {{o.label}}
+                    </ui-select-choices>
+                </ui-select>
+                <!-- <input type="Text" class="form-control" id="dealer_" name="dealer_" placeholder="Dealer" ng-model="vm.general.dealer" ng-readonly="true"> -->
+                <!-- <span class="help-block error-block basic-block"></span> -->
+            </div>
+        </div>
+    </div>
+</form>

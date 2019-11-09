@@ -1,0 +1,97 @@
+<div ba-panel ba-panel-class=" horizontal-tabs tabs-panel">
+    <section>
+        <uib-tabset ng-if="bundleData">
+            <uib-tab heading="Top to Box">
+                <button class="btn btn-primary" ng-click="printDiv('printableDivtopToBox')">print</button>
+                <div id="printableDivtopToBox">
+                    <div ng-repeat="item in bundleData.toptobox">
+                        <div ba-panel ba-panel-title="Worm Chart {{item.header}}" ba-panel-class="with-scroll">
+                            <worm-chart id="toptobox{{$index}}" dataprovider="item.graphValue"></worm-chart>
+                            <div>
+                                <label class="col-md-3">
+                                    <b>Rata Rata Dealer {{item.header}} : {{ getAverage(item.graphValue, 'rataRataDealer') }}</b>
+                                </label>
+                                <label class="col-md-3">
+                                    <b>Rata Rata Nasional {{item.header}} : {{ getAverage(item.graphValue, 'rataRataNasional')
+                                        }}
+                                    </b>
+                                </label>
+                                <label class="col-md-3">
+                                    <b>Rata Rata Target Region {{item.header}} : {{ getAverage(item.graphValue, 'targetRegion')
+                                        }}
+                                    </b>
+                                </label>
+                                <label class="col-md-3">
+                                    <b>Rata Rata Region {{item.header}} : {{ getAverage(item.graphValue, 'rataRataRegion') }}</b>
+                                </label>
+                            </div>
+
+                        </div>
+                        <div ba-panel ba-panel-title="Description {{item.header}}" ba-panel-class="with-scroll">
+                            <table class="table table-hover table-info">
+                                <thead>
+                                    <tr class="black-muted-bg">
+                                        <th class="align-right">Code</th>
+                                        <th class="align-left">Question</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="val in item.mapper" class="no-top-border">
+                                        <td class="align-right">{{val.y}}</td>
+                                        <td class="align-left">{{val.description}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <hr/>
+                    </div>
+                </div>
+            </uib-tab>
+            <uib-tab heading="Index">
+                <button class="btn btn-primary" ng-click="printDiv('printableDivIndex')">print</button>
+                <div id="printableDivIndex">
+                    <div ng-repeat="item in bundleData.index">
+                        <div ba-panel ba-panel-title="Worm Chart {{item.header}}" ba-panel-class="with-scroll">
+                            <worm-chart id="index{{$index}}" dataprovider="item.graphValue"></worm-chart>
+                            <div>
+                                <label class="col-md-3">
+                                    <b>Rata Rata Dealer {{item.header}} : {{ getAverage(item.graphValue, 'rataRataDealer') }}</b>
+                                </label>
+                                <label class="col-md-3">
+                                    <b>Rata Rata Nasional {{item.header}} : {{ getAverage(item.graphValue, 'rataRataNasional')
+                                        }}
+                                    </b>
+                                </label>
+                                <label class="col-md-3">
+                                    <b>Rata Rata Target Region {{item.header}} : {{ getAverage(item.graphValue, 'targetRegion')
+                                        }}
+                                    </b>
+                                </label>
+                                <label class="col-md-3">
+                                    <b>Rata Rata Region {{item.header}} : {{ getAverage(item.graphValue, 'rataRataRegion') }}</b>
+                                </label>
+                            </div>
+                        </div>
+                        <div ba-panel ba-panel-title="Description {{item.header}}" ba-panel-class="with-scroll">
+                            <table class="table table-hover table-info">
+                                <thead>
+                                    <tr class="black-muted-bg">
+                                        <th class="align-right">Code</th>
+                                        <th class="align-left">Question</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="val in item.mapper" class="no-top-border">
+                                        <td class="align-right">{{val.y}}</td>
+                                        <td class="align-left">{{val.description}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <hr/>
+                    </div>
+                </div>
+            </uib-tab>
+        </uib-tabset>
+    </section>
+</div>

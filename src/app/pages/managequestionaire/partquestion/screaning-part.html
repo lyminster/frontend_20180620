@@ -1,0 +1,60 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="btn-group pull-right" role="group" aria-label="Basic example">
+            <button type="button" ng-click="vm.openFormQuestionScreaning(subhead.scriptCode, subhead.questions)" class="btn btn-primary">Add Question</button>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <!-- <code>{{subhead.questions | json}}</code> -->
+        <div class="panel panel-warning bootstrap-panel" ng-repeat="question in subhead.questions | orderBy:'sort'">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        Question :
+                        <br/>
+                        <h4 style="color:blue">{{question.scriptCode}} - {{question.question}}</h4>
+                        <hr/> Type :
+                        <b>{{question.type}}</b>
+                        <br/> Answer :
+                        <br/>
+                        <ul>
+                            <li ng-repeat="answ in question.answerRB | orderBy:'sort'">{{answ.answerValue}}
+                                <ul>
+                                    <li>
+                                        <a href="" ng-hide="!question.isEditable" class="btn btn-info" ng-click="vm.openModalJumpto(head.headerSections, answ)">change</a>
+                                        <b> {{answ.jumpTo}} </b>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li ng-repeat="answ in question.answerDD | orderBy:'sort'">{{answ.answerValue}}
+                                <ul>
+                                    <li>
+                                        <a href="" ng-hide="!question.isEditable" class="btn btn-info" ng-click="vm.openModalJumpto(head.headerSections, answ)">change</a>
+                                        <b> {{answ.jumpTo}} </b>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li ng-repeat="answ in question.answerCB | orderBy:'sort'">{{answ.answerValue}}
+                                <ul>
+                                    <li>
+                                        <a href="" ng-hide="!question.isEditable" class="btn btn-info" ng-click="vm.openModalJumpto(head.headerSections, answ)">change</a>
+                                        <b> {{answ.jumpTo}} </b>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="btn-group pull-left" role="group" aria-label="Basic example">
+                            <button type="button" ng-click="vm.openEditFormQuestionScreaning(subhead.questions, question)" class="btn btn-primary">Edit Question</button>
+                            <button type="button" ng-disabled="!question.isEditable" ng-click="vm.delete(subhead.questions, question, subhead.scriptCode, 'question')"
+                                class="btn btn-primary">Delete Question</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

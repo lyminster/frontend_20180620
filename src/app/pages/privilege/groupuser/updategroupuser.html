@@ -1,0 +1,36 @@
+<div class="widgets">
+    <div class="row">
+        <div class="col-md-12" ba-panel ba-panel-title="Group User">
+            <div class="row">
+                <div class="col-md-5">
+                    <form class="form-horizontal ng-scope">
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Group User </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.groupuser.label}}
+                            </label>
+                        </div>
+                    </form>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label"></label>
+                        <div class="col-sm-8">
+                            <ul class="btn-list clearfix ng-scope">
+                                <li>
+                                    <button type="button" ng-click="vm.save()" class="btn btn-success btn-with-icon">
+                                        <i class="ion-android-checkmark-circle"></i>Save</button>
+                                </li>
+                                <li>
+                                    <button type="button" ng-click="vm.cancel()" class="btn btn-warning btn-with-icon">
+                                        <i class="ion-android-warning"></i>Cancel</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div ui-grid="vm.gridConfig" ui-grid-pagination class="grid"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

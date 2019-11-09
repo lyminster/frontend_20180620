@@ -1,0 +1,54 @@
+<div class="modal-content">
+        <div class="modal-header bg-info">
+                <i class="ion-information-circled modal-icon"></i>
+                <span> Add Question Linier Scale</span>
+        </div>
+        <div class="modal-body " style="color:black">
+                <form name="questionForm" novalidate>
+                        <!-- USERNAME -->
+                        <div class="form-group" ng-class="{ 'has-error' : questionForm.question.$invalid && !questionForm.question.$pristine }">
+                                <label style="color:black!important;">Question</label>
+                                <input ng-readonly="!formData.isEditable" type="text" name="question" class="form-control" ng-model="formData.question" ng-minlength="1"
+                                        ng-maxlength="500" required>
+                                <p ng-show="questionForm.question.$error.required" class="help-block error-block basic-block">Required!</p>
+                        </div>
+                        <div class="form-group" ng-class="{ 'has-error' : questionForm.minVal.$invalid && !questionForm.minVal.$pristine }">
+                                <label style="color:black!important;">Minimum Scale</label>
+                                <input ng-readonly="true" type="text" type="number" name="minVal" class="form-control" ng-model="formData.answerLS.minVal"
+                                        min="0" max="10">
+                        </div>
+                        <div class="form-group" ng-class="{ 'has-error' : questionForm.minNote.$invalid && !questionForm.minNote.$pristine }">
+                                <label style="color:black!important;">Note for Minimum Scale</label>
+                                <input ng-readonly="!formData.isEditable" type="text" type="text" name="minNote" class="form-control" ng-model="formData.answerLS.minNote" required>
+                                <p ng-show="questionForm.minNote.$error.required" class="help-block">Required!</p>
+                                <!-- <p ng-show="questionForm.minNote.$error.maxlength" class="help-block">Note is too long.</p> -->
+                        </div>
+                        <div class="form-group" ng-class="{ 'has-error' : questionForm.maxVal.$invalid && !questionForm.maxVal.$pristine }">
+                                <label style="color:black!important;">Maximum Scale</label>
+                                <input ng-readonly="(!formData.isEditable || isolright)" type="number" type="number" name="maxVal" class="form-control" ng-model="formData.answerLS.maxVal"
+                                        min="0" max="20" required>
+                                <p ng-show="questionForm.maxVal.$error.required" class="help-block">Required!</p>
+                                <span class="help-block error-block basic-block" ng-show="questionForm.maxVal.$error.min">
+                                        Minimum Value 0!</span>
+                                <span class="help-block error-block basic-block" ng-show="questionForm.maxVal.$error.max">
+                                        Maximum Value 20!</span>
+                        </div>
+                        <div class="form-group" ng-class="{ 'has-error' : questionForm.maxNote.$invalid && !questionForm.maxNote.$pristine }">
+                                <label style="color:black!important;">Note for Maximum Scale</label>
+                                <input ng-readonly="!formData.isEditable" type="text" type="text" name="maxNote" class="form-control" ng-model="formData.answerLS.maxNote" required>
+                                <p ng-show="questionForm.maxNote.$error.required" class="help-block">Required!</p>
+                        </div>
+                        <div class="form-group" ng-class="{ 'has-error' : questionForm.stdVal.$invalid && !questionForm.stdVal.$pristine }">
+                                <label style="color:black!important;">Standard Scale</label>
+                                <input type="number" name="stdVal" class="form-control" ng-model="formData.answerLS.stdVal" min="0" max="10">
+                        </div>
+                        <div class="form-group" ng-hide="isolright" ng-class="{ 'has-error' : questionForm.stdReg.$invalid && !questionForm.stdReg.$pristine }">
+                                <label style="color:black!important;">Standard Region</label>
+                                <input type="number" name="stdReg" class="form-control" ng-model="formData.answerLS.stdReg" min="0" max="1000">
+                        </div>
+                        <div class="form-group">
+                                <button type="submit" ng-click="ok()" class="btn btn-info" ng-disabled="questionForm.$invalid">Save</button>
+                        </div>
+                </form>
+        </div>
+</div>

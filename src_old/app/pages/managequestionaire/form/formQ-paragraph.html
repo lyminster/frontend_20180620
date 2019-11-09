@@ -1,0 +1,21 @@
+
+<div class="modal-content">
+        <div class="modal-header bg-info">
+          <i class="ion-information-circled modal-icon"></i><span> Add Question Paragraph</span>
+        </div>
+        <div class="modal-body " style="color:black">
+                <form name="questionForm" novalidate>
+                        <!-- USERNAME -->
+                        <div class="form-group" ng-class="{ 'has-error' : questionForm.question.$invalid && !questionForm.question.$pristine }">
+                            <label style="color:black!important;">Question</label>
+                            <input type="text" name="question" class="form-control" ng-readonly="!formData.isEditable" ng-model="formData.question" ng-minlength="1" ng-maxlength="500">
+                            <p ng-show="questionForm.question.$error.minlength" class="help-block">question is too short.</p>
+                            <p ng-show="questionForm.question.$error.maxlength" class="help-block">question is too long.</p>
+                        </div>
+                        <div class="form-group">
+                              <button type="submit" ng-click="ok()" ng-hide="!formData.isEditable" class="btn btn-info" ng-disabled="questionForm.$invalid">Save</button>
+                        </div>
+                </form>
+        </div>
+</div>
+      

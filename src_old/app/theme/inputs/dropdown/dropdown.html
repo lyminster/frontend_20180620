@@ -1,0 +1,38 @@
+<div class="col-md-12">
+  <div class="panel filling-panel">
+    <div class="panel-body filling-body">
+      <div class="row">
+        <!-- <code>{{vm.paramsend}}</code> -->
+        <div class="col-md-12">
+
+          <!-- <code>{{dataprovider}}</code> -->
+          <span class="filling-title" style="color: rgb(25, 125, 115)">{{dataprovider.question}}</span>
+          <hr/> Answer :
+          <br/>
+          <br/>
+          <ng-form name="userFieldForm" class="form-group">
+            <div class="input-demo checkbox-demo row">
+              <div class="col-md-12">
+                <ui-select ng-model="dataprovider.answerValue" ng-change="updateModel()" class="btn-group bootstrap-select form-control"
+                  ng-disabled="false" append-to-body="true" search-enabled="true" name="field" ng-required="validatecheck(dataprovider.required)">
+                  <ui-select-match placeholder="Please choose">
+                    {{($select.selected.sort == 99 ? 'Other' : $select.selected.answerValue)}}
+                  </ui-select-match>
+                  <ui-select-choices ng-hide="(o.sort == 99 && !dataprovider.useOther) || o.hide" repeat="o in dataprovider.answerDD | filter: $select.search | orderBy:'sort'">
+                    <span ng-bind-html="o.sort == 99 ? 'Other' : o.answerValue "></span>
+                  </ui-select-choices>
+                </ui-select>
+                <hr ng-if="dataprovider.answerValue.sort == 99" />
+                <div ng-if="dataprovider.answerValue.sort == 99">
+                    <input name="fieldOTHER" type="text" class="form-control" ng-model="answer.answerValue" required>
+                    <p class="help-block" style="color:red" ng-show="userFieldForm.fieldOTHER.$invalid">*This Field is Required</p>
+                </div>
+              </div>
+            </div>
+            <p class="help-block" style="color:red" ng-show="userFieldForm.field.$invalid">*This Field is Required</p>
+          </ng-form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

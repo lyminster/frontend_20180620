@@ -1,0 +1,42 @@
+<div class="modal-content">
+  <div class="modal-header bg-info">
+    <i class="ion-information-circled modal-icon"></i>
+    <span> Add Question Screening</span>
+  </div>
+  <div class="modal-body " style="color:black">
+    <form name="questionForm" novalidate>
+      <!-- USERNAME -->
+      <div class="form-group"
+        ng-class="{ 'has-error' : questionForm.question.$invalid && !questionForm.question.$pristine }">
+        <label style="color:black!important;">Question</label>
+        <input type="text" name="question" class="form-control" ng-readonly="!formData.isEditable"
+          ng-model="formData.question" ng-minlength="1" ng-maxlength="500" />
+        <p ng-show="questionForm.question.$error.minlength" class="help-block">
+          question is too short.
+        </p>
+        <p ng-show="questionForm.question.$error.maxlength" class="help-block">
+          question is too long.
+        </p>
+      </div>
+      <a href="" ng-hide="!formData.isEditable" ng-click="addAnswer()" class="btn btn-info">
+        <i class="ion-plus"></i>
+      </a>
+      <label style="color:black!important;"> - Answer</label>
+      <div class="input-group" ng-repeat="ans in formData.answerRB">
+        <input type="text" ng-readonly="!formData.isEditable" class="form-control with-danger-addon"
+          ng-model="ans.answerValue" placeholder="Answer" />
+        <span class="input-group-btn">
+          <button class="btn btn-danger" ng-hide="!formData.isEditable" ng-click="deleteAnswer(ans)" type="button">
+            <span class="glyphicon glyphicon-trash"></span>
+          </button>
+        </span>
+      </div>
+      <div class="form-group">
+        <button type="submit" ng-click="ok()" ng-hide="!formData.isEditable" class="btn btn-info"
+          ng-disabled="questionForm.$invalid">
+          Save
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="col-md-12">
+  <div class="panel filling-panel">
+    <div class="panel-body filling-body">
+      <div class="row">
+        <!-- <code>{{vm.paramsend}}</code> -->
+        <div class="col-md-12">
+          <!-- <code>{{vm.paramsend}}</code> -->
+          <span class="filling-title" style="color: rgb(25, 125, 115)">{{dataprovider.question}}</span>
+          <hr/> Answer :
+          <br/>
+          <br/>
+          <ng-form name="userFieldForm" class="form-group">
+            <input type="time" class="form-control" ng-model="dataprovider.answerValue" name="field" ng-required="dataprovider.required">
+            <p class="help-block" style="color:red" ng-show="userFieldForm.field.$invalid">*This Field is Required</p>
+          </ng-form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

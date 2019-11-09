@@ -1,0 +1,32 @@
+<div class="row">
+    <!-- <code>{{vm.tempFillingScreening}}</code> -->
+    <div>
+        <div>
+            <div class="row">
+                <form name="vm.formmodel" novalidate>
+                    <!-- <div ng-init="snapIndex=0" snapscroll="" snap-height="400" snap-index="snapIndex" ng-swipe-up="snapIndex=snapIndex+1" ng-swipe-down="snapIndex=snapIndex-1"> -->
+                        <div style="margin-bottom: 0px!important" ng-repeat="group in vm.questionsMain | orderBy:'sort'">
+                            
+                            <div class="panel-body">
+                                <!-- <div ng-init="snapIndex=0" snapscroll="" snap-height="400" snap-index="snapIndex" ng-swipe-up="snapIndex=snapIndex+1" ng-swipe-down="snapIndex=snapIndex-1"> -->
+                                    <div class="col-md-12" ng-repeat="question in group.questions | filter:{ hide: 'false'} | orderBy:'sort'">
+                                        <indropdown ng-changedata="vm.prosesShowHideLogic(question)" ng-if="question.type == 'dropdown'" dataprovider="question"></indropdown>
+                                        <incheckbox ng-changedata="vm.prosesShowHideLogic(question)" ng-if="question.type == 'checkbox'" dataprovider="question"></incheckbox>
+                                        <inradiobutton ng-changedata="vm.prosesShowHideLogic(question)" ng-if="question.type == 'radiobutton'" dataprovider="question"></inradiobutton>
+                                        <indate ng-if="question.type == 'date'" dataprovider="question"></indate>
+                                        <inlinierscale ng-if="question.type == 'linierscale'" dataprovider="question"></inlinierscale>
+                                        <ingridradiobutton ng-if="question.type == 'gridradiobutton'" dataprovider="question"></ingridradiobutton>
+                                        <ingridcheckbox ng-if="question.type == 'gridcheckbox'" dataprovider="question"></ingridcheckbox>
+                                        <inshortanswer ng-if="question.type == 'shortanswer'" dataprovider="question"></inshortanswer>
+                                        <inparagraph ng-if="question.type == 'paragraph'" dataprovider="question"></inparagraph>
+                                        <intime ng-if="question.type == 'time'" dataprovider="question"></intime>
+                                    </div>
+                                <!-- </div> -->
+                            </div>
+                        </div>
+                    <!-- </div> -->
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

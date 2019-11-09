@@ -1,0 +1,48 @@
+<div class="modal-content">
+        <div class="modal-header bg-info">
+                <i class="ion-information-circled modal-icon"></i>
+                <span> Add Question Short Answer</span>
+        </div>
+        <div class="modal-body " style="color:black">
+                <form name="questionForm" novalidate>
+                        <!-- USERNAME -->
+                        <div class="form-group" ng-class="{ 'has-error' : questionForm.question.$invalid && !questionForm.question.$pristine }">
+                                <label style="color:black!important;">Question</label>
+                                <input type="text" name="question" class="form-control" ng-readonly="!formData.isEditable" ng-model="formData.question" ng-minlength="1"
+                                        ng-maxlength="500">
+                                <p ng-show="questionForm.question.$error.minlength" class="help-block">question is too short.</p>
+                                <p ng-show="questionForm.question.$error.maxlength" class="help-block">question is too long.</p>
+                        </div>
+                        <div class="form-group" ng-class="{ 'has-error' : questionForm.minLength.$invalid && !questionForm.minLength.$pristine }">
+                                <label style="color:black!important;">Type</label>
+                                <select class="form-control" ng-model="formData.formtype" title="Type Select" data-container="body" selectpicker>
+                                        <option value="text">Text</option>
+                                        <option value="number">Number</option>
+                                </select>
+                        </div>
+                        <div ng-if="formData.formtype == 'number'">
+                                <div class="form-group">
+                                        <label class="checkbox-inline custom-checkbox nowrap">
+                                                <input type="checkbox" id="isDecimal" ng-model="formData.isDecimal" value="true">
+                                                <span>Is Decimal</span>
+                                        </label>
+                                </div>
+                                <!-- <div class="form-group" ng-if="formData.isDecimal == true">
+                                        <label style="color:black!important;">Number of Decimal</label>
+                                        <input type="number" name="numOfDecimal" class="form-control" ng-model="formData.numOfDecimal" min="0" max="10">
+                                </div> -->
+                        </div>
+                        <div class="form-group" ng-class="{ 'has-error' : questionForm.minLength.$invalid && !questionForm.minLength.$pristine }">
+                                <label style="color:black!important;">Minimum</label>
+                                <input type="number" name="minLength" class="form-control" ng-model="formData.minLength" min="0" max="2147483647">
+                        </div>
+                        <div class="form-group" ng-class="{ 'has-error' : questionForm.maxLength.$invalid && !questionForm.maxLength.$pristine }">
+                                <label style="color:black!important;">Maximum</label>
+                                <input type="number" name="maxLength" class="form-control" ng-model="formData.maxLength" min="0" max="2147483647">
+                        </div>
+                        <div class="form-group">
+                                <button type="submit" ng-click="ok()" ng-hide="!formData.isEditable" class="btn btn-info" ng-disabled="questionForm.$invalid">Save</button>
+                        </div>
+                </form>
+        </div>
+</div>

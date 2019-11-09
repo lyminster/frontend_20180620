@@ -1,0 +1,15 @@
+<div class="modal-content">
+    <div class="modal-header bg-info">
+        <i class="ion-information-circled modal-icon"></i>
+        <span> Upload Report</span>
+    </div>
+    <div class="modal-body ">
+        <form novalidate>
+            <div class="form-group">
+                <!-- USERNAME -->
+                <input class="form-control" type="file" file-model="myFile" />
+                <button ng-disabled="!myFile" ng-click="uploadFile()" class="btn btn-primary">upload me</button>
+            </div>
+        </form>
+    </div>
+</div>

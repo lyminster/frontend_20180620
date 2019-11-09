@@ -1,0 +1,83 @@
+<div class="widgets">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div ba-panel ba-panel-title="List Approval Questionnaire">
+                    <div class="row">
+                            <div class="col-md-12">
+                                <form name="filterserachParam" novalidate>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group has-feedback">
+                                                <label>Quest. Type</label>
+                                                <select class="form-control selectpicker with-search" data-live-search="true" title="Please choose" selectpicker ng-change="vm.changeTypeQuestionnaire()"
+                                                    ng-model="vm.filterquestTypeApv" ng-options="o as o.label for o in vm.questTypeItems">
+                                                </select>
+                                                <span class="help-block error-block basic-block">Required</span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="Quartal_">Quartal</label>
+                                                <select class="form-control selectpicker with-search" data-live-search="true" title="Please choose" selectpicker ng-disabled="vm.filterquestTypeApv.label != 'DCSL'"
+                                                    ng-model="vm.filterquartal" ng-change="vm.searchParamApproval.quartal = vm.filterquartal.value"
+                                                    ng-options="o as o.label for o in vm.quartals">
+                                                </select>
+                                                <span class="help-block error-block basic-block"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <label for="startDistributionDate_">Periode Start</label>
+                                                    <datepicker datepicker-mobile="true" date-format="yyyy-MM-dd" date-max-limit="{{vm.searchParamApproval.end | date}}" selector="form-control">
+                                                        <div class="input-group">
+                                                            <input type="text" class="form-control" id="startDistributionDate_" name="startDistributionDate_" placeholder="Choose a date"
+                                                                ng-model="vm.searchParamApproval.start">
+                                                            <span class="input-group-addon" style="cursor: pointer">
+                                                                <i class="glyphicon glyphicon-calendar"></i>
+                                                            </span>
+                                                        </div>
+                                                    </datepicker>
+                                                    <span class="help-block error-block basic-block">Required</span>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <label for="endDistributionDate_">Periode End</label>
+                                                    <datepicker datepicker-mobile="true" date-format="yyyy-MM-dd" date-min-limit="{{vm.searchParamApproval.start | date}}" selector="form-control">
+                                                        <div class="input-group">
+                                                            <input type="text" class="form-control" id="endDistributionDate_" name="endDistributionDate_" placeholder="Choose a date"
+                                                                ng-model="vm.searchParamApproval.end">
+                                                            <span class="input-group-addon" style="cursor: pointer">
+                                                                <i class="glyphicon glyphicon-calendar"></i>
+                                                            </span>
+                                                        </div>
+                                                    </datepicker>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group has-feedback">
+                                                <label for="region">Region</label>
+                                                <div class="form-group">
+                                                    <select class="form-control selectpicker with-search" data-live-search="true" title="Please choose" selectpicker ng-change="vm.searchParamApproval.region = vm.filterRegionApv.Code"
+                                                        ng-model="vm.filterRegionApv" ng-options="o as o.Name for o in vm.regionItems">
+                                                    </select>
+                                                </div>
+                                                <span class="help-block error-block basic-block">Required</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class="form-group btn-group" role="group" aria-label="Basic example">
+                                    <button type="button" ng-click="vm.refreshGridApproval()" class="btn btn-info btn-md">Search</button>
+                                    <button type="button" ng-click="vm.clearGridApproval()" class="btn btn-warning btn-md">Clear</button>
+                                </div>
+                            </div>
+                        </div>
+                <div class="row">
+                    <div class="col-md-12">
+                            <div ui-grid="vm.gridQuestionaireApproval" ui-grid-resize-columns ui-grid-pagination class="grid"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

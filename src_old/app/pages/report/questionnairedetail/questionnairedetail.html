@@ -1,0 +1,191 @@
+<div class="widgets">
+    <div class="row" ng-if="vm.detailApprovalSelected">
+        <div class="col-md-12" ba-panel ba-panel-title="General Information">
+            <div class="row">
+                <div class="col-md-6">
+                    <form class="form-horizontal ng-scope">
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Quest. Type </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.detailApprovalSelected.general.questType.label}}
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Descripton </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;white-space: pre-wrap;">: {{vm.detailApprovalSelected.general.description}}</label>
+                            <!-- <textarea rows="10" ng-model="vm.detailApprovalSelected.general.description" readonly class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                            </textarea> -->
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Quartal </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.detailApprovalSelected.general.quartal.label}}
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Total Target </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.detailApprovalSelected.general.totalTarget}}
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Default Template </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.detailApprovalSelected.general.template.label}}
+                            </label>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <form class="form-horizontal ng-scope">
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Created Date </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.detailApprovalSelected.general.createdDate}}
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Created By </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.detailApprovalSelected.general.createdBy}}
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Status </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.detailApprovalSelected.status}}
+                            </label>
+                        </div>
+                        <h4>Distribute Date :</h4>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Start </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.detailApprovalSelected.general.startDistributionDate}}
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">End </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.detailApprovalSelected.general.endDistributionDate}}
+                            </label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12" ba-panel ba-panel-title="Participant Target">
+            <div class="row">
+                <div class="col-md-6">
+                    <form class="form-horizontal ng-scope">
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Usia </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.detailApprovalSelected.target.ageRange.label}}
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Pendidikan </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.detailApprovalSelected.target.education.label}}
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Gender </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.detailApprovalSelected.target.gender.label}}
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Occupation </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.detailApprovalSelected.target.occupation.label}}
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">SES </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.detailApprovalSelected.target.ses.label}}
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Region </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.detailApprovalSelected.target.religion.label}}
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Area </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.detailApprovalSelected.target.propinsi.Name}}
+                            </label>
+                            <label class="col-sm-4 control-label"> </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.detailApprovalSelected.target.kabupaten.Name}}
+                            </label>
+                            <label class="col-sm-4 control-label"> </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.detailApprovalSelected.target.kecamatan.Name}}
+                            </label>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <form class="form-horizontal ng-scope">
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">RO </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.detailApprovalSelected.target.ro.label}}
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Unit Type </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.detailApprovalSelected.target.unitType.label}}
+                            </label>
+                        </div>
+                        <h4>Last Purchase :</h4>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Start </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.detailApprovalSelected.target.startLastPurchase}}
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">End </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.detailApprovalSelected.target.endLastPurchase}}
+                            </label>
+                        </div>
+                        <h4>Last Service :</h4>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Start </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.detailApprovalSelected.target.startLastService}}
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">End </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.detailApprovalSelected.target.endLastService}}
+                            </label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12" ba-panel ba-panel-title="Default Question">
+            <div class="row">
+                <div class="col-md-12">
+                    <div ui-grid="vm.gridDefaultQuestion" ui-grid-resize-columns ui-grid-pagination class="grid"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12" ba-panel ba-panel-title="Custom Question">
+            <div class="row">
+                <div class="col-md-12">
+                    <div ui-grid="vm.gridCustomQuestion" ui-grid-resize-columns ui-grid-pagination class="grid"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,52 @@
+    <div class="widgets">
+      <div class="row">
+        <div class="col-md-12"
+             ba-panel
+             ba-panel-title="Upload Participant"
+             ba-panel-class="with-scroll">
+             <div class="row"> 
+                <div class="col-md-6 col-lg-6">
+                    <!-- <code>{{fileuploaded | json}}</code> -->
+                    <div class="input-group">
+                            <js-xls class="form-control" fileslected="fileuploaded" onread="read" onerror="error">Select</js-xls>
+                            <span class="input-group-btn">
+                                <button class="btn btn-danger" ng-click="clearUploadParticipant()" type="button"> <i class="ion-close"></i> Clear</button>
+                            </span>
+                    </div>
+                    <a href="" ng-click="downloadTemplateParticipant()">Template Participant</a>
+                </div>
+             </div>
+        </div>
+        <div class="col-md-12">
+            <div ba-panel ba-panel-title="Preview Participant {{ propslectedFile == null ? '' : propslectedFile}}" ba-panel-class="with-scroll">
+                <div class="row">
+                        <div class="form-group ng-scope col-lg-9">
+                                <label class="control-label" for="inputGroupSuccess1">Select Sheets</label>
+                                <div class="input-group ">
+                                    <ui-select ng-model="sheetselected"
+                                        class="btn-group bootstrap-select form-control"
+                                        ng-disabled="false"
+                                        append-to-body="true"
+                                        search-enabled="false"
+                                        on-select="onSelectedSheet(sheetselected)">
+                                    <ui-select-match allow-clear="true" placeholder="Select Sheet">
+                                        <span>{{$select.selected}}</span>
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="standardItem in sheetslist">
+                                        <span ng-bind-html="standardItem"></span>
+                                    </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                        </div>
+                        <section class="col-md-6 col-lg-3" ng-if="gridOptions1.data.length > 0">
+                                <button progress-button="progressFunction()" pb-style="rotate-angle-bottom" class="btn btn-info pull-right">Upload</button>
+                        </section>
+                </div>
+                <div include-with-scope="app/pages/manageparticipant/upload/table-upload.html"></div>
+            </div>
+          </div>
+      </div>
+    </div>
+
+
+ 

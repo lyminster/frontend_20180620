@@ -1,0 +1,112 @@
+<div class="widgets">
+    <div class="row" ng-if="vm.user">
+        <!-- <code>{{detailApprovalSelected}}</code> -->
+        <div class="col-md-12" ba-panel ba-panel-title="General Information">
+            <div class="row">
+                <div class="col-md-12">
+                    <form name="form" ng-submit="vm.save()" class="form-horizontal ng-scope">
+                        <div class="form-group has-feedback" ng-class="{ 'has-error' : form.username.$invalid && !form.username.$pristine }">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Username" ng-model="vm.user.username"
+                                required>
+                            <span class="help-block error-block basic-block">Required</span>
+                        </div>
+                        <div class="form-group has-feedback" ng-class="{'has-error': form.username.$invalid && (form.username.$dirty || form.$submitted)}">
+                            <label for="username">Group User</label>
+                            <ui-select multiple ng-model="vm.user.usergroup" class="btn-group form-control" ng-disabled="false" append-to-body="true"
+                                search-enabled="true">
+                                <ui-select-match placeholder="Please choose">
+                                    {{$item.label}}
+                                </ui-select-match>
+                                <ui-select-choices repeat="o in vm.groupUserItems | filter: $select.search">
+                                    <span ng-bind-html="o.label"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                            <span class="help-block error-block basic-block">Required</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"></label>
+                            <div class="col-sm-10">
+                                <ul class="btn-list clearfix ng-scope">
+                                    <li>
+                                        <button type="submit" ng-disabled="form.$invalid" class="btn btn-success btn-with-icon">
+                                            <i class="ion-android-checkmark-circle"></i>Save</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" ng-click="vm.cancel()" class="btn btn-warning btn-with-icon">
+                                            <i class="ion-android-warning"></i>Cancel</button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- <div class="col-md-6">
+                    <form class="form-horizontal ng-scope">
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">HSO ID </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.user.hsoID}}
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Honda ID</label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.user.hondaID}}
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">NPK </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.user.npk}}
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Nama </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.user.name}}
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label"></label>
+                            <div class="col-sm-8">
+                                <ul class="btn-list clearfix ng-scope">
+                                    <li>
+                                        <button type="button" ng-click="vm.save()" class="btn btn-success btn-with-icon">
+                                            <i class="ion-android-checkmark-circle"></i>Save</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" ng-click="vm.cancel()" class="btn btn-warning btn-with-icon">
+                                            <i class="ion-android-warning"></i>Cancel</button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <form class="form-horizontal ng-scope">
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Region </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.user.regionName}}
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Dealer </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.user.dealerName}}
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Position </label>
+                            <label class="col-sm-8 control-label" style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                                : {{vm.user.positionName}}
+                            </label>
+                        </div>
+                    </form>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>

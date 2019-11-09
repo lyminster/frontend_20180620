@@ -1,0 +1,33 @@
+<div class="col-md-12">
+  <div class="panel filling-panel">
+    <div class="panel-body filling-body">
+      <div class="row">
+        <!-- <code>{{vm.paramsend}}</code> -->
+        <div class="col-md-12">
+          <!-- <code>{{vm.paramsend}}</code> -->
+          <span class="filling-title" style="color: rgb(25, 125, 115)">{{dataprovider.question}}</span>
+          <hr/> Answer :
+          <br/>
+          <br/>
+          <ng-form name="userFieldForm" class="form-group">
+            <!--   -->
+            <div ng-if="dataprovider.formtype != 'number'">
+              <input type="text" ng-minlength="{{dataprovider.minLength}}" ng-maxlength="{{dataprovider.maxLength}}" class="form-control"
+                ng-model="dataprovider.answerValue" name="field" ng-required="dataprovider.required">
+                <p class="help-block" style="color:red" ng-show="userFieldForm.field.$error.maxlength">*Maximum Character : {{dataprovider.maxLength}}</p>
+                <p class="help-block" style="color:red" ng-show="userFieldForm.field.$error.minlength">*Minimum Character : {{dataprovider.minLength}}</p>
+              <p class="help-block" style="color:red" ng-show="userFieldForm.field.$invalid">*This Field is Required</p>
+            </div>
+            <div ng-if="dataprovider.formtype == 'number'">
+              <input type="number" ng-min="dataprovider.minLength" ng-max="dataprovider.maxLength" step="{{ dataprovider.isDecimal ? 0.01 : 1 }}"
+                class="form-control" ng-model="dataprovider.answerValue" name="field" ng-required="dataprovider.required">
+              <p class="help-block" style="color:red" ng-show="userFieldForm.field.$error.max">*Maximum value : {{dataprovider.maxLength}}</p>
+              <p class="help-block" style="color:red" ng-show="userFieldForm.field.$error.min">*Minimum Value : {{dataprovider.minLength}}</p>
+              <p class="help-block" style="color:red" ng-show="userFieldForm.field.$invalid">*This Field is Required</p>
+            </div>
+          </ng-form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
