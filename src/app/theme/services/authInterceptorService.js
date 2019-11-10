@@ -54,7 +54,8 @@
                     }
                     authService.logOut();
                 } else if (rejection.status === 400) {
-
+                    console.log(rejection)
+                    message.error(rejection.message, "400");
                 }
                 else {
                     // var errorCode = 'Error : ' + rejection.status;

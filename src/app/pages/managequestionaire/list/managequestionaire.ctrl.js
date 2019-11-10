@@ -53,7 +53,7 @@
             });
         };
         vm.actionPreview = function (row) {
-            console.log("preview")
+            // console.log("preview")
             $state.go('fillingquestionaire.filling', {
                 questionaire: row,
                 idparticipant: 58, notpreview: false
@@ -126,6 +126,8 @@
                 }
                 vm.filterquestType = vm.questTypeItems[0];
                 vm.searchParam.questType = vm.filterquestType.value;
+
+                vm.getRegionType();
             });
         };
         vm.getQuestionnaireType();
@@ -136,7 +138,7 @@
                 vm.searchParam.region = vm.filterRegion.Code;
             });
         };
-        vm.getRegionType();
+        
         vm.gridQuestionaireList.data = [];
         vm.actionDetail = function (row) {
             $state.go('report.questionnairedetail', { id: row.scenarioID });
@@ -167,7 +169,7 @@
         vm.refreshGridList = function () {
             managequestionaireService.getQuestionnaire(vm.searchParam).then(function (result) {
                 //managequestionaireService.getAllQuestionnaire(vm.searchParam).then(function (result) {
-                console.log(result);
+                // console.log(result);
                 vm.gridQuestionaireList.data = result.data;
             });
         }

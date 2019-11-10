@@ -293,6 +293,33 @@
         function () { }
       );
     };
+
+    vm.editQuestionnaire = function (paramdata, qtype, scriptCodeH, list) {
+
+      if (list == null) {
+          list = [];
+      }
+      var formdata = angular.copy(paramdata);
+
+      formdata.scriptCode = scriptCodeH + '.Q' + (list.length + 1);
+      formdata.sort = (list.length + 1);
+      var modalInstance = $uibModal.open({
+          animation: true,
+          templateUrl: 'app/pages/managequestionaire/form/formQ-' + qtype.toLowerCase() + '.html',
+          size: 'md',
+          controller: 'formQ' + qtype.toLowerCase() + 'Ctrl',
+          resolve: {
+              content: function () {
+                  return { 'data': formdata, "isolright": true };
+              }
+          }
+      });
+      modalInstance.result.then(function (result) {
+          list[list.indexOf(paramdata)] = result;
+          vm.resertSortscriptCode(scriptCodeH, list);
+      }, function () {
+      });
+  };
     vm.delete = function (list, formdata, scriptCodeH, type) {
       var r = confirm("Are you sure, want to delete this data.?");
       if (r == true) {
@@ -356,6 +383,8 @@
         target: vm.target,
         questionList: vm.questionList
       };
+      //dari rommy
+      console.log(vm.questionList)
       managequestionaireService
         .getsavequestionnaire(param)
         .then(function (result) {
@@ -620,9 +649,14 @@
     };
 
     vm.RemoveTo = function (data) {
+      console.log(data)
+
       var myArray = vm.general.dealer.filter(function (el) {
-        //console.log(!data.includes(el))
-        return data.includes(el);
+        console.log(el)
+        console.log(data.some(function(d){
+          d.label == el.label && d.label == el.label
+        }))
+        return !data.includes( el );
       });
       vm.general.dealer = myArray;
     };

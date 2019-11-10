@@ -227,9 +227,9 @@
         <button ng-click="vm.AddTo(vm.general.dealerBlm)" class="btn btn-success btn-with-icon" type="button">
           Add
         </button>
-        <button ng-click="vm.RemoveTo(vm.general.dealerBlm)" class="btn btn-success btn-with-icon" type="button">
+        <!-- <button ng-click="vm.RemoveTo(vm.general.dealerBlm)" class="btn btn-success btn-with-icon" type="button">
           Remove
-        </button>
+        </button> -->
         <!-- <input type="Text" class="form-control" id="dealer_" name="dealer_" placeholder="Dealer" ng-model="vm.general.dealer" ng-readonly="true"> -->
         <!-- <span class="help-block error-block basic-block"></span> -->
       </div>
@@ -238,7 +238,7 @@
         <button ng-click="vm.ClearAll()" class="btn btn-success btn-with-icon" type="button">
           Clear All
         </button>
-        <ui-select multiple ng-disabled="vm.relatedDealerItems.length == 1" ng-model="vm.general.dealer"
+        <ui-select  multiple ng-disabled="vm.relatedDealerItems.length == 1" ng-model="vm.general.dealer"
           ng-disabled="false" search-enabled="true" append-to-body="true" class="form-control ">
           <ui-select-match placeholder="Related Dealer">
             {{ $item.label }}

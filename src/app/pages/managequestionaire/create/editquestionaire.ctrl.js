@@ -36,69 +36,139 @@
 
         if (vm.tempEditIdQuis !== null) {
             managequestionaireService.getDetailQuestionnaire(vm.tempEditIdQuis).then(function (result) {
+                console.log(result)
                 var tempResult = result;
                 vm.tempEditIdQuis = result.data.id;
-                var promises = [];
-                promises.push(managequestionaireService.getQuestionnaireType());
-                promises.push(managequestionaireService.getTemplate());
-                promises.push(managequestionaireService.getAgeRange());
-                promises.push(managequestionaireService.getEducation());
-                promises.push(managequestionaireService.getGender());
-                promises.push(managequestionaireService.getOccupation());
-                promises.push(managequestionaireService.getReligion());
-                promises.push(managequestionaireService.getSES());
-                promises.push(managequestionaireService.getAreapropinsi());
-                promises.push(managequestionaireService.getRo());
-                promises.push(managequestionaireService.getUnittype());
-                promises.push(managequestionaireService.postRelateddealer());
-                if (tempResult.data.target.propinsi !== null) {
-                    promises.push(managequestionaireService.getAreakabupaten(tempResult.data.target.propinsi.ID));
-                    if (tempResult.data.target.kabupaten !== null) {
-                        promises.push(managequestionaireService.getAreakecamatan(tempResult.data.target.kabupaten.ID));
-                    }
+                vm.note = tempResult.data.note;
+                vm.general = tempResult.data.general;
+                vm.target = tempResult.data.target;
+                vm.general.status = tempResult.data.statusName;
+                if (vm.siDuplicate) {
+                    vm.general.status = 'Draft';
+                }
+                vm.questionList = tempResult.data.questionList;
+                if (vm.siDuplicate) {
+                    vm.tempEditIdQuis = 0;
+                    vm.general.questName = '';
+                    vm.general.startDistributionDate = '';
+                    vm.general.endDistributionDate = '';
                 }
 
-                $q.all(promises).then(function (results) {
-                    vm.questTypeItems = results[0].data;
-                    vm.templateItems = results[1].data;
-                    vm.templateItems = vm.templateItems.filter(function (element) {
-                        return element.value != '';
-                    });
-                    vm.ageRangeItems = results[2].data;
-                    vm.educationItems = results[3].data;
-                    vm.genderItems = results[4].data;
-                    vm.occupationItems = results[5].data;
-                    vm.religionItems = results[6].data;
-                    vm.sesItems = results[7].data;
-                    vm.propinsiItems = results[8].data;
-                    vm.getRoItems = results[9].data;
-                    vm.unitTypeItems = results[10].data;
-                    vm.relatedDealerItems = results[11].data;
-                    if (results.length > 12) {
-                        vm.kabupatenItems = results[12].data;
-                        if (results.length > 13) {
-                            vm.kecamatanItems = results[13].data;
-                        }
-                    }
-                    vm.note = tempResult.data.note;
-                    vm.general = tempResult.data.general;
-                    vm.target = tempResult.data.target;
-                    vm.general.status = tempResult.data.statusName;
-                    if (vm.siDuplicate) {
-                        vm.general.status = 'Draft';
-                    }
-                    vm.questionList = tempResult.data.questionList;
-                    if (vm.siDuplicate) {
-                        vm.tempEditIdQuis = 0;
-                        vm.general.questName = '';
-                        vm.general.startDistributionDate = '';
-                        vm.general.endDistributionDate = '';
-                    }
+                vm.general.region = authService.authentication.mainDealerCode + ' - ' + authService.authentication.mainDealerName;
+                //vm.general.dealer = authService.authentication.dealerCode +' - ' + authService.authentication.dealerName;
+                vm.general.createdBy = authService.authentication.fullName;
+                // var promises = [];
+                // promises.push(managequestionaireService.getQuestionnaireType());
+                // promises.push(managequestionaireService.getTemplate());
+                // promises.push(managequestionaireService.getAgeRange());
+                // promises.push(managequestionaireService.getEducation());
+                // promises.push(managequestionaireService.getGender());
+                // promises.push(managequestionaireService.getOccupation());
+                // promises.push(managequestionaireService.getReligion());
+                // promises.push(managequestionaireService.getSES());
+                // promises.push(managequestionaireService.getAreapropinsi());
+                // promises.push(managequestionaireService.getRo());
+                // promises.push(managequestionaireService.getUnittype());
+                // promises.push(managequestionaireService.postRelateddealer());
+                // if (tempResult.data.target.propinsi !== null) {
+                //     promises.push(managequestionaireService.getAreakabupaten(tempResult.data.target.propinsi.ID));
+                //     if (tempResult.data.target.kabupaten !== null) {
+                //         promises.push(managequestionaireService.getAreakecamatan(tempResult.data.target.kabupaten.ID));
+                //     }
+                // }
+                managequestionaireService.getQuestionnaireType().then(function(result){
+                    vm.questTypeItems = result.data;
+                    managequestionaireService.getTemplate().then(function(result){
+                        vm.templateItems = result.data;
+                        vm.templateItems = vm.templateItems.filter(function (element) {
+                            return element.value != '';
+                        });
+                        managequestionaireService.getAgeRange().then(function(result){
+                            
+                            vm.ageRangeItems = result.data;
+                            managequestionaireService.getEducation().then(function(result){
+                                vm.educationItems = result.data;
+                                managequestionaireService.getGender().then(function(result){
+                                    vm.genderItems = result.data;
+                                    managequestionaireService.getOccupation().then(function(result){
+                                        vm.occupationItems = result.data;
+                                        managequestionaireService.getReligion().then(function(result){
+                                            vm.religionItems = result.data;
+                                            managequestionaireService.getSES().then(function(reuslt){
+                                                vm.sesItems = result.data;
+                                                managequestionaireService.getAreapropinsi().then(function(reuslt){
+                                                    vm.propinsiItems = result.data;
+                                                    managequestionaireService.getRo().then(function(result){
+                                                        vm.getRoItems = result.data;
+                                                        managequestionaireService.getUnittype().then(function(result){
+                                                            vm.unitTypeItems = result.data;
+                                                            managequestionaireService.postRelateddealer().then(function(result){
+                                                                vm.relatedDealerItems = result.data;
+                                                                if (tempResult.data.target.propinsi !== null) {
+                                                                    managequestionaireService.getAreakabupaten(tempResult.data.target.propinsi.ID).then(function(result){
+                                                                        vm.kabupatenItems = result.data;
+                                                                        if (tempResult.data.target.kabupaten !== null) {
+                                                                            managequestionaireService.getAreakecamatan(tempResult.data.target.kabupaten.ID).then(function(result){
+                                                                                vm.kecamatanItems = result.data;
+                                                                                
+                                                                            })
+                                                                        }
+                                                                    })
+                                                                    
+                                                                }
+                                                            })
+                                                        })
+                                                    })
+                                                })
+                                            })
+                                        })
+                                    })
+                                })
+                            })
+                        })
+                    })
+                })
+                // $q.all(promises).then(function (results) {
+                //     vm.questTypeItems = results[0].data;
+                //     vm.templateItems = results[1].data;
+                //     vm.templateItems = vm.templateItems.filter(function (element) {
+                //         return element.value != '';
+                //     });
+                //     vm.ageRangeItems = results[2].data;
+                //     vm.educationItems = results[3].data;
+                //     vm.genderItems = results[4].data;
+                //     vm.occupationItems = results[5].data;
+                //     vm.religionItems = results[6].data;
+                //     vm.sesItems = results[7].data;
+                //     vm.propinsiItems = results[8].data;
+                //     vm.getRoItems = results[9].data;
+                //     vm.unitTypeItems = results[10].data;
+                //     vm.relatedDealerItems = results[11].data;
+                //     if (results.length > 12) {
+                //         vm.kabupatenItems = results[12].data;
+                //         if (results.length > 13) {
+                //             vm.kecamatanItems = results[13].data;
+                //         }
+                //     }
+                //     vm.note = tempResult.data.note;
+                //     vm.general = tempResult.data.general;
+                //     vm.target = tempResult.data.target;
+                //     vm.general.status = tempResult.data.statusName;
+                //     if (vm.siDuplicate) {
+                //         vm.general.status = 'Draft';
+                //     }
+                //     vm.questionList = tempResult.data.questionList;
+                //     if (vm.siDuplicate) {
+                //         vm.tempEditIdQuis = 0;
+                //         vm.general.questName = '';
+                //         vm.general.startDistributionDate = '';
+                //         vm.general.endDistributionDate = '';
+                //     }
 
-                    vm.general.region = authService.authentication.mainDealerCode + ' - ' + authService.authentication.mainDealerName;
-                    //vm.general.dealer = authService.authentication.dealerCode +' - ' + authService.authentication.dealerName;
-                    vm.general.createdBy = authService.authentication.fullName;
-                });
+                //     vm.general.region = authService.authentication.mainDealerCode + ' - ' + authService.authentication.mainDealerName;
+                //     //vm.general.dealer = authService.authentication.dealerCode +' - ' + authService.authentication.dealerName;
+                //     vm.general.createdBy = authService.authentication.fullName;
+                // });
             });
         }
         /** Modal Config */

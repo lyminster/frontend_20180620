@@ -66,7 +66,7 @@
                 }
                 vm.filterquestTypeApv = vm.questTypeItems[0];
                 vm.searchParamApproval.questType = vm.filterquestTypeApv.value;
-
+                vm.getRegionType();
             });
         };
         vm.getQuestionnaireType();
@@ -114,7 +114,7 @@
             }
         }
         vm.gridQuestionaireApproval.data = [];
-        vm.getRegionType();
+        
 
         vm.actionEdit = function (row) {
             if (row.questionnaireType == 'OLRIGHT') {

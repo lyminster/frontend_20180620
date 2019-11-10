@@ -38,9 +38,19 @@
                 return results;
             });
         };
+        fillingquestionaireServiceFactory.getMainQuestionPreview = function (param) {
+            return $http.post(serviceBase + 'api/questionnaire/post/startfillingpreview', param).then(function (results) {
+                return results;
+            });
+        };
 
         fillingquestionaireServiceFactory.getScreening = function (param, idParticipant) {
             return $http.get(serviceBase + 'api/questionnaire/get/startscreening?ID=' + param+'&idParticipant=' + idParticipant).then(function (results) {
+                return results;
+            });
+        };
+        fillingquestionaireServiceFactory.getScreeningPreview = function (param) {
+            return $http.get(serviceBase + 'api/questionnaire/get/startscreeningpreview?ID=' + param).then(function (results) {
                 return results;
             });
         };
@@ -59,6 +69,11 @@
 
         fillingquestionaireServiceFactory.savefilling = function (param) {
             return $http.put(serviceBase + 'api/questionnaire/put/savefilling', param).then(function (results) {
+                return results;
+            });
+        };
+        fillingquestionaireServiceFactory.savefillingNext = function (param) {
+            return $http.put(serviceBase + 'api/questionnaire/put/savefillingNext', param).then(function (results) {
                 return results;
             });
         };

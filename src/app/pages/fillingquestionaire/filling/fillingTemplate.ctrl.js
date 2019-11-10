@@ -27,7 +27,6 @@
         vm.dataMentah = {};
         vm.modelSurvey = "fieldSurvey";
         vm.questionnaireId = "";
-        console.log(vm.questionaire)
         if (vm.questionaire.questionnaireId != undefined) {
             console.log(true)
             vm.questionnaireId = vm.questionaire.questionnaireId
@@ -36,24 +35,45 @@
             console.log(false)
             vm.questionnaireId = vm.questionaire.scenarioID
         }
-        fillingquestionaireService.getScreening(vm.questionnaireId, vm.idparticipant).then(function (result) {
+        if(!notpreview){
+            fillingquestionaireService.getScreeningPreview(vm.questionnaireId).then(function (result) {
 
-            vm.gender = result.data.gender;
-            vm.nama = result.data.name;
-            vm.telepon = result.data.phone;
-            vm.email = result.data.email;
-            vm.city = result.data.city;
-            vm.dataMentah = result.data.screeningQuestionList;
-            if (vm.dataMentah.length <= 0) {
-                toastr.success('Survey has been Completed. \r thank\'s for your Participation', 'Success');
-                $state.go('fillingquestionaire.selectparticipant', { questionaire: vm.questionaire, type: 'DCSL' });
-                return;
-            }
-            for (var index = 0; index < vm.dataMentah.length; index++) {
-                vm.dataMentah[index].fill = true;
-            }
-            vm.initialPrefilling();
-        });
+                vm.gender = result.data.gender;
+                vm.nama = result.data.name;
+                vm.telepon = result.data.phone;
+                vm.email = result.data.email;
+                vm.city = result.data.city;
+                vm.dataMentah = result.data.screeningQuestionList;
+                if (vm.dataMentah.length <= 0) {
+                    toastr.success('Survey has been Completed. \r thank\'s for your Participation', 'Success');
+                    $state.go('fillingquestionaire.selectparticipant', { questionaire: vm.questionaire, type: 'DCSL' });
+                    return;
+                }
+                for (var index = 0; index < vm.dataMentah.length; index++) {
+                    vm.dataMentah[index].fill = true;
+                }
+                vm.initialPrefilling();
+            });
+        }else{
+            fillingquestionaireService.getScreening(vm.questionnaireId, vm.idparticipant).then(function (result) {
+
+                vm.gender = result.data.gender;
+                vm.nama = result.data.name;
+                vm.telepon = result.data.phone;
+                vm.email = result.data.email;
+                vm.city = result.data.city;
+                vm.dataMentah = result.data.screeningQuestionList;
+                if (vm.dataMentah.length <= 0) {
+                    toastr.success('Survey has been Completed. \r thank\'s for your Participation', 'Success');
+                    $state.go('fillingquestionaire.selectparticipant', { questionaire: vm.questionaire, type: 'DCSL' });
+                    return;
+                }
+                for (var index = 0; index < vm.dataMentah.length; index++) {
+                    vm.dataMentah[index].fill = true;
+                }
+                vm.initialPrefilling();
+            });
+        }
         vm.submitPreFilling = function () {
             var aa = vm.dataMentah.filter(function (el) {
                 return el.fill == true;
@@ -84,28 +104,54 @@
                 "participantID": vm.idparticipant,
                 "screeningQuestionList": vm.tempFillingScreening
             }
-            fillingquestionaireService.getMainQuestion(param).then(function (result) {
-                if (result.statusText == "OK") {
-                    vm.prosessave = false;
-                    toastr.success(result.data.message, 'Success');
-                    if (result.data.length <= 0) {
-                        toastr.success('thank\'s for your Participation', 'Success');
-                        $state.go('fillingquestionaire.selectparticipant', { questionaire: vm.questionaire, type: 'DCSL' });
-                        return;
+            if(!notpreview){
+                fillingquestionaireService.getMainQuestionPreview(param).then(function (result) {
+                    if (result.statusText == "OK") {
+                        vm.prosessave = false;
+                        toastr.success(result.data.message, 'Success');
+                        if (result.data.length <= 0) {
+                            toastr.success('thank\'s for your Participation', 'Success');
+                            $state.go('fillingquestionaire.selectparticipant', { questionaire: vm.questionaire, type: 'DCSL' });
+                            return;
+                        }
+                        if (result.data[0].questions.length <= 0) {
+                            toastr.success('thank\'s for your Participation', 'Success');
+                            $state.go('fillingquestionaire.selectparticipant', { questionaire: vm.questionaire, type: 'DCSL' });
+                            return;
+                        }
+                        vm.tempFillingMain = result.data;
+                        vm.intialMain();
+                    } else {
+                        vm.prosessave = false;
+                        toastr.error(result.data.message, 'Error');
                     }
-                    if (result.data[0].questions.length <= 0) {
-                        toastr.success('thank\'s for your Participation', 'Success');
-                        $state.go('fillingquestionaire.selectparticipant', { questionaire: vm.questionaire, type: 'DCSL' });
-                        return;
+    
+                })
+            }
+            else{
+                fillingquestionaireService.getMainQuestion(param).then(function (result) {
+                    if (result.statusText == "OK") {
+                        vm.prosessave = false;
+                        toastr.success(result.data.message, 'Success');
+                        if (result.data.length <= 0) {
+                            toastr.success('thank\'s for your Participation', 'Success');
+                            $state.go('fillingquestionaire.selectparticipant', { questionaire: vm.questionaire, type: 'DCSL' });
+                            return;
+                        }
+                        if (result.data[0].questions.length <= 0) {
+                            toastr.success('thank\'s for your Participation', 'Success');
+                            $state.go('fillingquestionaire.selectparticipant', { questionaire: vm.questionaire, type: 'DCSL' });
+                            return;
+                        }
+                        vm.tempFillingMain = result.data;
+                        vm.intialMain();
+                    } else {
+                        vm.prosessave = false;
+                        toastr.error(result.data.message, 'Error');
                     }
-                    vm.tempFillingMain = result.data;
-                    vm.intialMain();
-                } else {
-                    vm.prosessave = false;
-                    toastr.error(result.data.message, 'Error');
-                }
-
-            })
+    
+                })
+            }
         }
         vm.finishAll = function () {
             var param = {
@@ -171,6 +217,26 @@
             }
         };
         vm.submitMain = function (question) {
+            var param = {
+                "questionnaireId": vm.questionnaireId,
+                "idparticipant": vm.idparticipant,
+                "modelSurvey": vm.modelSurvey,
+                "progresGroup": "",
+                "status": "1", //0 :On Progress, //1:Finish
+                "ScreeningAnswer": vm.tempFillingMain
+            }
+            fillingquestionaireService.savefillingNext(param).then(function (result) {
+                if (result.statusText == "OK") {
+                    toastr.success(result.data.message, 'Success');
+                    toastr.success('Answer Screening Saved, thank\'s for your Participation', 'Success');
+                    $state.go('fillingquestionaire.selectparticipant', { questionaire: vm.questionaire, type: 'DCSL' });
+                } else {
+                    vm.prosessave = false;
+                    toastr.error(result.data.message, 'Error');
+                }
+            });
+
+
             vm.title = 'Main Question';
             if (vm.counterGMain < vm.questionsMain.questions.length - 1) {
                 vm.counterGMain++;
