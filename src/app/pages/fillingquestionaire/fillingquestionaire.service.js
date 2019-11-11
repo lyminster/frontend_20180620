@@ -68,18 +68,18 @@
         };
 
         fillingquestionaireServiceFactory.savefilling = function (param) {
-            return $http.put(serviceBase + 'api/questionnaire/put/savefilling', param).then(function (results) {
+            return $http.post(serviceBase + 'api/questionnaire/post/savefilling', param).then(function (results) {
                 return results;
             });
         };
         fillingquestionaireServiceFactory.savefillingNext = function (param) {
-            return $http.put(serviceBase + 'api/questionnaire/put/savefillingNext', param).then(function (results) {
+            return $http.post(serviceBase + 'api/questionnaire/post/savefillingNext', param).then(function (results) {
                 return results;
             });
         };
         
         fillingquestionaireServiceFactory.savefillingolright = function (param) {
-            return $http.put(serviceBase + 'api/olright/put/savefilling', param).then(function (results) {
+            return $http.post(serviceBase + 'api/olright/post/savefilling', param).then(function (results) {
                 return results;
             });
         };

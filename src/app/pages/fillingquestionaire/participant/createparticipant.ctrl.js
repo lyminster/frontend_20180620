@@ -76,18 +76,40 @@
       " Participant (" +
       vm.questionaire.questionnaireName +
       ")";
-    var promises = [];
-    promises.push(managequestionaireService.getOccupation());
-    promises.push(managequestionaireService.getSES());
-    promises.push(managequestionaireService.getAreakabupatenAll());
-    $q.all(promises).then(function (results) {
-      vm.occupationItems = results[0].data;
-      vm.sesItems = results[1].data;
-      vm.kabupatenItems = results[2].data;
-      vm.newParticipant.kabupaten = vm.kabupatenItems[0];
-      //vm.newParticipant.ses = vm.sesItems[0];
-      //vm.newParticipant.occupation = vm.occupationItems[0];
-    });
+    // var promises = [];
+    // promises.push(managequestionaireService.getOccupation());
+    // promises.push(managequestionaireService.getSES());
+    // promises.push(managequestionaireService.getAreakabupatenAll());
+    // $q.all(promises).then(function (results) {
+    //   vm.occupationItems = results[0].data;
+    //   vm.sesItems = results[1].data;
+    //   vm.kabupatenItems = results[2].data;
+    //   vm.newParticipant.kabupaten = vm.kabupatenItems[0];
+    //   //vm.newParticipant.ses = vm.sesItems[0];
+    //   //vm.newParticipant.occupation = vm.occupationItems[0];
+    // });
+
+    vm.getdatasemua = function(){
+      managequestionaireService.getOccupation().then(function(results){
+        vm.occupationItems = results.data;
+        vm.newParticipant.occupation = vm.occupationItems[0];
+        managequestionaireService.getSES().then(function(results){
+          vm.sesItems = results.data;
+          vm.newParticipant.ses = vm.sesItems[0];
+          managequestionaireService.getEducation().then(function(results){
+            vm.educationItems = results.data;
+            vm.newParticipant.education = vm.educationItems[0];
+            managequestionaireService.getAreakabupatenAll().then(function(results){
+              
+              vm.kabupatenItems = results.data;
+              vm.newParticipant.kabupaten = vm.kabupatenItems[0];
+            })
+          })
+        })
+      });
+    }
+    vm.getdatasemua();
+
     vm.saveParticipant = function () {
       if (!vm.formmodel.$invalid) {
         if (vm.isdcsl) {
@@ -98,7 +120,8 @@
                 toastr.success("Data berhasil di simpan", "Success");
                 $state.go("fillingquestionaire.filling", {
                   questionaire: vm.questionaire,
-                  idparticipant: result.data
+                  idparticipant: result.data,
+                  notpreview: true
                 });
               } else {
                 toastr.error(result.message, "Error");

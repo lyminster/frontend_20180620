@@ -49,7 +49,7 @@
                         <div class="form-group">
                             <label for="Occupation_">Occupation</label>
                             <select class="form-control selectpicker with-search" data-live-search="true" title="Please choose" selectpicker ng-model="vm.newParticipant.occupation"
-                                ng-options="o as o.label for o in vm.mastertarget.occupation track by o.value">
+                                ng-options="o as o.label for o in vm.occupationItems track by o.value">
                             </select>
                             <span class="help-block error-block basic-block">Required</span>
                         </div>
@@ -71,14 +71,14 @@
                         <div class="form-group">
                             <label for="SES">SES</label>
                             <select class="form-control selectpicker with-search" data-live-search="true" title="Please choose" selectpicker ng-model="vm.newParticipant.ses"
-                                ng-options="o as o.label for o in vm.mastertarget.ses track by o.value">
+                                ng-options="o as o.label for o in vm.sesItems track by o.value">
                             </select>
                             <span class="help-block error-block basic-block">Required</span>
                         </div>
                         <div class="form-group">
                             <label for="Education">Education</label>
                             <select class="form-control selectpicker with-search" data-live-search="true" title="Please choose" selectpicker ng-model="vm.newParticipant.education"
-                                ng-options="o as o.label for o in vm.mastertarget.education track by o.value">
+                                ng-options="o as o.label for o in vm.educationItems track by o.value">
                             </select>
                             <span class="help-block error-block basic-block">Required</span>
                         </div>

@@ -384,7 +384,6 @@
         questionList: vm.questionList
       };
       //dari rommy
-      console.log(vm.questionList)
       managequestionaireService
         .getsavequestionnaire(param)
         .then(function (result) {

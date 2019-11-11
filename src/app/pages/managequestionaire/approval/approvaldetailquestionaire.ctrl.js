@@ -88,7 +88,7 @@
                 }
             });
             modalInstance.result.then(function (result) {
-                managequestionaireService.putProcessapproval({ id: vm.detailApprovalSelected.id, status: status, note: result }).then(function (result) {
+                managequestionaireService.postProcessapproval({ id: vm.detailApprovalSelected.id, status: status, note: result }).then(function (result) {
                     if (result.data.result == "OK") {
                         toastr.success(result.data.message, 'Success');
                         $state.go('managequestionaire.approval');

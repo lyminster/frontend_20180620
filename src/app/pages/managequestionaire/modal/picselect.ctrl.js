@@ -11,7 +11,14 @@
             managequestionaireService.getpicQuestioner($scope.questionaire.scenarioID).then(function (result) {
                 $scope.listSelect = result.data;
                 $scope.selected = $scope.listSelect[0];
+                managequestionaireService.getreasignparticipantbyid($scope.questionaire.scenarioID).then(function (result) {
+                    //fillingquestionaireService.getAvailParticipant($scope.questionaire.scenarioID).then(function (result) {
+                        $scope.gridAvailableParticipant.data = result.data;
+                        
+                    });
             });
+            
+                
             $scope.rowSelected = [];
             $scope.gridAvailableParticipant = {
                 paginationPageSizes: [25, 50, 75],
@@ -49,10 +56,7 @@
             $scope.gridAvailableParticipant.onRegisterApi = function (gridApi) {
                 $scope.gridApi = gridApi;
             };
-            managequestionaireService.getreasignparticipantbyid($scope.questionaire.scenarioID).then(function (result) {
-            //fillingquestionaireService.getAvailParticipant($scope.questionaire.scenarioID).then(function (result) {
-                $scope.gridAvailableParticipant.data = result.data;
-            });
+            
             $scope.ok = function () {
                 if ($scope.selected.value == "" || $scope.selected == null) {
                     toastr.error('Please Select surveyor first.', 'Validation');

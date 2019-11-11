@@ -9,8 +9,7 @@
                         <!-- <code>{{vm.paramsend}}</code> -->
                         <inlinierscale ng-if="question.type == 'LinierScale'" dataprovider="question"></inlinierscale>
                         <inshortanswer ng-if="question.type == 'ShortAnswer'" dataprovider="question"></inshortanswer>
-                        <incheckbox ng-changedata="vm.prosesShowHideLogic(question)" ng-if="question.type == 'checkbox'"
-                            dataprovider="question"></incheckbox>
+                        <incheckbox ng-if="question.type == 'Checkboxes'" dataprovider="question"></incheckbox>
                     </div>
                 </form>
                 <div class="col-md-12">
@@ -19,7 +18,7 @@
                             ng-click="vm.submitMain(vm.questionsMain)" class="btn btn-primary">Next</button>
                     </div>
 
-                    <div ng-if="vm.notpreview" class="btn-group pull-right" role="group" aria-label="Basic example">
+                    <div  class="btn-group pull-right" role="group" aria-label="Basic example">
                         <button type="button" ng-click="vm.finishAll()" class="btn btn-warning">Finish</button>
                     </div>
                 </div>

@@ -1,10 +1,11 @@
 <div class="widgets">
+    <div ng-if="!vm.notpreview"><h1>Preview</h1></div>
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-2">
         </div>
-        <div class="col-md-6" ba-panel ba-panel-title="Detail Participant">
+        <div class="col-md-8" ba-panel ba-panel-title="Detail Participant">
             <div class="input-demo radio-demo row">
-                <div class="col-md-12">
+                <div class="col-md-6">
                     <label class="col-sm-4 control-label">Gender</label>
                     <label class="col-sm-8 control-label"
                         style="text-align: left!important;font-weight:bold;font-size: 14px;">
@@ -29,15 +30,33 @@
                         : {{vm.email}}
                     </label>
 
+                </div>
+                <div class="col-md-6">
+                    
                     <label class="col-sm-4 control-label">City</label>
                     <label class="col-sm-8 control-label"
                         style="text-align: left!important;font-weight:bold;font-size: 14px;">
                         : {{vm.city}}
                     </label>
+                    <label class="col-sm-4 control-label">Unit</label>
+                    <label class="col-sm-8 control-label"
+                        style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                        : {{vm.unit}}
+                    </label>
+                    <label class="col-sm-4 control-label">Dealer</label>
+                    <label class="col-sm-8 control-label"
+                        style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                        : {{vm.dealer}}
+                    </label>
+                    <label class="col-sm-4 control-label">Tanggal Beli</label>
+                    <label class="col-sm-8 control-label"
+                        style="text-align: left!important;font-weight:bold;font-size: 14px;">
+                        : {{vm.tgl_beli}}
+                    </label>
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
         </div>
     </div>
     <div ng-if="vm.questionaire">

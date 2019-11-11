@@ -63,7 +63,7 @@
                 });
             };
             monitoringServiceFactory.saveExtendsPeriode = function (param) {
-                return $http.put(serviceBase + 'api/questionnaire/put/extendperiod', param).then(function (results) {
+                return $http.post(serviceBase + 'api/questionnaire/post/extendperiod', param).then(function (results) {
                     return results;
                 });
             };

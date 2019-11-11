@@ -35,12 +35,12 @@
             });
         };
         reportServiceFactory.submitPica = function (param, data) {
-            return $http.put(serviceBase + 'api/questionnaire/put/submitpica?ID='+ param, data).then(function (results) {
+            return $http.post(serviceBase + 'api/questionnaire/post/submitpica?ID='+ param, data).then(function (results) {
                 return results;
             });
         };
         reportServiceFactory.savePica = function (param, data) {
-            return $http.put(serviceBase + 'api/questionnaire/put/savepica?ID='+ param, data).then(function (results) {
+            return $http.post(serviceBase + 'api/questionnaire/post/savepica?ID='+ param, data).then(function (results) {
                 return results;
             });
         };

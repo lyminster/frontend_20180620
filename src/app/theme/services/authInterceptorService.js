@@ -54,8 +54,8 @@
                     }
                     authService.logOut();
                 } else if (rejection.status === 400) {
-                    console.log(rejection)
-                    message.error(rejection.message, "400");
+                    
+                    message.error(rejection.data.message, "400");
                 }
                 else {
                     // var errorCode = 'Error : ' + rejection.status;
@@ -67,7 +67,7 @@
                     // messageError += '\n\rWhen call method ' + rejection.config.method + ' from url "' + rejection.config.url + '",\n\r Please contact your administrator ';
 
                     // message.error(messageError, errorCode);
-                    message.error("Error ada pengambilan data , silahkan hubungi Admin", "500");
+                    message.error(rejection.data.message, rejection.status);
                 }
                 return $q.reject(rejection);
             }

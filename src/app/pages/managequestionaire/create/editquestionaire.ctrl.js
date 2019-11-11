@@ -9,7 +9,7 @@
         .controller('editquestionairectrl', editquestionairectrl);
 
     /** @ngInject */
-    function editquestionairectrl($q, $state, $scope, $uibModal, toastr, $filter, editableOptions, editableThemes, managequestionaireService, authService, $stateParams) {
+    function editquestionairectrl($q, $state, $scope, $uibModal, toastr, $filter, editableOptions, editableThemes, managequestionaireService, authService, $stateParams,localStorageService) {
         var vm = this;
         vm.currentUser = authService;
         if ($stateParams.id === null) {
@@ -36,7 +36,7 @@
 
         if (vm.tempEditIdQuis !== null) {
             managequestionaireService.getDetailQuestionnaire(vm.tempEditIdQuis).then(function (result) {
-                console.log(result)
+                
                 var tempResult = result;
                 vm.tempEditIdQuis = result.data.id;
                 vm.note = tempResult.data.note;
@@ -84,7 +84,6 @@
                             return element.value != '';
                         });
                         managequestionaireService.getAgeRange().then(function(result){
-                            
                             vm.ageRangeItems = result.data;
                             managequestionaireService.getEducation().then(function(result){
                                 vm.educationItems = result.data;
@@ -94,9 +93,9 @@
                                         vm.occupationItems = result.data;
                                         managequestionaireService.getReligion().then(function(result){
                                             vm.religionItems = result.data;
-                                            managequestionaireService.getSES().then(function(reuslt){
+                                            managequestionaireService.getSES().then(function(result){
                                                 vm.sesItems = result.data;
-                                                managequestionaireService.getAreapropinsi().then(function(reuslt){
+                                                managequestionaireService.getAreapropinsi().then(function(result){
                                                     vm.propinsiItems = result.data;
                                                     managequestionaireService.getRo().then(function(result){
                                                         vm.getRoItems = result.data;
@@ -107,6 +106,21 @@
                                                                 if (tempResult.data.target.propinsi !== null) {
                                                                     managequestionaireService.getAreakabupaten(tempResult.data.target.propinsi.ID).then(function(result){
                                                                         vm.kabupatenItems = result.data;
+                                                                        
+                                                                        managequestionaireService.dealertype().then(function (result) {
+                                                                            vm.dealertypes = result.data;
+                                                                            vm.general.dealertypes = result.data[0];
+                                                                            managequestionaireService.getSalesType().then(function (result) {
+                                                                                vm.custSalesTypeItems = result.data;
+                                                                                vm.target.custSalesType = result.data[0];
+                                                                                var dataprov = localStorageService.get("authorizationData");
+                                                                                console.log(dataprov)
+                                                                                managequestionaireService.getAreakabupaten(dataprov.provinceID).then(function(result){
+                                                                                    vm.distrik = result.data;
+                                                                                    vm.general.distrik = result.data[0];
+                                                                                })
+                                                                              });
+                                                                          });
                                                                         if (tempResult.data.target.kabupaten !== null) {
                                                                             managequestionaireService.getAreakecamatan(tempResult.data.target.kabupaten.ID).then(function(result){
                                                                                 vm.kecamatanItems = result.data;
@@ -171,6 +185,45 @@
                 // });
             });
         }
+        vm.selekDistrik = "";
+        vm.selekType = "1";
+        vm.onSelectedDistrik = function (selectedItem) {
+        vm.selekDistrik = selectedItem;
+        vm.getDataDealerFilter();
+        };
+        vm.onSelectedType = function (selectedItem) {
+        vm.selekType = selectedItem;
+        vm.getDataDealerFilter();
+        };
+
+        vm.getDataDealerFilter = function () {
+        if (vm.selekDistrik != "" && vm.selekType != "") {
+            vm.general.dealerBlm = [];
+            managequestionaireService
+            .postRelateddealerBlm(vm.selekDistrik, vm.selekType)
+            .then(function (result) {
+                vm.relatedDealerItemsBlm = result.data;
+                if (vm.relatedDealerItemsBlm.length > 0) {
+                vm.general.dealerBlm = angular.copy(vm.relatedDealerItemsBlm);
+                }
+            });
+        }
+        };
+
+        vm.AddTo = function (data) {
+        data.forEach(function(element)  {
+            vm.general.dealer.push(element);
+        });
+        vm.general.dealerBlm = [];
+
+        var result = vm.general.dealer.reduce(function(unique, o) {
+            if (!unique.some(function(obj) { obj.label === o.label && obj.value === o.value})) {
+            unique.push(o);
+            }
+            return unique;
+        }, []);
+        vm.general.dealer = result;
+        };
         /** Modal Config */
         vm.openFormQuestionScreaning = function (scriptCodeH, questions) {
             if (questions == null) {

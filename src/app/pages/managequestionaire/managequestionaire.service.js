@@ -145,12 +145,12 @@
                 });
             };
             managequestionaireServiceFactory.getsavequestionnaire = function (param) {
-                return $http.put(serviceBase + 'api/questionnaire/put/savequestionnaire', param).then(function (results) {
+                return $http.post(serviceBase + 'api/questionnaire/post/savequestionnaire', param).then(function (results) {
                     return results;
                 });
             };
             managequestionaireServiceFactory.getsavequestionnaireOlright = function (param) {
-                return $http.put(serviceBase + 'api/olright/put/saveolright', param).then(function (results) {
+                return $http.post(serviceBase + 'api/olright/post/saveolright', param).then(function (results) {
                     return results;
                 });
             };
@@ -184,8 +184,8 @@
                     return results;
                 });
             }
-            managequestionaireServiceFactory.putProcessapproval = function (param) {
-                return $http.put(serviceBase + 'api/questionnaire/put/processapproval', param).then(function (results) {
+            managequestionaireServiceFactory.postProcessapproval = function (param) {
+                return $http.post(serviceBase + 'api/questionnaire/post/processapproval', param).then(function (results) {
                     return results;
                 });
             };
@@ -195,7 +195,7 @@
                 });
             };
 
-            managequestionaireServiceFactory.putsetPic = function (param) {
+            managequestionaireServiceFactory.postsetPic = function (param) {
                 return $http.post(serviceBase + 'api/questionnaire/post/relateddealer', param).then(function (results) {
                     return results;
                 });
