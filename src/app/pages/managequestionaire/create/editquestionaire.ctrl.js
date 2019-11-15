@@ -389,6 +389,76 @@
             }, function () {
             });
         };
+        vm.openEditFormGroup = function (list, formdata) {
+        var modalInstance = $uibModal.open({
+            animation: true,
+            templateUrl: "app/pages/managequestionaire/form/formSection.html",
+            size: "md",
+            controller: "formSectionCtrl",
+            resolve: {
+            content: function () {
+                return { data: formdata };
+            }
+            }
+        });
+        modalInstance.result.then(
+            function (result) {
+            list[list.indexOf(formdata)] = result;
+            },
+            function () { }
+        );
+        };
+        vm.editQuestionnaire = function (paramdata, qtype, scriptCodeH, list) {
+
+            if (list == null) {
+                list = [];
+            }
+            var formdata = angular.copy(paramdata);
+      
+            formdata.scriptCode = scriptCodeH + '.Q' + (list.length + 1);
+            formdata.sort = (list.length + 1);
+            var modalInstance = $uibModal.open({
+                animation: true,
+                templateUrl: 'app/pages/managequestionaire/form/formQ-' + qtype.toLowerCase() + '.html',
+                size: 'md',
+                controller: 'formQ' + qtype.toLowerCase() + 'Ctrl',
+                resolve: {
+                    content: function () {
+                        return { 'data': formdata, "isolright": true };
+                    }
+                }
+            });
+            modalInstance.result.then(function (result) {
+                list[list.indexOf(paramdata)] = result;
+                vm.resertSortscriptCode(scriptCodeH, list);
+            }, function () {
+            });
+        };
+        vm.addQuestionnaire = function (qtype, scriptCodeH, list) {
+            if (list == null) {
+              list = [];
+            }
+            var aa = managequestionaireService[qtype]();
+            var formdata = angular.copy(aa.dataForm);
+            formdata.scriptCode = scriptCodeH + '.Q' + (list.length + 1);
+            formdata.sort = (list.length + 1);
+            var modalInstance = $uibModal.open({
+              animation: true,
+              templateUrl: 'app/pages/managequestionaire/form/formQ-' + qtype.toLowerCase() + '.html',
+              size: 'md',
+              controller: 'formQ' + qtype.toLowerCase() + 'Ctrl',
+              resolve: {
+                content: function () {
+                  return { 'data': formdata };
+                }
+              }
+            });
+            modalInstance.result.then(function (result) {
+              list.push(result);
+              vm.resertSortscriptCode(scriptCodeH, list);
+            }, function () {
+            });
+          };
         vm.openFormQuestionLinierScale = function (scriptCodeH, list) {
             if (list == null) {
                 list = [];

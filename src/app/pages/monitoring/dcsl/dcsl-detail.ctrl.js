@@ -35,7 +35,7 @@
             columnDefs: [
                 { name: 'No', enableFiltering: false, field: 'No', width: 50, cellTemplate: '<div class="ui-grid-cell-contents">{{grid.renderContainers.body.visibleRowCache.indexOf(row) + 1 }}</div>' },
                 { name: 'id', displayName: "Id", width: 50, visible: false },
-                { name: 'title', displayName: "Title", width: 50 },
+                { name: 'gender', displayName: "Gender", width: 150 },
                 { name: 'name', displayName: "Name", width: 200 },
                 { name: 'telephone', displayName: "Telephone", width: 200 },
                 { name: 'email', displayName: "Email", width: 200 },
@@ -78,12 +78,15 @@
         vm.createNewParticipant = function () {
             $state.go('fillingquestionaire.createparticipant', { questionaire: vm.questionaire });
         }
-        monitoringService.getOneMonitoring(vm.questionaire.questionnaireId).then(function (result) {
-            vm.questionaire = result.data;
-        });
+        vm.getmot = function(){
+            monitoringService.getOneMonitoring(vm.questionaire.questionnaireId).then(function (result) {
+                vm.questionaire = result.data;
+            });
+        }
         vm.refreshParticipant = function () {
             monitoringService.getParticipant(vm.questionaire.questionnaireId).then(function (result) {
                 vm.gridAvailableParticipant.data = result.data;
+                vm.getmot();
             });
         }
 

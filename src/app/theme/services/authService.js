@@ -16,6 +16,7 @@
 
             var _authentication = {
                 isAuth: false,
+                isOpen:false,
                 userName: "",
                 useRefreshTokens: false,
                 dealerID: "",

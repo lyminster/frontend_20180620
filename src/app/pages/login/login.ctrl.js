@@ -82,6 +82,11 @@
             }, function () {
             });
         };
+        var absUrl = $location.path();
+        if(absUrl.indexOf('openlink') > -1){
+            authService.authentication.isOpen = true;
+            
+        }
         $scope.authentication = authService.authentication;
     }]);
     angular.module('BlurAdmin.pages.login').controller('changepasswordController', ['$scope', '$uibModalInstance', 'content', 'managequestionaireService', 'toastr', function ($scope, $uibModalInstance, content, managequestionaireService, toastr) {

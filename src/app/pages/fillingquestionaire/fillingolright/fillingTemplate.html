@@ -11,7 +11,7 @@
     </div>
     <div class="col-md-2"></div>
 </div>
-<div id="myNav" class="overlay parallax" style="background-image: url('{{vm.backgroundfilling}}')">
+<div id="myNav" class="overlay parallax" style="background-color: #DCDCDC;">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <a ng-if="vm.questionsScreening" href="javascript:void(0)" class="nextbtn btn btn-primary" ng-click="vm.submitScreening(vm.questionScreen)">Next</a>
     <div class="overlay-content">
@@ -34,6 +34,9 @@
     }
 </script>
 <style>
+    .container{
+        background-color: white;
+    }
     .iconstart {
         display: block;
         margin: 0 auto;
@@ -77,7 +80,7 @@
 
     .overlay {
         height: 100%;
-        width: 0;
+        width: 100%;
         position: fixed;
         z-index: 1000;
         top: 0;

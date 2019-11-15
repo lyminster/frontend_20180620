@@ -36,13 +36,15 @@
         //     vm.filterquestType = vm.questTypeItems[0];
         //     vm.searchParam.questType = vm.filterquestType.value
         // });
-        managequestionaireService.getRegion().then(function (result) {
-            if (result.data) {
-                vm.regionItems = result.data;
-                vm.filterRegion = result.data[0];
-                vm.searchParam.regionID = vm.filterRegion.ID;
-            }
-        });
+        vm.getagama = function(){
+            managequestionaireService.getRegion().then(function (result) {
+                if (result.data) {
+                    vm.regionItems = result.data;
+                    vm.filterRegion = result.data[0];
+                    vm.searchParam.regionID = vm.filterRegion.ID;
+                }
+            });
+        }
         vm.changeRegion = function () {
             vm.searchParam.regionID = vm.filterRegion.Code;
             vm.refreshDealer(vm.filterRegion.Code);
@@ -67,6 +69,7 @@
             vm.templateItems = result.data;
             vm.filterTemplate = result.data[0];
             vm.searchParam.questName = vm.filterTemplate.value;
+            vm.getagama();
         });
         vm.getColorprogress = function (val) {
             return val < 50 ? "progress-bar progress-bar-danger progress-bar-striped active"

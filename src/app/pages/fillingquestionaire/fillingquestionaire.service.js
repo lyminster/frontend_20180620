@@ -32,6 +32,11 @@
                 return results;
             });
         };
+        fillingquestionaireServiceFactory.postSendUnreach = function (param) {
+            return $http.post(serviceBase + 'api/questionnaire/post/updatestatusleads', param).then(function (results) {
+                return results;
+            });
+        };
 
         fillingquestionaireServiceFactory.getMainQuestion = function (param) {
             return $http.post(serviceBase + 'api/questionnaire/post/startfilling', param).then(function (results) {
@@ -59,7 +64,16 @@
                 return results;
             });
         };
-
+        fillingquestionaireServiceFactory.saveScreeningNewParticipantOpenLink = function (verivikasi,param) {
+            return $http.post(serviceBase + 'api/openlink/post/startscreeningnewparticipant?verifikasi=' + verivikasi, param).then(function (results) {
+                return results;
+            });
+        };
+        fillingquestionaireServiceFactory.openlinkStart = function (questid,partid) {
+            return $http.post(serviceBase + 'api/openlink/post/startscreening?id='+ questid + '&idParticipant='+partid).then(function (results) {
+                return results;
+            });
+        };
         
         fillingquestionaireServiceFactory.saveScreeningNewParticipantOlright = function (param) {
             return $http.post(serviceBase + 'api/olright/post/startscreeningnewparticipant', param).then(function (results) {

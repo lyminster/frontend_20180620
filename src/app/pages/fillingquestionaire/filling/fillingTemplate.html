@@ -1,9 +1,7 @@
 <div class="widgets">
     <div ng-if="!vm.notpreview"><h1>Preview</h1></div>
     <div class="row">
-        <div class="col-md-2">
-        </div>
-        <div class="col-md-8" ba-panel ba-panel-title="Detail Participant">
+        <div class="col-md-7" ba-panel ba-panel-title="Detail Participant">
             <div class="input-demo radio-demo row">
                 <div class="col-md-6">
                     <label class="col-sm-4 control-label">Gender</label>
@@ -54,9 +52,35 @@
                         : {{vm.tgl_beli}}
                     </label>
                 </div>
+                <div ng-if="vm.sudahMasuk" class="col-lg-12">
+                    <label>Unreachable Status</label>
+                    
+                        <ui-select  id="gender" name="gender" ng-model="vm.reason" class="btn-group bootstrap-select form-control" ng-disabled="false" append-to-body="true"
+                                        search-enabled="true">
+                                        <ui-select-match placeholder="Please choose">
+                                            {{$select.selected.label}}
+                                        </ui-select-match>
+                                        <ui-select-choices repeat="o in vm.reasonList | filter: $select.search">
+                                            <span ng-bind-html="o.label"></span>
+                                        </ui-select-choices>
+                        </ui-select>
+                    
+                        <br>
+                        <form name="vm.unreach"  ng-submit="vm.cancel()">
+                            <div class="form-group has-feedback"
+                                ng-class="{'has-error': vm.description.$invalid && (vm.description.$dirty || vm.unreach.$submitted)}">
+                                <label for="description">Unreachable Description</label>
+                                <textarea type="text" class="form-control" id="description" name="description" placeholder="Description"
+                                ng-model="vm.description" required></textarea>
+                                <span class="help-block error-block basic-block">Required</span>
+                            </div>
+                            <br>
+                            <button style="margin-top: 10px;" type="submit" ng-disabled="!vm.notpreview" class="btn btn-warning pull-right">Unreachable</button>
+                        </form>
+                </div>
             </div>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-5">
         </div>
     </div>
     <div ng-if="vm.questionaire">

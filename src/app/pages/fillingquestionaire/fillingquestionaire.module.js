@@ -82,7 +82,18 @@
             idparticipant: null,
             notpreview: null
           },
-        }).state('fillingquestionaire.fillingolright', {
+        }).state('fillingquestionaire.openlink', {
+          url: '/openlink',
+          templateUrl: 'app/pages/fillingquestionaire/openlink/openlink.html',
+          title: 'Open Link',
+          controller: 'openlinkctrl',
+          controllerAs: 'vm',
+          sidebarMeta: {
+            hidenavbar: true,
+            order: 105,
+          }
+        })
+        .state('fillingquestionaire.fillingolright', {
           url: '/fillingolright',
           templateUrl: 'app/pages/fillingquestionaire/fillingolright/fillingTemplate.html',
           title: 'Filling OLRIGHT Questionnaire',

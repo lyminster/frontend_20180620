@@ -69,6 +69,14 @@
           data-ng-hide="authentication.isAuth"
           ng-include="'auth.html'"
         ></div>
+        <!-- <div
+          data-ng-hide="!authentication.isOpen"
+          ng-include="'./app/pages/fillingquestionaire/openlink/openlink.html'"
+        ></div> -->
+        <div
+          data-ng-hide="!authentication.isOpen"
+          ng-include="'openlink.html'"
+        ></div>
 
         <ba-sidebar data-ng-hide="!authentication.isAuth"></ba-sidebar>
         <page-top data-ng-hide="!authentication.isAuth"></page-top>
@@ -79,7 +87,6 @@
             <div ui-view autoscroll="true" autoscroll-body-top></div>
           </div>
         </div>
-
         <!-- <footer class="al-footer clearfix" data-ng-hide="!authentication.isAuth"> -->
         <!-- <div class="al-footer-right">Created with <i class="ion-heart"></i></div>
       <div class="al-footer-main clearfix">

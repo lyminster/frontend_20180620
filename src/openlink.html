@@ -1,0 +1,262 @@
+
+<div ng-controller="openlinkctrl as vm" id="myNav" class="overlay parallax" style="background-color: #DCDCDC;">
+    <!-- <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> -->
+    <div class="overlay-content">
+        <div ng-if="vm.getdata" >
+            <div class="container row" style="border-radius: 8px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                <h1 style="margin-top: 10px;">Participant</h1>
+                <div class="col-lg-4 row">
+                        <div class="form-group">
+                            <label for="gender">Gender</label>
+                            
+                            <span class="help-block error-block basic-block"></span>
+                            <ui-select
+                                ng-model="vm.newParticipant.gender"
+                                class="btn-group bootstrap-select form-control"
+                                append-to-body="true"
+                                search-enabled="true"
+                            >
+                                <ui-select-match placeholder="Please choose">
+                                {{ $select.selected.label }}
+                                </ui-select-match>
+                                <ui-select-choices
+                                repeat="o in vm.genderList | filter: $select.search"
+                                >
+                                <span ng-bind-html="o.label"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="Text" class="form-control" id="name" name="name" placeholder="Name " ng-model="vm.newParticipant.name">
+                            <span class="help-block error-block basic-block"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="handphone">Handphone</label>
+                            <input type="Text" class="form-control" id="handphone" name="handphone" placeholder="Handphone " ng-model="vm.newParticipant.handphone">
+                            <span class="help-block error-block basic-block"></span>
+                        </div>
+                </div>
+                <div class="col-lg-4">
+                        <div class="form-group">
+                                <label for="Kota_">City</label>
+                                <select class="form-control selectpicker with-search" data-live-search="true" title="Please choose" selectpicker ng-model="vm.newParticipant.kabupaten"
+                                    ng-options="o as o.Name for o in vm.kabupatenItems track by o.ID">
+                                </select>
+                                <span class="help-block error-block basic-block">Required</span>
+                            </div>
+                            <div class="form-group">
+                                    <label for="Occupation_">Occupation</label>
+                                    <select class="form-control selectpicker with-search" data-live-search="true" title="Please choose" selectpicker ng-model="vm.newParticipant.occupation"
+                                        ng-options="o as o.label for o in vm.occupationItems track by o.value">
+                                    </select>
+                                    <span class="help-block error-block basic-block">Required</span>
+                            </div>
+                            <div class="form-group">
+                                    <label for="birtday">Birthday Date</label>
+                                    <datepicker datepicker-mobile="true" date-format="yyyy-MM-dd" selector="form-control">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="birtday" name="birtday" placeholder="Choose a date" ng-model="vm.newParticipant.birtday" required>
+                                            <span class="input-group-addon" style="cursor: pointer">
+                                                <i class="glyphicon glyphicon-calendar"></i>
+                                            </span>
+                                        </div>
+                                    </datepicker>
+                            </div>
+                </div>
+                <div class="col-lg-4">
+                        <div class="form-group">
+                                <label for="SES">SES</label>
+                                <select class="form-control selectpicker with-search" data-live-search="true" title="Please choose" selectpicker ng-model="vm.newParticipant.ses"
+                                    ng-options="o as o.label for o in vm.sesItems track by o.value">
+                                </select>
+                                <span class="help-block error-block basic-block">Required</span>
+                            </div>
+                            <div class="form-group">
+                                    <label for="Education">Education</label>
+                                    <select class="form-control selectpicker with-search" data-live-search="true" title="Please choose" selectpicker ng-model="vm.newParticipant.education"
+                                        ng-options="o as o.label for o in vm.educationItems track by o.value">
+                                    </select>
+                                    <span class="help-block error-block basic-block">Required</span>
+                            </div>
+                </div>
+                <button ng-click="simpandata()" class="btn btn-success btn-with-icon col-lg-12" style="margin-top:10px;margin-bottom: 15px;">
+                        Lanjut
+                        <i class="ion-arrow-right-a"></i>
+                </button>
+            </div>
+
+        </div>
+        <div class="row" ng-if="vm.isipertanyaan">
+            <div class="col-md-12" ba-panel ba-panel-title="{{vm.title}}">
+                <div ng-if="vm.questionsScreening"
+                    ng-include="'app/pages/fillingquestionaire/filling/templateForm/radiobutton.html'"></div>
+                <div ng-if="!vm.questionsScreening"
+                    ng-include="'app/pages/fillingquestionaire/filling/templateForm/linierscale.html'"></div>
+            </div>
+        </div>
+        <div ng-if="vm.thanks" class="container" style="text-align:center;width: 500px; margin: auto; border-radius: 8px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+            <h2>Terima Kasih atas partisipasi anda . .</h2>
+        </div>
+    </div>
+</div>
+<style>
+    .container{
+        background-color: white;
+    }
+    .iconstart {
+        display: block;
+        margin: 0 auto;
+    }
+
+    .welcomemessage {
+        font-size: 20px;
+        cursor: pointer;
+        display: block;
+        /* margin: 0 auto; */
+    }
+
+    .startquestionnaire {
+        font-size: 30px;
+        cursor: pointer;
+        display: block;
+        /* margin: 0 auto; */
+    }
+
+
+    .welcome {
+        margin: 0;
+        /* background: yellow; */
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%);
+        height: 10em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 50%;
+    }
+
+    p .blocktext {
+        margin-left: auto;
+        margin-right: auto;
+        width: 8em
+    }
+
+    .overlay {
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        z-index: 1000;
+        top: 0;
+        left: 0;
+        overflow-x: hidden;
+        transition: 0.5s;
+    }
+
+    .overlay-content {
+        position: relative;
+        top: 10%;
+        width: 100%;
+        margin-top: 10px;
+        bottom: 10%;
+        padding-left: 100px;
+        padding-right: 150px;
+        padding-bottom: 100px;
+    }
+
+    .parallax {
+        /* Set a specific height */
+        height: 100%;
+
+        /* Create the parallax scrolling effect */
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .overlay a {
+        /* text-decoration: none;
+        display: block; */
+        transition: 0.3s;
+    }
+
+    .filling-panel {
+        background-color: rgba(255, 253, 253, 0.411)!important;
+    }
+
+    .filling-body {
+        background-color: rgba(255, 253, 253, 0.411)!important;
+        font-size: 20px;
+        FONT-FAMILY: sans-serif;
+        FONT-VARIANT: common-ligatures;
+    }
+
+    .filling-title {
+        color: rgb(25, 125, 115);
+        font-size: 25px;
+        FONT-FAMILY: sans-serif;
+        FONT-VARIANT: common-ligatures;
+    }
+
+    /* 
+    .overlay a:hover,
+    .overlay a:focus {
+        color: #f1f1f1; 
+    } */
+
+    .overlay .closebtn {
+        position: absolute;
+        top: 20px;
+        right: 45px;
+        font-size: 60px;
+    }
+
+    .overlay .nextbtn {
+        position: absolute;
+        bottom: 20px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        right: 15px;
+        font-size: 30px;
+    }
+
+    .overlay .submitbtn {
+        bottom: 20px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        right: 15px;
+        font-size: 30px;
+        z-index: inherit;
+        margin-right: 30px;
+    }
+
+    @media only screen and (max-width: 768px) {
+        .overlay a {
+            font-size: 20px;
+        }
+        .overlay .closebtn {
+            font-size: 40px;
+            top: 15px;
+            right: 35px;
+        }
+        .overlay-content {
+            position: relative;
+            top: 10%;
+            width: 100%;
+            /* margin-top: 10px; */
+            bottom: 10%;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-bottom: 100px;
+        }
+        .iconstart {
+            display: block;
+            margin: 0 auto;
+            width: 79.8px;
+            height: 117px;
+            display: inline;
+        }
+    }
+</style>

@@ -194,7 +194,11 @@
                     return results;
                 });
             };
-
+            managequestionaireServiceFactory.postOpenLink = function (param) {
+                return $http.post(serviceBase + 'api/questionnaire/post/getopenlinkurl?id='+ param + '&api_key=getopenlink').then(function (results) {
+                    return results;
+                });
+            };
             managequestionaireServiceFactory.postsetPic = function (param) {
                 return $http.post(serviceBase + 'api/questionnaire/post/relateddealer', param).then(function (results) {
                     return results;

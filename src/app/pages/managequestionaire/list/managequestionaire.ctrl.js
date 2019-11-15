@@ -19,7 +19,7 @@
             columnDefs: [
                 { name: 'No', enableFiltering: false, field: 'No', width: 50, cellTemplate: '<div class="ui-grid-cell-contents">{{grid.renderContainers.body.visibleRowCache.indexOf(row) + 1 }}</div>' },
                 {
-                    name: 'action', enableFiltering: false, cellTemplate: '<div style="display: flex;align-items: center;justify-content: center;"><button type="button" title="{{grid.appScope.vm.getTitleaction(row.entity)}}" ng-click="grid.appScope.vm.actionEdit(row.entity)" class="btn btn-success  btn-xs" ng-disabled="((grid.appScope.vm.itsAllowFunction(\'managequestionaire.edit\') && row.entity.status === \'1\') && !row.entity.isedit)"><i class="{{grid.appScope.vm.getIconaction(row.entity)}}" ></i></button>  <button type="button" title="Detail" ng-click="grid.appScope.vm.actionDetail(row.entity)" class="btn btn-success  btn-xs"><i class="ion-ios-information-outline"></i></button>  <button type="button" title="Reassign" ng-disabled="row.entity.questionnaireType != \'DCSL\' || (row.entity.status != \'2\' && row.entity.status != \'5\')" ng-click="grid.appScope.vm.openModalPic(row.entity)" class="btn btn-success  btn-xs"><i class="ion-ios-people"></i></button><button type="button" title="Preview" ng-click="grid.appScope.vm.actionPreview(row.entity)" ng-disabled="row.entity.questionnaireType != \'DCSL\' || (row.entity.status != \'2\' && row.entity.status != \'5\')" class="btn btn-success  btn-xs"><i class="ion-ios-information-outline"></i></button></div>', width: 100
+                    name: 'action', enableFiltering: false, cellTemplate: '<div style="display: flex;align-items: center;justify-content: center;"><button type="button" title="{{grid.appScope.vm.getTitleaction(row.entity)}}" ng-click="grid.appScope.vm.actionEdit(row.entity)" class="btn btn-success  btn-xs" ng-disabled="((grid.appScope.vm.itsAllowFunction(\'managequestionaire.edit\') && row.entity.status === \'1\') && !row.entity.isedit)"><i class="{{grid.appScope.vm.getIconaction(row.entity)}}" ></i></button>  <button type="button" title="Detail" ng-click="grid.appScope.vm.actionDetail(row.entity)" class="btn btn-success  btn-xs"><i class="ion-ios-information-outline"></i></button>  <button type="button" title="Reassign" ng-disabled="row.entity.questionnaireType != \'DCSL\' || (row.entity.status != \'2\' && row.entity.status != \'5\')" ng-click="grid.appScope.vm.openModalPic(row.entity)" class="btn btn-success  btn-xs"><i class="ion-ios-people"></i></button><button type="button" title="Preview" ng-click="grid.appScope.vm.actionPreview(row.entity)" ng-disabled="row.entity.questionnaireType != \'DCSL\' || (row.entity.status != \'2\' && row.entity.status != \'5\')" class="btn btn-success  btn-xs"><i class="ion-ios-information-outline"></i></button><button type="button" title="OpenLink" ng-click="grid.appScope.vm.openLink(row.entity)" class="btn btn-success  btn-xs"><i class="ion-ios-information-outline"></i></button></div>', width: 150
                 },
                 { name: 'questionnaireCode', displayName: "Questionnaire Code", width: 170 },
                 { name: 'questionnaireName', displayName: "Questionnaire Name", width: 300 },
@@ -58,6 +58,29 @@
                 questionaire: row,
                 idparticipant: 58, notpreview: false
             });
+        }
+        vm.openLink = function (row) {
+            managequestionaireService.postOpenLink(row.scenarioID).then(function(result){
+                var modalInstance = $uibModal.open({
+                    animation: true,
+                    templateUrl: "app/pages/managequestionaire/form/formQ-openLink.html",
+                    size: "md",
+                    controller: "formQopenLinkCtrl",
+                    resolve: {
+                      content: function () {
+                        return { data: result.data };
+                      }
+                    }
+                  });
+                  modalInstance.result.then(
+                    function (result) {
+                      questions.push(result);
+                      vm.resertSortscriptCode(scriptCodeH, questions);
+                    },
+                    function () { }
+                  );
+            })
+            
         }
         vm.getTitleaction = function (row) {
             if (row.status == '0' || row.status == '4') {
