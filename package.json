@@ -54,7 +54,7 @@
     "kendo-ui-core": "^2017.3.1026",
     "localforage": "^1.5.5",
     "natives": "^1.1.6",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "ui-grid-auto-fit-columns": "^1.1.4"
   }
 }
